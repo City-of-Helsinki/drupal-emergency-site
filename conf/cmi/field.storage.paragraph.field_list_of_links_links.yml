@@ -1,0 +1,25 @@
+uuid: 43255e7a-17e1-406f-a5a0-70a25b6931c4
+langcode: en
+status: true
+dependencies:
+  module:
+    - entity_reference_revisions
+    - paragraphs
+  enforced:
+    config:
+      - paragraphs.paragraphs_type.list_of_links
+_core:
+  default_config_hash: SKNxAIdgChnZ_c3V0EogCd_6WNJNqXRqyD-wZOY9ZmE
+id: paragraph.field_list_of_links_links
+field_name: field_list_of_links_links
+entity_type: paragraph
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

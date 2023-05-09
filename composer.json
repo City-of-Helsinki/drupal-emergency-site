@@ -1,0 +1,118 @@
+{
+    "name": "city-of-helsinki/drupal-helfi-platform",
+    "description": "Drupal 9 starter project",
+    "type": "project",
+    "license": "MIT",
+    "homepage": "https://github.com/City-of-Helsinki/drupal-helfi-platform",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "composer/installers": "^2.0",
+        "cweagans/composer-patches": "^1.6.7",
+        "drupal/core-composer-scaffold": "^9.5",
+        "drupal/hdbt": "^5.0",
+        "drupal/hdbt_admin": "^2.0",
+        "drupal/helfi_azure_fs": "^1.0",
+        "drupal/helfi_drupal_tools": "dev-main",
+        "drupal/helfi_platform_config": "^3.0.32",
+        "drush/drush": "^10.4 || ^11"
+    },
+    "require-dev": {
+        "donatj/mock-webserver": "^2.4",
+        "drupal/coder": "^8.3",
+        "drupal/core-dev": "^9.5",
+        "mglaman/phpstan-drupal": "^1.0",
+        "phpspec/prophecy-phpunit": "^2",
+        "phpstan/extension-installer": "^1.1",
+        "phpstan/phpstan": "^1.0",
+        "phpstan/phpstan-deprecation-rules": "^1.0",
+        "phpunit/phpunit": "^9.5",
+        "weitzman/drupal-test-traits": "^2.0"
+    },
+    "conflict": {
+        "drupal/drupal": "*"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "composer/installers": true,
+            "cweagans/composer-patches": true,
+            "drupal/core-composer-scaffold": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "composer-exit-on-patch-failure": true,
+        "drupal-scaffold": {
+            "allowed-packages": [
+                "drupal/core"
+            ],
+            "locations": {
+                "web-root": "./public"
+            },
+            "file-mapping": {
+                "[project-root]/.editorconfig": false
+            }
+        },
+        "enable-patching": true,
+        "installer-paths": {
+            "public/core": [
+                "type:drupal-core"
+            ],
+            "public/libraries/{$name}": [
+                "type:drupal-library"
+            ],
+            "public/modules/contrib/{$name}": [
+                "type:drupal-module"
+            ],
+            "public/modules/custom/{$name}": [
+                "type:drupal-custom-module"
+            ],
+            "public/profiles/{$name}": [
+                "type:drupal-profile"
+            ],
+            "public/themes/contrib/{$name}": [
+                "type:drupal-theme"
+            ],
+            "public/themes/custom/{$name}": [
+                "type:drupal-custom-theme"
+            ],
+            "drush/Commands/{$name}": [
+                "type:drupal-drush"
+            ]
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Drupal\\Tests\\dtt\\": "tests/dtt/src"
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://repository.drupal.hel.ninja"
+        },
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        }
+    ],
+    "scripts": {
+        "test": [
+          "@lint-php",
+          "@test-php"
+        ],
+        "test-php": "vendor/bin/phpunit -c $PWD/phpunit.xml.dist",
+        "lint-php": "vendor/bin/phpcs --standard=Drupal --extensions=php,inc,test,info,module,install",
+        "copy-commit-message-script": "make copy-commit-message-script",
+        "post-create-project-cmd": [
+            "make cast-spell",
+            "@copy-commit-message-script"
+        ],
+        "post-install-cmd": [
+            "@copy-commit-message-script"
+        ]
+    }
+}

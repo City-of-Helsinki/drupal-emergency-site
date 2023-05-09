@@ -1,0 +1,38 @@
+uuid: 9775d43e-eff6-46f8-ab40-43ff47d9aeaa
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.3_2_xs
+    - image.style.3_2_xs_2x
+    - image.style.3_2_xxs
+    - image.style.3_2_xxs_2x
+  module:
+    - helfi_image_styles
+_core:
+  default_config_hash: 1u9sKadpUubIjzcS2iGIQDaeBDTIZNv52eekcAaLdcY
+id: content_cards
+label: 'Content cards'
+image_style_mappings:
+  -
+    image_mapping_type: image_style
+    image_mapping: 3_2_xs
+    breakpoint_id: helfi_image_styles.xs
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: 3_2_xs_2x
+    breakpoint_id: helfi_image_styles.xs
+    multiplier: 2x
+  -
+    image_mapping_type: image_style
+    image_mapping: 3_2_xxs
+    breakpoint_id: helfi_image_styles.xxs
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: 3_2_xxs_2x
+    breakpoint_id: helfi_image_styles.xxs
+    multiplier: 2x
+breakpoint_group: helfi_image_styles
+fallback_image_style: 3_2_xs

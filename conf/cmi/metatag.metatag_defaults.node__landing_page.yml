@@ -1,0 +1,10 @@
+uuid: 4e459dc8-d466-4451-8996-0d9dbc96523d
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: KFDRmGwu9d-ua_6WM0B6f7Qz85hnDdZ0VulBDnvmg5Q
+id: node__landing_page
+label: 'Content: Landing page'
+tags:
+  description: '[node:field_hero:entity:field_hero_desc]'

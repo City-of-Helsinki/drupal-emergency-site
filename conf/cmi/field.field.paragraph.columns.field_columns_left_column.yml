@@ -1,0 +1,28 @@
+uuid: 36384f54-a246-4f22-bfa4-d574867124b6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_columns_left_column
+    - paragraphs.paragraphs_type.columns
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: Z_Zd0Y800JCALy342CT9aDziOMXXI09_MDrqhpoHp-Q
+id: paragraph.columns.field_columns_left_column
+field_name: field_columns_left_column
+entity_type: paragraph
+bundle: columns
+label: 'Vasen palsta'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles: {  }
+    negate: 0
+    target_bundles_drag_drop: {  }
+field_type: entity_reference_revisions

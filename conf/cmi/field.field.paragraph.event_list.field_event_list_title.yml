@@ -1,0 +1,21 @@
+uuid: 412ce330-76a2-4d0d-9a61-1e82ec8173bc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_event_list_title
+    - paragraphs.paragraphs_type.event_list
+_core:
+  default_config_hash: YtZI3MFPiwRz3HS_ODT2W5QE2B2zp66zUg_lkae9g04
+id: paragraph.event_list.field_event_list_title
+field_name: field_event_list_title
+entity_type: paragraph
+bundle: event_list
+label: Title
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

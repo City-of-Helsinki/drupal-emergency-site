@@ -1,0 +1,29 @@
+uuid: b68b2ed7-13e2-49b1-b5ba-e13aa9390382
+langcode: en
+status: true
+dependencies:
+  module:
+    - helfi_platform_config
+    - node
+  theme:
+    - hdbt
+id: heroblock
+theme: hdbt
+region: before_content
+weight: -11
+provider: helfi_base_content
+plugin: hero_block
+settings:
+  id: hero_block
+  label: 'Hero block'
+  label_display: ''
+  provider: helfi_platform_config
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      landing_page: landing_page
+      page: page

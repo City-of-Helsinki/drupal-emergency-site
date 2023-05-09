@@ -1,0 +1,28 @@
+uuid: 770bf7e9-2ca8-4001-a797-632bf94f82ea
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_service_items
+    - paragraphs.paragraphs_type.popular_services
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: CKBAqZLhH7NPdYAd8slbfxF_oRCcDykEhCHy7D8vxjA
+id: paragraph.popular_services.field_service_items
+field_name: field_service_items
+entity_type: paragraph
+bundle: popular_services
+label: Palvelut
+description: 'Palvelut, joita esitellään.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles: {  }
+    negate: 0
+    target_bundles_drag_drop: {  }
+field_type: entity_reference_revisions

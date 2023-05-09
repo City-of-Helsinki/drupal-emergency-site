@@ -1,0 +1,27 @@
+uuid: 962e134b-693f-442d-a9bd-5d51afadb806
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.admin
+  module:
+    - system
+  theme:
+    - hdbt_admin
+_core:
+  default_config_hash: k-WUkW8eE-3tMmhPSQaUJDWZSlQFhgpoD951zoslhj0
+id: hdbt_admin_admin
+theme: hdbt_admin
+region: sidebar_first
+weight: 1
+provider: null
+plugin: 'system_menu_block:admin'
+settings:
+  id: 'system_menu_block:admin'
+  label: Administration
+  label_display: visible
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

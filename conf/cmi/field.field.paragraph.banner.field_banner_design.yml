@@ -1,0 +1,25 @@
+uuid: 958a27f5-8ed7-4288-bff4-f22b93dd5dff
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_banner_design
+    - paragraphs.paragraphs_type.banner
+  module:
+    - options
+_core:
+  default_config_hash: j730USZlTurXW1-1FwgfKptTWHUnoHQ0MDse060L7Q4
+id: paragraph.banner.field_banner_design
+field_name: field_banner_design
+entity_type: paragraph
+bundle: banner
+label: Design
+description: 'Choose the paragraph design from the dropdown. '
+required: true
+translatable: false
+default_value:
+  -
+    value: align-left
+default_value_callback: ''
+settings: {  }
+field_type: list_string

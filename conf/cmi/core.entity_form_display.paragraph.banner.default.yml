@@ -1,0 +1,70 @@
+uuid: 549fd4c7-a3e1-482f-b2fe-d23f1fdc4a80
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.banner.field_banner_desc
+    - field.field.paragraph.banner.field_banner_design
+    - field.field.paragraph.banner.field_banner_link
+    - field.field.paragraph.banner.field_banner_link_design
+    - field.field.paragraph.banner.field_banner_title
+    - field.field.paragraph.banner.field_icon
+    - paragraphs.paragraphs_type.banner
+  module:
+    - hdbt_admin_tools
+    - text
+  enforced:
+    module:
+      - hdbt_admin_tools
+_core:
+  default_config_hash: Vtp2PgsgVx3XvL6wqcXbKUn8j0EMUkSmwv55K092n0M
+id: paragraph.banner.default
+targetEntityType: paragraph
+bundle: banner
+mode: default
+content:
+  field_banner_desc:
+    type: text_textarea
+    weight: 3
+    region: content
+    settings:
+      rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+  field_banner_design:
+    type: design_field_widget
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_banner_link:
+    type: link_target_icon_field_widget
+    weight: 4
+    region: content
+    settings:
+      linkit_profile: helfi
+      linkit_auto_link_text: false
+    third_party_settings: {  }
+  field_banner_link_design:
+    type: design_field_widget
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_banner_title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_icon:
+    type: select2_icon_widget
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

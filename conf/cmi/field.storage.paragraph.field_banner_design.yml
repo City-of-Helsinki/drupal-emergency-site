@@ -1,0 +1,29 @@
+uuid: d9b5f9ec-cafb-4468-87e4-3dcbf546d602
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+_core:
+  default_config_hash: YdtJgnURFgQWIddkieo9IZzFJ8D6VA_S30zaRxaAaJE
+id: paragraph.field_banner_design
+field_name: field_banner_design
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: align-left
+      label: 'Aligned to the left'
+    -
+      value: align-left-secondary
+      label: 'Aligned to the left, secondary color'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

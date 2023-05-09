@@ -1,0 +1,23 @@
+uuid: a71a75d2-2943-49a5-aa73-a34a3fe4abab
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - hdbt
+id: sitebranding
+theme: hdbt
+region: header_branding
+weight: 1
+provider: helfi_base_content
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  label_display: ''
+  provider: system
+  use_site_logo: true
+  use_site_name: true
+  use_site_slogan: false
+visibility: {  }

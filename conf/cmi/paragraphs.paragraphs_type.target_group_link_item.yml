@@ -1,0 +1,12 @@
+uuid: 4eed7215-e711-4883-8dcf-e1e130409d9a
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: aixTW0IQXgEhIBAe4jRY6oJl5YFBMi7tNCNQtoOWge4
+id: target_group_link_item
+label: 'Target group link item'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

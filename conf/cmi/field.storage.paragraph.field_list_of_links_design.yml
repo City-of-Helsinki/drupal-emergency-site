@@ -1,0 +1,29 @@
+uuid: 84df8eff-4743-4dcc-b089-cf379e6e64de
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+_core:
+  default_config_hash: ZJdXImw_xl6YHHoYmrXUax-OJAPhihURR-sU3SXpnTc
+id: paragraph.field_list_of_links_design
+field_name: field_list_of_links_design
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: with-image
+      label: 'With image'
+    -
+      value: without-image
+      label: 'Without image'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

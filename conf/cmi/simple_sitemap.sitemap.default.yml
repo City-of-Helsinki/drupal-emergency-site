@@ -1,0 +1,13 @@
+uuid: c443227a-0e46-4caf-99d1-4be8a98d6307
+langcode: en
+status: true
+dependencies:
+  config:
+    - simple_sitemap.type.default_hreflang
+_core:
+  default_config_hash: zHW-ZT11Lkf2zSRgisGKjgU7TzrNcT8_MwFeuVtl8O8
+id: default
+label: Default
+description: null
+type: default_hreflang
+weight: 0

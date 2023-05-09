@@ -1,0 +1,35 @@
+uuid: d2ad89f5-bfd6-480f-9b1a-70f6910346df
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.social_media_link.field_icon
+    - field.field.paragraph.social_media_link.field_social_media_link
+    - paragraphs.paragraphs_type.social_media_link
+  module:
+    - hdbt_admin_tools
+    - link
+_core:
+  default_config_hash: aWojfz5AeLM97eeoyKxUlJpYkuG2X8qLl2KOaczBukY
+id: paragraph.social_media_link.default
+targetEntityType: paragraph
+bundle: social_media_link
+mode: default
+content:
+  field_icon:
+    type: select2_icon_widget
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_social_media_link:
+    type: link_default
+    weight: 1
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

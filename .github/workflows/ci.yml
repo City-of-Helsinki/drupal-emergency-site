@@ -1,0 +1,41 @@
+on: [push]
+name: CI
+env:
+  SIMPLETEST_DB: "mysql://drupal:drupal@db:3306/drupal"
+  SIMPLETEST_BASE_URL: "http://127.0.0.1:8080"
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/city-of-helsinki/drupal-php-docker:8.1-alpine
+
+    services:
+      db:
+        image: mariadb
+        env:
+          MYSQL_USER: drupal
+          MYSQL_PASSWORD: drupal
+          MYSQL_DATABASE: drupal
+          MYSQL_ROOT_PASSWORD: drupal
+        ports:
+          - 3306:3306
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+
+      - name: Build project
+        run: composer install
+
+      - name: Install Drupal
+        run: |
+          php -d sendmail_path=$(which true); vendor/bin/drush --yes -v site-install --db-url="$SIMPLETEST_DB"
+          vendor/bin/drush en helfi_platform_config
+
+      - name: Make sure Drupal is installed properly
+        run: |
+          vendor/bin/drush runserver $SIMPLETEST_BASE_URL &
+          sleep 5
+          # Make sure Drupal is installed
+          curl -s -o /dev/null -I -w "%{http_code}" $SIMPLETEST_BASE_URL/user/login | grep -q 200

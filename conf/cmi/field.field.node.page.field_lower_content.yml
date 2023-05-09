@@ -1,0 +1,28 @@
+uuid: dc608efe-aec4-4461-a81d-1c42dfaa9b7e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_lower_content
+    - node.type.page
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: AejXN443GE3b159k_6fsqDyZ_BHs68SU9wBMY24Ueog
+id: node.page.field_lower_content
+field_name: field_lower_content
+entity_type: node
+bundle: page
+label: 'Alempi sisältöalue'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles: {  }
+    negate: 0
+    target_bundles_drag_drop: {  }
+field_type: entity_reference_revisions

@@ -1,0 +1,28 @@
+uuid: a2447257-a5c9-4174-ab05-ca9883b43ab6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_phasing_item
+    - paragraphs.paragraphs_type.phasing
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: OTsGV_59l_hoG4pPwa4NOFiR0nrv7j3iu9ErgLB1BZY
+id: paragraph.phasing.field_phasing_item
+field_name: field_phasing_item
+entity_type: paragraph
+bundle: phasing
+label: Vaihe
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles: {  }
+    negate: 0
+    target_bundles_drag_drop: {  }
+field_type: entity_reference_revisions

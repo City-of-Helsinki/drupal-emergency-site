@@ -1,0 +1,21 @@
+uuid: 8d8ed350-ee55-4090-83c3-4e859df45e72
+langcode: en
+status: true
+dependencies:
+  module:
+    - hdbt_admin_tools
+    - paragraphs
+_core:
+  default_config_hash: 7iZEPC0L92cS72FKcOv5gExrCL3CHSK9DaQU_5-4JPw
+id: paragraph.field_icon
+field_name: field_icon
+entity_type: paragraph
+type: select2_icon
+settings: {  }
+module: hdbt_admin_tools
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

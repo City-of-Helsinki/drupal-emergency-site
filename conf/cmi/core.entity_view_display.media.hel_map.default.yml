@@ -1,0 +1,31 @@
+uuid: 8164b912-9eed-48f8-9849-33e10b5c1aa5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.hel_map.field_media_hel_map
+    - media.type.hel_map
+  module:
+    - helfi_media_map
+_core:
+  default_config_hash: e3GRUcXFk93F-KjxMqtykjY7IBIpzXfGX9ZiApTwDv8
+id: media.hel_map.default
+targetEntityType: media
+bundle: hel_map
+mode: default
+content:
+  field_media_hel_map:
+    type: hel_media_map
+    label: hidden
+    settings:
+      link_title: 'Avaa kartta uuteen ikkunaan'
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  langcode: true
+  name: true
+  search_api_excerpt: true
+  thumbnail: true
+  uid: true

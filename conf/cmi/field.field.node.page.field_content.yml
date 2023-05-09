@@ -1,0 +1,28 @@
+uuid: 96161fe5-3e99-4727-813d-97e8a8c383ad
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_content
+    - node.type.page
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: G8uqVofIIeSPJSEW4FPnQrwefO2xMZGnwlbcHrbpZ48
+id: node.page.field_content
+field_name: field_content
+entity_type: node
+bundle: page
+label: 'Ylempi sisältöalue'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles: {  }
+    negate: 0
+    target_bundles_drag_drop: {  }
+field_type: entity_reference_revisions

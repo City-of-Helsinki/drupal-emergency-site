@@ -1,0 +1,28 @@
+uuid: d68b62d6-dd46-4ffe-bd72-5aba916c5241
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hero
+    - node.type.landing_page
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: wqQr5ULFXtP_T3sIZky7GLndZznJR6XMIzyIO-0lmiY
+id: node.landing_page.field_hero
+field_name: field_hero
+entity_type: node
+bundle: landing_page
+label: Hero-lohko
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles: {  }
+    negate: 0
+    target_bundles_drag_drop: {  }
+field_type: entity_reference_revisions

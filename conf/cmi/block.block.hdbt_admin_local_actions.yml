@@ -1,0 +1,20 @@
+uuid: 7c146b9e-578a-480d-b2c3-eb45bb3bacc7
+langcode: en
+status: true
+dependencies:
+  theme:
+    - hdbt_admin
+_core:
+  default_config_hash: FTZXnrPBvzMTHO4W1J-k6rY3pMtouSKMpRTa6muTpmE
+id: hdbt_admin_local_actions
+theme: hdbt_admin
+region: content
+weight: -10
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  label_display: '0'
+  provider: core
+visibility: {  }

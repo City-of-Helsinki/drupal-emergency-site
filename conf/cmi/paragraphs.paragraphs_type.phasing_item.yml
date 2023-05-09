@@ -1,0 +1,12 @@
+uuid: c7a5f660-2421-45e6-9a54-e877f37dd056
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: UD1PXX3z-MmcYc_38GQhHIDnecOoHXmyQ6t4zpWoQQ8
+id: phasing_item
+label: 'Phasing item'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

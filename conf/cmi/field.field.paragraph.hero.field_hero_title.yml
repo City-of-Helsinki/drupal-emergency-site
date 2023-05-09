@@ -1,0 +1,21 @@
+uuid: 8ddbb94f-65c1-4e85-9c85-1e59f053335b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_hero_title
+    - paragraphs.paragraphs_type.hero
+_core:
+  default_config_hash: gLYsdoK3O4wy9qSBAGlg7miDZAR9oTVXI5jviVKVdqg
+id: paragraph.hero.field_hero_title
+field_name: field_hero_title
+entity_type: paragraph
+bundle: hero
+label: 'Hero heading'
+description: 'If a hero is used on the page, this heading will be used as the page''s main heading.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

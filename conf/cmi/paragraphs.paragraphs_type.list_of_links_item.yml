@@ -1,0 +1,15 @@
+uuid: 640bc925-96cc-4243-925c-b3ad2fe8fe6e
+langcode: en
+status: true
+dependencies:
+  enforced:
+    config:
+      - paragraphs.paragraphs_type.list_of_links
+_core:
+  default_config_hash: eRqeMt3xpA_D_dl6z_yti3-HnjbVz09xNeEccyLkTUk
+id: list_of_links_item
+label: 'List of links item'
+icon_uuid: null
+icon_default: null
+description: 'One item - a link with metadata - of list of links.'
+behavior_plugins: {  }

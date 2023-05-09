@@ -1,0 +1,28 @@
+uuid: 9a441306-7bd0-4392-b177-31ec4d2fbebe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_contact_social_media
+    - paragraphs.paragraphs_type.contact_card
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: _iSBK3sYqVn5QyzC_C451nR3IF0EGhan4bEp1liTbiU
+id: paragraph.contact_card.field_contact_social_media
+field_name: field_contact_social_media
+entity_type: paragraph
+bundle: contact_card
+label: 'Sosiaalinen media'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles: {  }
+    negate: 0
+    target_bundles_drag_drop: {  }
+field_type: entity_reference_revisions

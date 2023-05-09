@@ -1,0 +1,20 @@
+uuid: 76778788-7122-46c2-9413-26563ee73353
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - hdbt
+id: breadcrumbs
+theme: hdbt
+region: breadcrumb
+weight: 0
+provider: helfi_base_content
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  label_display: ''
+  provider: system
+visibility: {  }

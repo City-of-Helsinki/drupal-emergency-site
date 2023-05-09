@@ -1,0 +1,45 @@
+uuid: 22a7a4a0-1a08-4098-816b-3ec076cc25d0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.image.field_image
+    - field.field.paragraph.image.field_image_caption
+    - field.field.paragraph.image.field_original_aspect_ratio
+    - paragraphs.paragraphs_type.image
+  module:
+    - helfi_platform_config
+_core:
+  default_config_hash: 3mLKi-YKV64AEso5VbzLofy-2PrULe3WFxhURqVP6NM
+id: paragraph.image.default
+targetEntityType: paragraph
+bundle: image
+mode: default
+content:
+  field_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: image
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_image_caption:
+    type: text_span
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_original_aspect_ratio:
+    type: boolean
+    label: inline
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden: {  }

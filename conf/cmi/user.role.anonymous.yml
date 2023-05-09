@@ -1,0 +1,20 @@
+uuid: 780d742e-def9-4c39-8d60-1b47ce2d189c
+langcode: en
+status: true
+dependencies:
+  module:
+    - eu_cookie_compliance
+    - helfi_api_base
+    - media
+    - system
+_core:
+  default_config_hash: j5zLMOdJBqC0bMvSdth5UebkprJB8g_2FXHqhfpJzow
+id: anonymous
+label: 'Anonymous user'
+weight: 0
+is_admin: false
+permissions:
+  - 'access content'
+  - 'display eu cookie compliance popup'
+  - 'view media'
+  - 'view remote entities'

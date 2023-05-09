@@ -1,0 +1,28 @@
+uuid: e1c4fada-df5d-48d9-8b07-9f8c4db2279c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_list_of_links_links
+    - paragraphs.paragraphs_type.list_of_links
+  module:
+    - entity_reference_revisions
+_core:
+  default_config_hash: k2ZJ6zQm3A5XskuBHImjifLfb1QSFaalHK_nm5Lvz8g
+id: paragraph.list_of_links.field_list_of_links_links
+field_name: field_list_of_links_links
+entity_type: paragraph
+bundle: list_of_links
+label: Linkit
+description: 'Linkkilistan linkit.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles: {  }
+    negate: 0
+    target_bundles_drag_drop: {  }
+field_type: entity_reference_revisions

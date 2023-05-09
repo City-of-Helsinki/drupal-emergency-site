@@ -1,0 +1,12 @@
+uuid: c999665b-0524-4ad3-b4f4-adc932c5368e
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: GHPwCLPig7XSKliVrahWkQsE6i0gVcqJnKnYIa4OGq4
+id: popular_services
+label: 'Popular services'
+icon_uuid: null
+icon_default: null
+description: 'Showcase popular services'
+behavior_plugins: {  }

@@ -1,0 +1,25 @@
+uuid: e5cfe99f-d5bc-495b-a6ac-e7922eedc4fd
+langcode: en
+status: true
+dependencies:
+  module:
+    - entity_reference_revisions
+    - paragraphs
+  enforced:
+    config:
+      - paragraphs.paragraphs_type.accordion
+_core:
+  default_config_hash: V13nhH7ZNcAfI0hw5vvVq5eYh15DYnhp2juBr9k6N_s
+id: paragraph.field_accordion_items
+field_name: field_accordion_items
+entity_type: paragraph
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

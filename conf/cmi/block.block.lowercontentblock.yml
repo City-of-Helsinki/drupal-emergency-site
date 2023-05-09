@@ -1,0 +1,20 @@
+uuid: 4d62522d-4ff0-4f8a-9000-ee346a336cc7
+langcode: en
+status: true
+dependencies:
+  module:
+    - helfi_platform_config
+  theme:
+    - hdbt
+id: lowercontentblock
+theme: hdbt
+region: after_content
+weight: -9
+provider: helfi_base_content
+plugin: lower_content_block
+settings:
+  id: lower_content_block
+  label: 'Lower content block'
+  label_display: ''
+  provider: helfi_platform_config
+visibility: {  }

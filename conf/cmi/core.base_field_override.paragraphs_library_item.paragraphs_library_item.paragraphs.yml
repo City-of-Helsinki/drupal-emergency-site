@@ -1,0 +1,29 @@
+uuid: 2fde6acd-3eeb-46a1-9a98-28c15cb829c5
+langcode: en
+status: true
+dependencies:
+  module:
+    - entity_reference_revisions
+    - paragraphs_library
+  enforced:
+    module:
+      - helfi_base_content
+_core:
+  default_config_hash: _Nbhr4JLQXcrcmDFzHXgntvTpv2ZLX_zza-h7gjrYws
+id: paragraphs_library_item.paragraphs_library_item.paragraphs
+field_name: paragraphs
+entity_type: paragraphs_library_item
+bundle: paragraphs_library_item
+label: Lohkot
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles: {  }
+    negate: 0
+    target_bundles_drag_drop: {  }
+field_type: entity_reference_revisions

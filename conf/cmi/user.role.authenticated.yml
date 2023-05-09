@@ -1,0 +1,24 @@
+uuid: 819e88ef-88b2-435d-a283-65fb15c95453
+langcode: en
+status: true
+dependencies:
+  module:
+    - eu_cookie_compliance
+    - helfi_api_base
+    - media
+    - paragraphs
+    - system
+    - toolbar
+_core:
+  default_config_hash: dJ0L2DNSj5q6XVZAGsuVDpJTh5UeYkIPwKrUOOpr8YI
+id: authenticated
+label: 'Authenticated user'
+weight: 1
+is_admin: false
+permissions:
+  - 'access content'
+  - 'access toolbar'
+  - 'display eu cookie compliance popup'
+  - 'view media'
+  - 'view remote entities'
+  - 'view unpublished paragraphs'
