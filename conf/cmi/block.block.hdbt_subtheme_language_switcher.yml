@@ -1,0 +1,20 @@
+uuid: e492f293-b2b6-4ac4-8f5d-0b179d23020e
+langcode: en
+status: true
+dependencies:
+  module:
+    - language
+  theme:
+    - hdbt_subtheme
+id: hdbt_subtheme_language_switcher
+theme: hdbt_subtheme
+region: header_branding
+weight: 2
+provider: helfi_base_content
+plugin: 'language_block:language_content'
+settings:
+  id: 'language_block:language_content'
+  label: 'Language switcher'
+  label_display: ''
+  provider: language
+visibility: {  }

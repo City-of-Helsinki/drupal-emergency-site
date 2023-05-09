@@ -1,0 +1,18 @@
+uuid: 77a406e8-4d39-47fa-85ba-1f5a3b2db834
+langcode: en
+status: true
+dependencies:
+  theme:
+    - hdbt_subtheme
+id: hdbt_subtheme_page_title
+theme: hdbt_subtheme
+region: content
+weight: -12
+provider: helfi_base_content
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: ''
+  provider: core
+visibility: {  }
