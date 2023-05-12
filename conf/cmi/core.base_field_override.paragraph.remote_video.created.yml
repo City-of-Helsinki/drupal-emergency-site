@@ -1,0 +1,18 @@
+uuid: 1f1f530f-0e0b-4a9a-b2d8-ecaad2f2ebb8
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.remote_video
+id: paragraph.remote_video.created
+field_name: created
+entity_type: paragraph
+bundle: remote_video
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

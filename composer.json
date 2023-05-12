@@ -10,6 +10,7 @@
         "composer/installers": "^2.0",
         "cweagans/composer-patches": "^1.6.7",
         "drupal/core-composer-scaffold": "^9.5",
+        "drupal/devel": "^5.1",
         "drupal/hdbt": "^5.0",
         "drupal/hdbt_admin": "^2.0",
         "drupal/helfi_azure_fs": "^1.0",

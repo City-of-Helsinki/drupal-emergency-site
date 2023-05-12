@@ -1,0 +1,27 @@
+uuid: c7b67a5e-628f-42a0-9a9c-69f3ab2cd1a1
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: p1queceC0XdJdYY5diRNVw-hdAFymgdpq7fhQudsddE
+id: helfi_news_neighbourhoods
+label: 'Helfi: News neighbourhoods'
+label_plural: 'Helfi: News neighbourhoods'
+description: 'Retrieves news neighbourhoods taxonomy terms from Helfi'
+read_only: true
+field_mapper_id: jsonpath
+field_mapper_config:
+  field_mappings:
+    id:
+      value: $.id
+    uuid:
+      value: $.id
+    title:
+      value: '$.attributes["name"]'
+storage_client_id: helfi_news_neighbourhoods
+storage_client_config: {  }
+persistent_cache_max_age: 86400
+annotation_entity_type_id: null
+annotation_bundle_id: null
+annotation_field_name: null
+inherits_annotation_fields: false

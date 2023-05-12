@@ -1,0 +1,22 @@
+uuid: 17d940c3-6299-4180-a25e-fb596103def2
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.helfi_chart
+id: media.helfi_chart.status
+field_name: status
+entity_type: media
+bundle: helfi_chart
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

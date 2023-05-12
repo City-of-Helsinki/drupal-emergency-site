@@ -1,0 +1,20 @@
+uuid: 7dbbee17-aa2a-43e4-9f11-21e4d1dfa7f9
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.helfi_chart
+id: media.helfi_chart.name
+field_name: name
+entity_type: media
+bundle: helfi_chart
+label: 'Administrative title'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,20 @@
+uuid: 1a6b9354-91a2-4ddc-bb19-3b8443ca87c3
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.news_neighbourhoods
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+_core:
+  default_config_hash: WrPAeH_lxR0xKKazcSCteW_3nCVD8CBysarwveQcwr8
+id: taxonomy_term.news_neighbourhoods
+target_entity_type_id: taxonomy_term
+target_bundle: news_neighbourhoods
+default_langcode: fi
+language_alterable: true

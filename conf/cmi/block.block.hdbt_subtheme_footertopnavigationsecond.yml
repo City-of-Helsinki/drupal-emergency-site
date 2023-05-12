@@ -16,8 +16,8 @@ provider: helfi_base_content
 plugin: 'menu_block_current_language:footer-top-navigation-2'
 settings:
   id: 'menu_block_current_language:footer-top-navigation-2'
-  label: Connect
-  label_display: '1'
+  label: 'Social Media'
+  label_display: visible
   provider: menu_block_current_language
   level: 1
   expand_all_items: false

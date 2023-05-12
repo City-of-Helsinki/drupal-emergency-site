@@ -1,0 +1,27 @@
+uuid: e551e364-048c-403e-821e-40f1b47d5b85
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.crisis_news
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats: {  }
+id: node.crisis_news.body
+field_name: body
+entity_type: node
+bundle: crisis_news
+label: Body
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+field_type: text_with_summary

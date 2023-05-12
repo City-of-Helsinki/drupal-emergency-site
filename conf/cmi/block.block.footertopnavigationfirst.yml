@@ -1,4 +1,4 @@
-uuid: fdc97620-1c69-48bb-8b97-b24f343ad49d
+uuid: eedc65bd-5ac7-422e-a56c-fe142f027ea8
 langcode: en
 status: true
 dependencies:
@@ -8,20 +8,20 @@ dependencies:
     - menu_block_current_language
   theme:
     - hdbt_subtheme
-id: hdbt_subtheme_footertopnavigation
+id: footertopnavigationfirst
 theme: hdbt_subtheme
 region: footer_top
-weight: -4
-provider: helfi_base_content
+weight: 0
+provider: null
 plugin: 'menu_block_current_language:footer-top-navigation'
 settings:
   id: 'menu_block_current_language:footer-top-navigation'
-  label: 'City of Helsinki'
-  label_display: '1'
+  label: Ask
+  label_display: visible
   provider: menu_block_current_language
   level: 1
   expand_all_items: false
-  depth: 1
+  depth: 0
   translation_providers:
     views: views
     menu_link_content: menu_link_content

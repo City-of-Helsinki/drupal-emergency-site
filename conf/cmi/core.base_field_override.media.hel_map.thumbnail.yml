@@ -1,0 +1,37 @@
+uuid: 33e6834d-b0e7-49ac-9647-95799b947dcb
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.hel_map
+  module:
+    - image
+id: media.hel_map.thumbnail
+field_name: thumbnail
+entity_type: media
+bundle: hel_map
+label: Thumbnail
+description: 'The thumbnail of the media item.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: ''
+  max_resolution: ''
+  min_resolution: ''
+  alt_field: true
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: null
+    alt: ''
+    title: ''
+    width: null
+    height: null
+field_type: image

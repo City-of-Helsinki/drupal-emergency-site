@@ -1,0 +1,22 @@
+uuid: c9c665b7-f846-4c31-9b01-8388438f3d46
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.phasing
+id: paragraph.phasing.status
+field_name: status
+entity_type: paragraph
+bundle: phasing
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

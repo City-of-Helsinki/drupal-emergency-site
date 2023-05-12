@@ -1,0 +1,18 @@
+uuid: 6ace4b3c-17a3-4a14-9a13-d4f718a028d1
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.crisis_news
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: node.crisis_news
+target_entity_type_id: node
+target_bundle: crisis_news
+default_langcode: site_default
+language_alterable: false

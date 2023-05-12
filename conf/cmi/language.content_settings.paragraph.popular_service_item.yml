@@ -1,0 +1,18 @@
+uuid: 8c30fe23-4a45-4f3e-b2bf-fb0c8d5774d9
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.popular_service_item
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: paragraph.popular_service_item
+target_entity_type_id: paragraph
+target_bundle: popular_service_item
+default_langcode: site_default
+language_alterable: false

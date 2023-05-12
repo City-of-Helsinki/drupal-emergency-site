@@ -1,0 +1,20 @@
+uuid: 2472e5cf-1aa9-46c3-b309-54cf467e4afc
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.crisis_news
+  module:
+    - publication_date
+id: node.crisis_news.published_at
+field_name: published_at
+entity_type: node
+bundle: crisis_news
+label: 'Published on'
+description: 'Keep the publication timestamp for each node.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: published_at

@@ -1,0 +1,22 @@
+uuid: 75fa684f-e76b-437b-932d-2b448adc0b7e
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.crisis_news
+id: node.crisis_news.sticky
+field_name: sticky
+entity_type: node
+bundle: crisis_news
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

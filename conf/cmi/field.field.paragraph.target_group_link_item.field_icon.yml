@@ -16,7 +16,7 @@ bundle: target_group_link_item
 label: Icon
 description: ''
 required: true
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }

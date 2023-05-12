@@ -1,7 +1,6 @@
-# City-of-Helsinki/drupal-helfi-platform
+# City-of-Helsinki/drupal-emergency-site
 
-This is a skeleton repository which will create a new Drupal 9 project for you and setup Docker based development
-environment with Stonehenge.
+This is the repository for the new drupal emergency website.
 
 ## Includes
 
@@ -29,29 +28,15 @@ See [CHANGELOG.md](/CHANGELOG.md)
 - PHP and Composer
 - [Docker and Stonehenge](https://github.com/druidfi/guidelines/blob/master/docs/local_dev_env.md)
 
-#### Create a new project using composer
-
-```console
-$ composer create-project City-of-Helsinki/drupal-helfi-platform:dev-main yoursite --no-interaction --repository https://repository.drupal.hel.ninja/
-```
-
 Now you need to have Stonehenge up & running. See [Docker and Stonehenge](https://github.com/druidfi/guidelines/blob/master/docs/local_dev_env.md).
 
-Start the development environment, build development codebase and install empty site with minimal profile:
 
-```console
-$ make new
-```
+#### Setup
 
-Now your site can can be accessed from https://yoursite.docker.so
+There is a database dump containing the first page and the secondary page. Installation steps:
+1. Clone this repo and run `make new`.
+2. Import the database dump: `drush sqlc` and run `source ./database-backup.sql`
 
 ### Next steps
 
 You can run `make help` to list all available commands for you.
-
-
-## Contact
-
-Slack: #helfi-drupal (http://helsinkicity.slack.com/)
-
-Mail: `drupal@hel.fi`

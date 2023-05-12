@@ -1,0 +1,12 @@
+uuid: 2440fee5-6b2f-4fbe-a7b3-e8c5dfc1f7aa
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: nfD5YCnsOB1VlfTq8e5AAzDeyGcGfwdoi0U6uHWYVM8
+id: node.medium_teaser
+label: 'Medium Teaser'
+targetEntityType: node
+cache: true

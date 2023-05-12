@@ -1,0 +1,10 @@
+uuid: 0e595a7e-396d-4038-89a0-409adc8ac96e
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: GoIlOzRzGavETL3qUS5oEFib8u9802Ej77EIqmRgBZI
+name: 'News neighbourhoods'
+vid: news_neighbourhoods
+description: ''
+weight: 0

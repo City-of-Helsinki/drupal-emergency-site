@@ -1,0 +1,18 @@
+uuid: e145529e-7c71-4822-90e0-7a12041af660
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.crisis_news
+id: node.crisis_news.title
+field_name: title
+entity_type: node
+bundle: crisis_news
+label: Title
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

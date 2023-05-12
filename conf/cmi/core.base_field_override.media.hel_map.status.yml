@@ -1,0 +1,22 @@
+uuid: 1803fc34-9d0c-416a-a519-c00600aef80f
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.hel_map
+id: media.hel_map.status
+field_name: status
+entity_type: media
+bundle: hel_map
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

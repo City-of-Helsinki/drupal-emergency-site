@@ -1,0 +1,18 @@
+uuid: bbdb1628-514a-416f-b430-61a7fc1cd956
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.helfi_chart
+id: media.helfi_chart.metatag
+field_name: metatag
+entity_type: media
+bundle: helfi_chart
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

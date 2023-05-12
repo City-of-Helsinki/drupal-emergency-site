@@ -1,0 +1,22 @@
+uuid: 6fc41ab0-b125-4b5b-867a-72d8b91c2e7b
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.popular_service_item
+id: paragraph.popular_service_item.status
+field_name: status
+entity_type: paragraph
+bundle: popular_service_item
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

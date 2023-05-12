@@ -1,0 +1,20 @@
+uuid: f0a2c8e4-2741-41f9-9162-b9efc427f6dc
+langcode: en
+status: true
+dependencies:
+  config:
+    - media.type.hel_map
+id: media.hel_map.uid
+field_name: uid
+entity_type: media
+bundle: hel_map
+label: 'Authored by'
+description: 'The user ID of the author.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\media\Entity\Media::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

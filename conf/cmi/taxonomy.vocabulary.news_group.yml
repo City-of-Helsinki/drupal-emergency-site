@@ -1,0 +1,10 @@
+uuid: 43bf264b-19b1-4605-b11f-27c9f261a00c
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: WZlqmVE7IG7NlPwHTf-2r9OKJxNlmb7H-WuoBvyheCE
+name: 'News group'
+vid: news_group
+description: ''
+weight: 0

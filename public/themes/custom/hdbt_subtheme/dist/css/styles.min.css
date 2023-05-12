@@ -1,0 +1,20 @@
+/*!*********************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[2].use[3]!./src/scss/styles.scss ***!
+  \*********************************************************************************************************************************************************************************************************************************************/
+/* Content is created after this point */
+.social-media-wrapper {
+  display: flex;
+  max-width: 100%;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.social-media-wrapper .social-media-iframe {
+  position: static;
+  visibility: visible;
+  width: 540px;
+  height: 500px;
+  display: block;
+  flex-grow: 1;
+}
+
+/*# sourceMappingURL=styles.min.css.map*/

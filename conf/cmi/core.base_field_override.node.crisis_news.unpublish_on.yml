@@ -1,0 +1,18 @@
+uuid: 679970cf-473b-4758-839f-4fbd68f5c320
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.crisis_news
+id: node.crisis_news.unpublish_on
+field_name: unpublish_on
+entity_type: node
+bundle: crisis_news
+label: 'Unpublish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp
