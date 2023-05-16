@@ -1,0 +1,10 @@
+uuid: caad393c-4945-4f2a-b5a3-29ea8161461b
+langcode: en
+status: true
+dependencies: {  }
+id: crisis_news_paragraph
+label: 'Crisis news paragraph'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

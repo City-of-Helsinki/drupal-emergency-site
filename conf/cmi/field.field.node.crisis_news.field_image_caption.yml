@@ -1,0 +1,19 @@
+uuid: 3a0292ff-e3ae-4cc3-8d0b-07b5535d34a4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_image_caption
+    - node.type.crisis_news
+id: node.crisis_news.field_image_caption
+field_name: field_image_caption
+entity_type: node
+bundle: crisis_news
+label: 'Image caption'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

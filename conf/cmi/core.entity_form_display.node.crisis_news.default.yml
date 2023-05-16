@@ -3,47 +3,49 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.node.crisis_news.body
-    - field.field.node.crisis_news.field_image
+    - field.field.node.crisis_news.field_content
+    - field.field.node.crisis_news.field_image_caption
     - field.field.node.crisis_news.field_lead
-    - field.field.node.crisis_news.field_publish_date
-    - image.style.thumbnail
+    - field.field.node.crisis_news.field_main_image
+    - field.field.node.crisis_news.field_news_item_links_title
+    - field.field.node.crisis_news.field_short_title
+    - field.field.node.crisis_news.link_crisis_news_field
     - node.type.crisis_news
   module:
+    - entity_reference_revisions
     - hdbt_admin_tools
-    - image
+    - link
     - path
     - publication_date
     - scheduler
-    - text
 id: node.crisis_news.default
 targetEntityType: node
 bundle: crisis_news
 mode: default
 content:
-  body:
-    type: text_textarea_with_summary
-    weight: 121
-    region: content
-    settings:
-      rows: 9
-      summary_rows: 3
-      placeholder: ''
-      show_summary: false
-    third_party_settings: {  }
   created:
     type: datetime_timestamp
     weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_image:
-    type: image_image
-    weight: 122
+  field_content:
+    type: entity_reference_revisions_autocomplete
+    weight: 129
     region: content
     settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_image_caption:
+    type: string_textarea
+    weight: 128
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
     third_party_settings: {  }
   field_lead:
     type: string_textarea
@@ -53,9 +55,27 @@ content:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-  field_publish_date:
+  field_main_image:
+    type: entity_reference_autocomplete
+    weight: 130
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_news_item_links_title:
     type: string_textfield
-    weight: 124
+    weight: 125
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_short_title:
+    type: string_textfield
+    weight: 126
     region: content
     settings:
       size: 60
@@ -67,6 +87,14 @@ content:
     region: content
     settings:
       include_locked: true
+    third_party_settings: {  }
+  link_crisis_news_field:
+    type: link_default
+    weight: 127
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
     third_party_settings: {  }
   path:
     type: path

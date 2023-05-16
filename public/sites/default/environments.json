@@ -1,0 +1,21 @@
+{
+  "emergency-site": {
+    "meta": {
+      "repository": "City-of-Helsinki/drupal-emergency-site",
+      "azure_devops_link": "https://dev.azure.com/City-of-Helsinki/asuminen"
+    },
+    "environments": {
+      "local": {
+        "path": {
+          "fi": "/fi",
+          "sv": "/sv",
+          "en": "/en",
+          "ru": "/ru"
+        },
+        "protocol": "http",
+        "domain": "emergency-site.docker.so:8080",
+        "meta": {}
+      }
+    }
+  }
+}

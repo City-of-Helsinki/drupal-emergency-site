@@ -1,0 +1,31 @@
+uuid: b41df58f-5421-493e-9c34-552df7ce87b2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.crisis_news_paragraph.field_news_list_description
+    - field.field.paragraph.crisis_news_paragraph.field_title
+    - paragraphs.paragraphs_type.crisis_news_paragraph
+  module:
+    - text
+id: paragraph.crisis_news_paragraph.default
+targetEntityType: paragraph
+bundle: crisis_news_paragraph
+mode: default
+content:
+  field_news_list_description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

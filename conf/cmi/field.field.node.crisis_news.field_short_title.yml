@@ -1,0 +1,19 @@
+uuid: 509a3d61-0858-4156-8d22-f95b969aad27
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_short_title
+    - node.type.crisis_news
+id: node.crisis_news.field_short_title
+field_name: field_short_title
+entity_type: node
+bundle: crisis_news
+label: 'Short title'
+description: 'Short title is used in news listings, liftups and social media shares. When a short title is entered, it overrides normal title field everywhere except in the news item itself.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

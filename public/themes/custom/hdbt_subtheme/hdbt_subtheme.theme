@@ -7,6 +7,8 @@
 
 declare(strict_types = 1);
 
+use Drupal\views\Views;
+
 /**
  * Implements hook_preprocess_HOOK().
  */
@@ -40,5 +42,35 @@ function hdbt_subtheme_theme_suggestions_menu_alter(&$suggestions, $variables) {
       'brandingnavigation' => 'menu__main__branding',
       default => 'menu__' . $variables['attributes']['block_id'],
     };
+  }
+}
+
+/**
+ * Implements template_preprocess_paragraph().
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An array of elements to display in view mode.
+ *   - paragraph: The paragraph object.
+ *   - view_mode: View mode; e.g., 'full', 'teaser'...
+ */
+function hdbt_subtheme_preprocess_paragraph(&$variables) {
+  /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+  $paragraph = $variables['paragraph'];
+  // Get the referenced entities.
+  /** @var \Drupal\paragraphs\Entity\ParagraphsType $referencedEntities */
+  $referencedEntities = $paragraph->referencedEntities();
+  foreach ($referencedEntities as $paragraph_type) {
+    // Add local (crisis) news to the helfi_news template.
+    if ($paragraph_type->id() == 'crisis_news_paragraph') {
+      $view = Views::getView('crisis_news_list');
+      $view->setDisplay('block_1');
+      $view->execute();
+      foreach ($view->result as $result) {
+        $variables['content']['news_list'][] = Drupal::entityTypeManager()
+          ->getViewBuilder('node')
+          ->view($result->_entity, 'medium_teaser');
+      }
+    }
   }
 }

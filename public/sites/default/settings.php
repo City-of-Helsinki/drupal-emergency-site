@@ -116,6 +116,8 @@ if ($varnish_host = getenv('DRUPAL_VARNISH_HOST')) {
 
   if (!isset($config['system.performance']['cache']['page']['max_age'])) {
     $config['system.performance']['cache']['page']['max_age'] = 86400;
+//    $config['system.performance']['cache']['page']['max_age'] = 0;
+//    $config['system.performance']['cache']['page']['use_internal'] = TRUE;
   }
 }
 
@@ -270,3 +272,10 @@ if ($env = getenv('APP_ENV')) {
     include_once __DIR__ . '/azure.settings.php'; // NOSONAR
   }
 }
+
+//$settings['twig.config']['debug'] = TRUE;
+//$config['system.performance']['css']['preprocess'] = FALSE;
+//$config['system.performance']['js']['preprocess'] = FALSE;
+//$settings['cache']['bins']['render'] = 'cache.backend.null';
+//$settings['cache']['bins']['page'] = 'cache.backend.null';
+//$settings['cache']['bins']['dynamic_page_cache'] = 'cache.backend.null';
