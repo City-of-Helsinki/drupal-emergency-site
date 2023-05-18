@@ -3,19 +3,9 @@
     {
       component_classes: [ 'component--news-list' ],
       component_title: content.field_title,
-      component_description: content.field_news_list_description,
+      component_description: content.field_crisis_list_description,
     }
   %}
-    {% block component_tags %}
-      {% include "@hdbt/misc/news-tags.twig" with
-        {
-          tag_container_class: 'component__tags',
-          tags: content.field_helfi_news_groups,
-          neighbourhoods: content.field_helfi_news_tags,
-          groups: content.field_helfi_news_neighbourhoods
-        }
-      %}
-    {% endblock %}
     {% block component_content %}
       {% if content.news_list %}
         <ul class="news-listing news-listing--latest-medium-teasers">

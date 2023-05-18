@@ -1,4 +1,4 @@
-uuid: 1a6b9354-91a2-4ddc-bb19-3b8443ca87c3
+uuid: a065346c-e51b-4fdc-848a-d58d1f7e3016
 langcode: en
 status: true
 dependencies:
@@ -9,8 +9,6 @@ dependencies:
 third_party_settings:
   content_translation:
     enabled: true
-    bundle_settings:
-      untranslatable_fields_hide: '0'
 _core:
   default_config_hash: WrPAeH_lxR0xKKazcSCteW_3nCVD8CBysarwveQcwr8
 id: taxonomy_term.news_neighbourhoods

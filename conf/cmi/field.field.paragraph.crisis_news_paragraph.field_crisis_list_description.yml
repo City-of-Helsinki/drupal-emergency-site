@@ -1,0 +1,25 @@
+uuid: b3efaf4f-ba73-4b64-9b47-a7d78e4219e5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_crisis_list_description
+    - paragraphs.paragraphs_type.crisis_news_paragraph
+  module:
+    - allowed_formats
+    - text
+third_party_settings:
+  allowed_formats:
+    allowed_formats: {  }
+id: paragraph.crisis_news_paragraph.field_crisis_list_description
+field_name: field_crisis_list_description
+entity_type: paragraph
+bundle: crisis_news_paragraph
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

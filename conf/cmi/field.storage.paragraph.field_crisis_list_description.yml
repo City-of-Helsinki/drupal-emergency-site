@@ -1,0 +1,19 @@
+uuid: c150cbce-36a1-47c8-a4a4-4eb7e6b7d87d
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - text
+id: paragraph.field_crisis_list_description
+field_name: field_crisis_list_description
+entity_type: paragraph
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

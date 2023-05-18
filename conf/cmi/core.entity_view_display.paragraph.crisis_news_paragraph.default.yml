@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.crisis_news_paragraph.field_news_list_description
+    - field.field.paragraph.crisis_news_paragraph.field_crisis_list_description
     - field.field.paragraph.crisis_news_paragraph.field_title
     - paragraphs.paragraphs_type.crisis_news_paragraph
   module:
@@ -13,9 +13,9 @@ targetEntityType: paragraph
 bundle: crisis_news_paragraph
 mode: default
 content:
-  field_news_list_description:
+  field_crisis_list_description:
     type: text_default
-    label: hidden
+    label: above
     settings: {  }
     third_party_settings: {  }
     weight: 1

@@ -63,8 +63,8 @@ function hdbt_subtheme_preprocess_paragraph(&$variables) {
   foreach ($referencedEntities as $paragraph_type) {
     // Add local (crisis) news to the helfi_news template.
     if ($paragraph_type->id() == 'crisis_news_paragraph') {
-      $view = Views::getView('crisis_news_list');
-      $view->setDisplay('block_1');
+      $view = Views::getView('crisis_news_view');
+      $view->setDisplay('crisis_news');
       $view->execute();
       foreach ($view->result as $result) {
         $variables['content']['news_list'][] = Drupal::entityTypeManager()
@@ -72,5 +72,20 @@ function hdbt_subtheme_preprocess_paragraph(&$variables) {
           ->view($result->_entity, 'medium_teaser');
       }
     }
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function hdbt_subtheme_theme_suggestions_node_alter(&$suggestions, $variables) {
+  $bundle = $variables['elements']['#node']->bundle();
+  // Bypass external entity template.
+  if ($variables['elements']['#view_mode'] == 'medium_teaser') {
+    $suggestions[] = 'node__news_item__medium_teaser__crisis';
+  }
+  // Same template but without social_media block.
+  elseif ($bundle == 'news_item' && $variables['elements']['#view_mode'] == 'full') {
+    $suggestions[] = 'node__news_item_crisis_news';
   }
 }

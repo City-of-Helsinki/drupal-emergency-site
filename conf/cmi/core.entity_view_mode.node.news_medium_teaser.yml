@@ -1,0 +1,10 @@
+uuid: 5d761b79-d2cc-49cf-84df-4b636aeaec8a
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.news_medium_teaser
+label: 'News medium teaser'
+targetEntityType: node
+cache: true
