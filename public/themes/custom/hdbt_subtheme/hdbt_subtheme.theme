@@ -8,6 +8,7 @@
 declare(strict_types = 1);
 
 use Drupal\Core\Language\LanguageInterface;
+use Drupal\node\Entity\Node;
 use Drupal\views\Views;
 
 /**
@@ -82,8 +83,15 @@ function hdbt_subtheme_preprocess_paragraph(&$variables) {
           $news_path = '/news';
           break;
       }
-      $news_url = $environment_url . '/' . $language_id . $news_path;
-      $variables['news_url'] = $news_url;
+      $path = \Drupal::service('path_alias.manager')->getPathByAlias($news_path);
+      if (preg_match('/node\/(\d+)/', $path, $matches)) {
+        $node_id = $matches[1];
+      }
+      $values = \Drupal::entityQuery('node')->condition('nid', $node_id)->execute();
+      if (!empty($values)) {
+        $news_url = $environment_url . '/' . $language_id . $news_path;
+        $variables['news_url'] = $news_url;
+      }
 
       // Attach the view to the paragraph.
       $view = Views::getView('crisis_news_view');

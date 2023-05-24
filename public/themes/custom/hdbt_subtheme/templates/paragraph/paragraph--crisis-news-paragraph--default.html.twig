@@ -30,7 +30,9 @@
         ]
       } %}
 
-      {{ link(link_title, news_url, link_attributes) }}
+      {% if news_url %}
+        {{ link(link_title, news_url, link_attributes) }}
+      {% endif %}
 
     {% endblock component_content %}
   {% endembed %}
