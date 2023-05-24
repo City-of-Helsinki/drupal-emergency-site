@@ -14,17 +14,17 @@ if [ ! -n "$OPENSHIFT_BUILD_NAME" ]; then
 fi
 
 function get_deploy_id {
-  echo $(drush state:get deploy_id)
+  echo $(drush state:get deploy_id --debug)
 }
 
 # Generate twig caches.
 if [ ! -d "/tmp/twig" ]; then
-  drush twig:compile || true
+  drush twig:compile --debug || true
 fi
 
 # Attempt to set deploy ID in case this is the first deploy.
 if [[ -z "$(get_deploy_id)" ]]; then
-  drush state:set deploy_id $OPENSHIFT_BUILD_NAME
+  drush state:set deploy_id $OPENSHIFT_BUILD_NAME --debug
 fi
 
 # Exit early if deploy ID is still not set. This usually means either Redis or
