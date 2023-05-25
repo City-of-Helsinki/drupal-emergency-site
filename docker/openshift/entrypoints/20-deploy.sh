@@ -14,17 +14,17 @@ if [ ! -n "$OPENSHIFT_BUILD_NAME" ]; then
 fi
 
 function get_deploy_id {
-    echo $(drush state:get deploy_id)
+    echo $(drush state:get deploy_id --debug)
 }
 
 # Generate twig caches.
 if [ ! -d "/tmp/twig" ]; then
-  drush twig:compile || true
+  drush twig:compile --debug || true
 fi
 
 # Attempt to set deploy ID in case this is the first deploy.
 if [[ -z "$(get_deploy_id)" ]]; then
-  drush state:set deploy_id $OPENSHIFT_BUILD_NAME
+  drush state:set deploy_id $OPENSHIFT_BUILD_NAME --debug
 fi
 
 # Exit early if deploy ID is still not set. This usually means either Redis or
@@ -38,19 +38,19 @@ fi
 # start more than one Drupal container. This is used to make sure we run deploy
 # tasks only once per deploy.
 if [ "$(get_deploy_id)" != "$OPENSHIFT_BUILD_NAME" ]; then
-  drush state:set deploy_id $OPENSHIFT_BUILD_NAME
+  drush state:set deploy_id $OPENSHIFT_BUILD_NAME --debug
   # Put site in maintenance mode
   drush state:set system.maintenance_mode 1 --input-format=integer
   # Run helfi specific pre-deploy tasks. Allow this to fail in case
   # the environment is not using the 'helfi_api_base' module.
   # @see https://github.com/City-of-Helsinki/drupal-module-helfi-api-base
-  drush helfi:pre-deploy || true
+  drush helfi:pre-deploy --debug || true
   # Run maintenance tasks (config import, database updates etc)
-  drush deploy
+  drush deploy --debug
   # Run helfi specific post deploy tasks. Allow this to fail in case
   # the environment is not using the 'helfi_api_base' module.
   # @see https://github.com/City-of-Helsinki/drupal-module-helfi-api-base
-  drush helfi:post-deploy || true
+  drush helfi:post-deploy --debug || true
   # Disable maintenance mode
   drush state:set system.maintenance_mode 0 --input-format=integer
 fi
