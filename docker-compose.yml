@@ -13,8 +13,7 @@ services:
       STAGE_FILE_PROXY_ORIGIN: "${STAGE_FILE_PROXY_ORIGIN}"
       STAGE_FILE_PROXY_ORIGIN_DIR: "${STAGE_FILE_PROXY_ORIGIN_DIR}"
       APP_ENV: "${APP_ENV:-local}"
-      DRUPAL_ROUTES: "https://helfi-proxy.docker.so"
-#      DRUPAL_ROUTES: "https://varnish-${DRUPAL_HOSTNAME},https://helfi-proxy.docker.so,http://${COMPOSE_PROJECT_NAME}-varnish"
+      DRUPAL_ROUTES: "https://varnish-${DRUPAL_HOSTNAME},https://helfi-proxy.docker.so,http://${COMPOSE_PROJECT_NAME}-varnish"
       DRUPAL_REVERSE_PROXY_ADDRESS: helfi-proxy.docker.so
       DRUSH_OPTIONS_URI: "https://${DRUPAL_HOSTNAME}"
       # To enable xdebug, run `export XDEBUG_ENABLE=true` before (re)starting your project.
@@ -28,9 +27,9 @@ services:
       SIMPLETEST_BASE_URL: "http://127.0.0.1:8888"
       SIMPLETEST_DB: "mysql://drupal:drupal@db:3306/drupal"
       BROWSERTEST_OUTPUT_BASE_URL: "https://${DRUPAL_HOSTNAME}"
-#      DRUPAL_VARNISH_HOST: "${COMPOSE_PROJECT_NAME}-varnish"
-#      DRUPAL_VARNISH_PORT: 6081
-#      REDIS_HOST: redis
+      DRUPAL_VARNISH_HOST: "${COMPOSE_PROJECT_NAME}-varnish"
+      DRUPAL_VARNISH_PORT: 6081
+      REDIS_HOST: redis
       PROJECT_NAME: "${PROJECT_NAME}"
     extra_hosts:
       - "host.docker.internal:host-gateway"
@@ -45,12 +44,12 @@ services:
       - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-app.tls=true"
       - "traefik.http.services.${COMPOSE_PROJECT_NAME}-app.loadbalancer.server.port=8080"
       - "traefik.docker.network=stonehenge-network"
-#  redis:
-#    container_name: "${COMPOSE_PROJECT_NAME}-redis"
-#    image: redis:7-alpine
-#    command: [sh, -c, "rm -f /data/dump.rdb && redis-server --save ''"]
-#    networks:
-#      - internal
+  redis:
+    container_name: "${COMPOSE_PROJECT_NAME}-redis"
+    image: redis:7-alpine
+    command: [sh, -c, "rm -f /data/dump.rdb && redis-server --save ''"]
+    networks:
+      - internal
   db:
     container_name: "${COMPOSE_PROJECT_NAME}-db"
     image: druidfi/mariadb:10.11-drupal
@@ -63,39 +62,39 @@ services:
       - 3306
     networks:
       - internal
-#  varnish:
-#    container_name: "${COMPOSE_PROJECT_NAME}-varnish"
-#    image: druidfi/varnish:6-drupal
-#    environment:
-#      VARNISH_BACKEND_HOST: "${COMPOSE_PROJECT_NAME}-app"
-#    depends_on:
-#      - app
-#    networks:
-#      - internal
-#      - stonehenge-network
-#    labels:
-#      - "traefik.enable=true"
-#      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-varnish.entrypoints=https"
-#      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-varnish.rule=Host(`varnish-${DRUPAL_HOSTNAME}`)"
-#      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-varnish.tls=true"
-#      - "traefik.http.services.${COMPOSE_PROJECT_NAME}-varnish.loadbalancer.server.port=6081"
-#      - "traefik.docker.network=stonehenge-network"
-#  robo:
-#    image: ghcr.io/city-of-helsinki/drupal-robo:latest
-#    shm_size: '2gb'
-#    tty: true
-#    volumes:
-#      - .:/app:delegated
-#    networks:
-#      - internal
-#      - stonehenge-network
-#    depends_on:
-#      - app
-#    profiles:
-#      - testing
-#    extra_hosts:
-#      - "${DRUPAL_HOSTNAME}:host-gateway"
-#      - "varnish-${DRUPAL_HOSTNAME}:host-gateway"
+  varnish:
+    container_name: "${COMPOSE_PROJECT_NAME}-varnish"
+    image: druidfi/varnish:6-drupal
+    environment:
+      VARNISH_BACKEND_HOST: "${COMPOSE_PROJECT_NAME}-app"
+    depends_on:
+      - app
+    networks:
+      - internal
+      - stonehenge-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-varnish.entrypoints=https"
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-varnish.rule=Host(`varnish-${DRUPAL_HOSTNAME}`)"
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-varnish.tls=true"
+      - "traefik.http.services.${COMPOSE_PROJECT_NAME}-varnish.loadbalancer.server.port=6081"
+      - "traefik.docker.network=stonehenge-network"
+  robo:
+    image: ghcr.io/city-of-helsinki/drupal-robo:latest
+    shm_size: '2gb'
+    tty: true
+    volumes:
+      - .:/app:delegated
+    networks:
+      - internal
+      - stonehenge-network
+    depends_on:
+      - app
+    profiles:
+      - testing
+    extra_hosts:
+      - "${DRUPAL_HOSTNAME}:host-gateway"
+      - "varnish-${DRUPAL_HOSTNAME}:host-gateway"
 networks:
   internal:
     external: false

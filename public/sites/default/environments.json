@@ -2,7 +2,7 @@
   "emergency-site": {
     "meta": {
       "repository": "City-of-Helsinki/drupal-emergency-site",
-      "azure_devops_link": "https://dev.azure.com/City-of-Helsinki/asuminen"
+      "azure_devops_link": "https://dev.azure.com/City-of-Helsinki/emergency-site"
     },
     "environments": {
       "local": {
