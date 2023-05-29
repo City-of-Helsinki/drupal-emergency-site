@@ -8,6 +8,7 @@
 declare(strict_types = 1);
 
 use Drupal\Core\Language\LanguageInterface;
+use Drupal\Core\Url;
 use Drupal\node\Entity\Node;
 use Drupal\views\Views;
 
@@ -17,6 +18,10 @@ use Drupal\views\Views;
 function hdbt_subtheme_preprocess_block(&$variables) {
   if (isset($variables['elements']['#id'])) {
     $variables['content']['#attributes']['block_id'] = $variables['elements']['#id'];
+  }
+  // Overwrite etusivu url.
+  if ($variables['elements']['#plugin_id'] == 'system_branding_block') {
+    $variables['frontpage_instance_url'] = \Drupal::request()->getSchemeAndHttpHost();
   }
 }
 
