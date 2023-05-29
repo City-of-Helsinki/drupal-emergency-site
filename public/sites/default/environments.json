@@ -51,18 +51,6 @@
         "meta": {
           "openshift_console_link": "https://console-openshift-console.apps.platta.hel.fi/k8s/cluster/projects/hki-kanslia-helfi-etusivu-prod"
         }
-      },
-      "dev": {
-        "path": {
-          "fi": "/fi/test-etusivu",
-          "sv": "/sv/test-huvudsida",
-          "en": "/en/test-frontpage",
-          "ru": "/ru"
-        },
-        "domain": "drupal-emergencysite.dev.hel.ninja",
-        "meta": {
-          "openshift_console_link": "https://console-openshift-console.apps.arodevtest.hel.fi/k8s/cluster/projects/hki-kanslia-helfi-etusivu-test"
-        }
       }
     }
   },
