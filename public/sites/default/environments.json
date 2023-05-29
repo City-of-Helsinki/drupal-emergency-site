@@ -1,59 +1,4 @@
 {
-  "etusivu": {
-    "meta": {
-      "repository": "City-of-Helsinki/drupal-helfi-etusivu",
-      "azure_devops_link": "https://dev.azure.com/City-of-Helsinki/helfi-etusivu"
-    },
-    "environments": {
-      "local": {
-        "path": {
-          "fi": "/fi",
-          "sv": "/sv",
-          "en": "/en",
-          "ru": "/ru"
-        },
-        "protocol": "http",
-        "domain": "drupal-emergencysite.dev.hel.ninja",
-        "meta": {}
-      },
-      "test": {
-        "path": {
-          "fi": "/fi/test-etusivu",
-          "sv": "/sv/test-huvudsida",
-          "en": "/en/test-frontpage",
-          "ru": "/ru"
-        },
-        "domain": "drupal-emergencysite.dev.hel.ninja",
-        "meta": {
-          "openshift_console_link": "https://console-openshift-console.apps.arodevtest.hel.fi/k8s/cluster/projects/hki-kanslia-helfi-etusivu-test"
-        }
-      },
-      "stage": {
-        "path": {
-          "fi": "/fi/staging-etusivu",
-          "sv": "/sv/staging-huvudsida",
-          "en": "/en/staging-frontpage",
-          "ru": "/ru"
-        },
-        "domain": "drupal-emergencysite.dev.hel.ninja",
-        "meta": {
-          "openshift_console_link": "https://console-openshift-console.apps.platta.hel.fi/k8s/cluster/projects/hki-kanslia-helfi-etusivu-staging"
-        }
-      },
-      "prod": {
-        "path": {
-          "fi": "/fi",
-          "sv": "/sv",
-          "en": "/en",
-          "ru": "/ru"
-        },
-        "domain": "drupal-emergencysite.dev.hel.ninja",
-        "meta": {
-          "openshift_console_link": "https://console-openshift-console.apps.platta.hel.fi/k8s/cluster/projects/hki-kanslia-helfi-etusivu-prod"
-        }
-      }
-    }
-  },
   "emergency-site": {
     "meta": {
       "repository": "City-of-Helsinki/drupal-emergency-site",
@@ -73,15 +18,13 @@
       },
       "dev": {
         "path": {
-          "fi": "/fi/test-etusivu",
-          "sv": "/sv/test-huvudsida",
-          "en": "/en/test-frontpage",
+          "fi": "/fi",
+          "sv": "/sv",
+          "en": "/en",
           "ru": "/ru"
         },
         "domain": "drupal-emergencysite.dev.hel.ninja",
-        "meta": {
-          "openshift_console_link": "https://console-openshift-console.apps.arodevtest.hel.fi/k8s/cluster/projects/hki-kanslia-helfi-etusivu-test"
-        }
+        "meta": {}
       }
     }
   }
