@@ -1,0 +1,29 @@
+uuid: aa236393-eed9-4b56-8b91-520c70b3ac53
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.footer---top-navigation---on-cal
+  module:
+    - menu_block_current_language
+  theme:
+    - hdbt_subtheme
+id: footertopnavigationoncall
+theme: hdbt_subtheme
+region: footer_top
+weight: 0
+provider: null
+plugin: 'menu_block_current_language:footer---top-navigation---on-cal'
+settings:
+  id: 'menu_block_current_language:footer---top-navigation---on-cal'
+  label: On-call
+  label_display: visible
+  provider: menu_block_current_language
+  level: 1
+  expand_all_items: false
+  depth: 0
+  translation_providers:
+    views: views
+    menu_link_content: menu_link_content
+    default: '0'
+visibility: {  }
