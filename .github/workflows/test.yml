@@ -2,7 +2,7 @@ on:
   pull_request:
   push:
     branches: ['main', 'dev']
-name: CI
+name: Test
 env:
   SIMPLETEST_DB: "mysql://drupal:drupal@db:3306/drupal"
   SIMPLETEST_BASE_URL: "http://127.0.0.1:8080"
