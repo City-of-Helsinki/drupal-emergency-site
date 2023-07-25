@@ -1,5 +1,6 @@
 _core:
   default_config_hash: R4IF-ClDHXxblLcG0L7MgsLvfBIMAvi_skumNFQwkDc
+langcode: fi
 module:
   admin_toolbar: 0
   admin_toolbar_tools: 0
@@ -102,9 +103,11 @@ module:
   path_alias: 0
   redirect: 0
   responsive_image: 0
+  rest: 0
   role_delegation: 0
   scheduler: 0
   select2: 0
+  serialization: 0
   simple_sitemap: 0
   social_media: 0
   sophron: 0
