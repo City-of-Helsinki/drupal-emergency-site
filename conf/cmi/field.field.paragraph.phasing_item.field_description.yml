@@ -1,5 +1,5 @@
 uuid: d70a03c2-b557-43ea-9c86-539f8ddf50e0
-langcode: en
+langcode: fi
 status: true
 dependencies:
   config:
@@ -21,7 +21,7 @@ bundle: phasing_item
 label: Description
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

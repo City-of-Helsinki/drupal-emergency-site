@@ -1,18 +1,19 @@
 _core:
   default_config_hash: iykxEVZQWuNASp9dkQn2WMkJ1rQwZLHSf6U28YLnkc4
+langcode: fi
+favicon:
+  use_default: true
 features:
-  node_user_picture: false
   comment_user_picture: true
   comment_user_verification: true
   favicon: true
-favicon:
-  use_default: true
-enable_darkmode: false
+  node_user_picture: false
 preset_accent_color: light_blue
-accent_color: ''
 preset_focus_color: gin
-focus_color: ''
-high_contrast_mode: false
+enable_darkmode: false
 classic_toolbar: horizontal
+high_contrast_mode: false
+accent_color: ''
+focus_color: ''
 icon_default: true
 icon_upload: ''

@@ -1,5 +1,5 @@
 uuid: ff1dba21-aa37-4b7d-9f4b-fc7687612114
-langcode: en
+langcode: fi
 status: true
 dependencies:
   module:
@@ -23,5 +23,5 @@ settings:
 visibility:
   request_path:
     id: request_path
-    pages: "/node/*\r\n/admin/content/integrations/tpr-unit/*/edit\r\n/admin/content/integrations/tpr-service/*/edit\r\n/group/*/content/create/*"
     negate: true
+    pages: "/node/*\r\n/admin/content/integrations/tpr-unit/*/edit\r\n/admin/content/integrations/tpr-service/*/edit\r\n/group/*/content/create/*"

@@ -1,5 +1,5 @@
 uuid: 94f3bb3e-e0cf-4151-9050-c69471fd0536
-langcode: en
+langcode: fi
 status: true
 dependencies:
   config:
@@ -23,6 +23,7 @@ dependencies:
     - content_lock
     - content_translation
     - editoria11y
+    - entity_usage
     - eu_cookie_compliance
     - file
     - filter
@@ -53,6 +54,7 @@ is_admin: null
 permissions:
   - 'access administration pages'
   - 'access content overview'
+  - 'access entity usage statistics'
   - 'access files overview'
   - 'access media overview'
   - 'access remote entities overview'

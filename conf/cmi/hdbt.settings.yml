@@ -1,12 +1,13 @@
 _core:
   default_config_hash: 1oYqGyOsIZHGnNlHydDMMxwW3GyI96gK8lvrYPHwphM
+langcode: fi
+favicon:
+  path: ''
+  use_default: false
 features:
-  node_user_picture: false
   comment_user_picture: true
   comment_user_verification: true
   favicon: true
+  node_user_picture: false
 logo:
   use_default: true
-favicon:
-  use_default: false
-  path: ''

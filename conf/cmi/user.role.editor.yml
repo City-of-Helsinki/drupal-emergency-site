@@ -1,5 +1,5 @@
 uuid: 87f5fb5f-1976-488b-9914-6f2529dcc011
-langcode: en
+langcode: fi
 status: true
 dependencies:
   config:
@@ -20,6 +20,7 @@ dependencies:
   module:
     - content_translation
     - editoria11y
+    - entity_usage
     - eu_cookie_compliance
     - file
     - filter
@@ -47,6 +48,7 @@ is_admin: null
 permissions:
   - 'access administration pages'
   - 'access content overview'
+  - 'access entity usage statistics'
   - 'access files overview'
   - 'access media overview'
   - 'access remote entities overview'

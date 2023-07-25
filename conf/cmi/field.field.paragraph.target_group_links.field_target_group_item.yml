@@ -1,5 +1,5 @@
 uuid: 9bb55981-27cb-4d86-a949-6b214b5a894f
-langcode: en
+langcode: fi
 status: true
 dependencies:
   config:
@@ -14,7 +14,7 @@ id: paragraph.target_group_links.field_target_group_item
 field_name: field_target_group_item
 entity_type: paragraph
 bundle: target_group_links
-label: 'Target group item'
+label: Kohderyhmä
 description: ''
 required: true
 translatable: false
