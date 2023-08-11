@@ -1,0 +1,5 @@
+helfi_static_trigger.actions:
+  title: Static generation
+  description: Trigger regeneration of static site
+  route_name: helfi_static_trigger.actions
+  parent: system.admin_config_services

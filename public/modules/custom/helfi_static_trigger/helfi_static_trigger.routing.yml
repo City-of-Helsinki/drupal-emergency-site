@@ -1,0 +1,15 @@
+helfi_static_trigger.actions:
+  path: '/admin/config/services/static-trigger'
+  defaults:
+    _form: '\Drupal\helfi_static_trigger\Form\TriggerForm'
+    _title: 'Trigger static re-generation'
+  requirements:
+    _permission: 'helfi static trigger generate'
+
+helfi_static_trigger.settings:
+  path: '/admin/config/services/static-trigger/settings'
+  defaults:
+    _form: '\Drupal\helfi_static_trigger\Form\TriggerSettingsForm'
+    _title: 'Static re-generation settings'
+  requirements:
+    _permission: 'administer helfi static trigger settings'

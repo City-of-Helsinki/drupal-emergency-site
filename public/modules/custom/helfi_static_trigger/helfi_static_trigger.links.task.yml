@@ -1,0 +1,9 @@
+helfi_static_trigger.actions:
+  title: Actions
+  route_name: helfi_static_trigger.actions
+  base_route: helfi_static_trigger.actions
+
+helfi_static_trigger.settings:
+  title: Settings
+  route_name: helfi_static_trigger.settings
+  base_route: helfi_static_trigger.actions

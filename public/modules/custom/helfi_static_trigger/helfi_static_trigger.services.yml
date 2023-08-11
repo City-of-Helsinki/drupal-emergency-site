@@ -1,0 +1,4 @@
+services:
+  helfi_static_trigger.trigger:
+    class: Drupal\helfi_static_trigger\StaticTrigger
+    arguments: ['@config.factory', '@logger.factory', '@http_client', '@state', '@datetime.time' ]

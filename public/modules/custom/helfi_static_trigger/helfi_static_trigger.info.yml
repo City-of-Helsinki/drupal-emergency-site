@@ -1,0 +1,7 @@
+name: HELfi static site trigger
+type: module
+package: Custom
+core_version_requirement: ^9 || ^10
+configure: helfi_static_trigger.settings
+dependencies:
+  - entity:entity

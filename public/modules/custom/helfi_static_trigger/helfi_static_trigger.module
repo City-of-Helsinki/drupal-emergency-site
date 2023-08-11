@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * Contains API base module.
+ */
+
+declare(strict_types = 1);
+
+use \Drupal\node\NodeInterface;
+
+/**
+ * Implements hook_node_update().
+ */
+function helfi_static_trigger_node_update(NodeInterface $node) {
+  \Drupal::service('helfi_static_trigger.trigger')->safeTrigger();
+}
