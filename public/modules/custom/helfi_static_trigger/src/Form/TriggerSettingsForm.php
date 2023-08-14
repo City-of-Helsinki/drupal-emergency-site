@@ -37,7 +37,9 @@ class TriggerSettingsForm extends ConfigFormBase {
     $form['url'] = [
       '#type' => 'textfield',
       '#title' => $this->t('URL'),
-      '#description' => $this->t('The URL to trigger.'),
+      '#description' =>
+        $this->t('The URL to trigger static site re-generation.
+        You can set this via HELFI_STATIC_TRIGGER_URL environment variable.'),
       '#default_value' =>
         $this->config('helfi_static_trigger.settings')->get('url'),
     ];
