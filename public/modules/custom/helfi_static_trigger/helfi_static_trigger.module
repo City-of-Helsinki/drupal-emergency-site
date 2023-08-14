@@ -13,5 +13,5 @@ use \Drupal\node\NodeInterface;
  * Implements hook_node_update().
  */
 function helfi_static_trigger_node_update(NodeInterface $node) {
-  \Drupal::service('helfi_static_trigger.trigger')->safeTrigger();
+  \Drupal::service('helfi_static_trigger.trigger')->trigger();
 }

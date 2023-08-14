@@ -10,7 +10,7 @@ use Drupal\Core\State\StateInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use GuzzleHttp\ClientInterface;
 
-class StaticTrigger {
+class StaticTrigger implements StaticTriggerInterface {
 
   use StringTranslationTrait;
 
@@ -27,17 +27,18 @@ class StaticTrigger {
     $this->time = $time;
   }
 
-  public function safeTrigger() {
-    if ($this->getLastRun() + 10 > $this->time->getCurrentTime()) {
-      return;
+  public function trigger($force = FALSE): bool|null {
+    if (!$force && $this->getLastRun() + 30 > $this->time->getCurrentTime()) {
+      return NULL;
     }
-    $this->trigger();
-  }
-  public function trigger() {
     $url = $this->configFactory->get('helfi_static_trigger.settings')->get('url');
     try {
-      // @todo should we set a lower timeout of 5 seconds maybe?
-      $this->httpClient->request('GET', $url);
+      $options = [];
+      $options['verify'] = FALSE;
+      if (!$force) {
+        $options['timeout'] = 5;
+      }
+      $this->httpClient->request('GET', $url, $options);
     }
     catch (\Exception $e) {
       $this->logger->error($e->getMessage());

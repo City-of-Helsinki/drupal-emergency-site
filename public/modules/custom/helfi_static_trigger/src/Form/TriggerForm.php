@@ -72,7 +72,7 @@ class TriggerForm extends FormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state): void {
-    if ($this->staticTrigger->trigger()) {
+    if ($this->staticTrigger->trigger(TRUE)) {
       $this->messenger()->addStatus($this->t('Static site re-generation triggered.'));
     }
     else {
