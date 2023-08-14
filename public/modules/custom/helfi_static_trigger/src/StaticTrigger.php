@@ -31,7 +31,8 @@ class StaticTrigger implements StaticTriggerInterface {
     if (!$force && $this->getLastRun() + 30 > $this->time->getCurrentTime()) {
       return NULL;
     }
-    $url = $this->configFactory->get('helfi_static_trigger.settings')->get('url');
+    $url = $this->configFactory
+      ->get('helfi_static_trigger.settings')->get('url');
     try {
       $options = [];
       $options['verify'] = FALSE;
@@ -45,11 +46,13 @@ class StaticTrigger implements StaticTriggerInterface {
       return FALSE;
     }
 
-    $this->logger->info($this->t('Triggered static site re-generation at @url.', [
+    $this->logger->info(
+      $this->t('Triggered static site re-generation at @url.', [
       '@url' => $url,
     ]));
 
-    $this->state->set('helfi_static_trigger.last_triggered', $this->time->getCurrentTime());
+    $this->state->set('helfi_static_trigger.last_triggered',
+      $this->time->getCurrentTime());
 
     return TRUE;
   }

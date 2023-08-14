@@ -100,4 +100,5 @@ class StaticTriggerTest extends UnitTestCase {
       [FALSE, time() - 31, time(), TRUE],
     ];
   }
+
 }

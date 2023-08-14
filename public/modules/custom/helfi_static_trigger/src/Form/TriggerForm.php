@@ -1,23 +1,30 @@
 <?php
 
-// Drupal form class.
-
 namespace Drupal\helfi_static_trigger\Form;
 
-use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\State\State;
-use Drupal\Core\State\StateInterface;
 use Drupal\helfi_static_trigger\StaticTrigger;
-use GuzzleHttp\ClientInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\Component\Datetime\TimeInterface;
 
+/**
+ * Provides a form for triggering static site re-generation.
+ */
 class TriggerForm extends FormBase {
 
-  public StaticTrigger $staticTrigger;
+  /**
+   * The Static Trigger service.
+   *
+   * @var \Drupal\helfi_static_trigger\StaticTrigger
+   */
+  protected StaticTrigger $staticTrigger;
 
+  /**
+   * Class constructor.
+   *
+   * @param \Drupal\helfi_static_trigger\StaticTrigger $staticTrigger
+   *   The Static Trigger service.
+   */
   public function __construct(StaticTrigger $staticTrigger) {
     $this->staticTrigger = $staticTrigger;
   }
@@ -73,10 +80,12 @@ class TriggerForm extends FormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state): void {
     if ($this->staticTrigger->trigger(TRUE)) {
-      $this->messenger()->addStatus($this->t('Static site re-generation triggered.'));
+      $this->messenger()->addStatus($this->t(
+        'Static site re-generation triggered.'));
     }
     else {
-      $this->messenger()->addError($this->t('Failed to trigger static site re-generation.'));
+      $this->messenger()->addError($this->t(
+        'Failed to trigger static site re-generation.'));
     }
   }
 
