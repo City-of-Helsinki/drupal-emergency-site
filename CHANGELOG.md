@@ -247,7 +247,7 @@ Available PHP versions: 8.0 and 7.4 (8.0 is used by default).
 +DRUPAL_IMAGE=druidfi/drupal:8.0-web
 ```
 - Run `docker-compose build` and `make stop && make start` inside your project to update your local environment to use PHP 8.0.
-- Update your repository's [.github/workflows/test.yml](.github/workflows/test.yml.dist) to run tests with PHP 8 ([commit](https://github.com/City-of-Helsinki/drupal-helfi-platform/commit/b85f16d7b8880dd4d2fe550bd7958308d408edfe)):
+- Update your repository's [.github/workflows/test.yml](.github/workflows/test.yml) to run tests with PHP 8 ([commit](https://github.com/City-of-Helsinki/drupal-helfi-platform/commit/b85f16d7b8880dd4d2fe550bd7958308d408edfe)):
 ```diff
 -image: ghcr.io/city-of-helsinki/drupal-php-docker:7.4
 +image: ghcr.io/city-of-helsinki/drupal-php-docker:8.0

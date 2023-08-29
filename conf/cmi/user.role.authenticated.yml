@@ -8,6 +8,7 @@ dependencies:
     - media
     - paragraphs
     - system
+    - tfa
     - toolbar
 _core:
   default_config_hash: dJ0L2DNSj5q6XVZAGsuVDpJTh5UeYkIPwKrUOOpr8YI
@@ -19,6 +20,7 @@ permissions:
   - 'access content'
   - 'access toolbar'
   - 'display eu cookie compliance popup'
+  - 'setup own tfa'
   - 'view media'
   - 'view remote entities'
   - 'view unpublished paragraphs'
