@@ -27,10 +27,10 @@ validation_plugin_settings:
   tfa_recovery_code:
     recovery_codes_amount: 10
   tfa_totp:
-    time_skew: 2
+    time_skew: 10
     site_name_prefix: 1
     name_prefix: TFA
-    issuer: Drupal
+    issuer: Helfi-emergency-site
 validation_skip: 3
 encryption: authentication_profile
 tfa_flood_uid_only: 1
