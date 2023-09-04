@@ -115,7 +115,7 @@ class StaticTrigger implements StaticTriggerInterface {
   /**
    * {@inheritdoc}
    */
-  public function getLastRun() {
+  public function getLastRun() : ?int {
     return $this->state->get('helfi_static_trigger.last_triggered');
   }
 
