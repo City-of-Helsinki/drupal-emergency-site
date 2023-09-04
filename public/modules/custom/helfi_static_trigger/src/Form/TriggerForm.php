@@ -61,7 +61,7 @@ class TriggerForm extends FormBase {
         '#type' => 'html_tag',
         '#tag' => 'p',
         '#value' => $this->t('Was last time triggered at @date.', [
-          '@date' => date('Y-m-d H:i:s', $lastTriggered)
+          '@date' => date('Y-m-d H:i:s', $lastTriggered),
         ]),
       ];
     }
@@ -70,7 +70,6 @@ class TriggerForm extends FormBase {
       '#type' => 'submit',
       '#value' => $this->t('Trigger'),
     ];
-
 
     return $form;
   }

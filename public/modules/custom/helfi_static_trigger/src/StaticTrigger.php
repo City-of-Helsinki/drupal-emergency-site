@@ -5,7 +5,6 @@ namespace Drupal\helfi_static_trigger;
 use Drupal\Component\Datetime\TimeInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
-use Drupal\Core\Logger\LoggerChannelInterface;
 use Drupal\Core\State\StateInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use GuzzleHttp\ClientInterface;
@@ -53,14 +52,14 @@ class StaticTrigger implements StaticTriggerInterface {
   protected $time;
 
   /**
-   * Constructs a StaticTrigger object.
+   * Constructs a static trigger object.
    *
-   * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
-   *   The configuration factory.
-   * @param \Drupal\Core\Logger\LoggerChannelFactoryInterface $logger_factory
-   *   The logger channel factory.
-   * @param \GuzzleHttp\ClientInterface $http_client
-   *   The HTTP client.
+   * @param \Drupal\Core\Config\ConfigFactoryInterface $configFactory
+   *   Config factory service.
+   * @param \Drupal\Core\Logger\LoggerChannelFactoryInterface $logger
+   *   Logger service.
+   * @param \GuzzleHttp\ClientInterface $httpClient
+   *   Http client service.
    * @param \Drupal\Core\State\StateInterface $state
    *   The state service.
    * @param \Drupal\Component\Datetime\TimeInterface $time
@@ -103,8 +102,8 @@ class StaticTrigger implements StaticTriggerInterface {
 
     $this->logger->info(
       $this->t('Triggered static site re-generation at @url.', [
-      '@url' => $url,
-    ]));
+        '@url' => $url,
+      ]));
 
     $this->state->set('helfi_static_trigger.last_triggered',
       $this->time->getCurrentTime());

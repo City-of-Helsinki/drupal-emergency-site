@@ -6,15 +6,15 @@ use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Class TriggerSettingsForm.
+ * Settings form for static copy of the website.
  *
  * @package Drupal\helfi_static_trigger\Form
  */
 class TriggerSettingsForm extends ConfigFormBase {
 
   /**
-  * {@inheritdoc}
-  */
+   * {@inheritdoc}
+   */
   protected function getEditableConfigNames() {
     return [
       'helfi_static_trigger.settings',
@@ -22,15 +22,15 @@ class TriggerSettingsForm extends ConfigFormBase {
   }
 
   /**
-  * {@inheritdoc}
-  */
+   * {@inheritdoc}
+   */
   public function getFormId() {
     return 'helfi_static_trigger_settings_form';
   }
 
   /**
-  * {@inheritdoc}
-  */
+   * {@inheritdoc}
+   */
   public function buildForm(array $form, FormStateInterface $form_state) {
     $form = [];
 
@@ -38,18 +38,18 @@ class TriggerSettingsForm extends ConfigFormBase {
       '#type' => 'textfield',
       '#title' => $this->t('URL'),
       '#description' =>
-        $this->t('The URL to trigger static site re-generation.
-        You can set this via HELFI_STATIC_TRIGGER_URL environment variable.'),
+      $this->t('The URL to trigger static site re-generation.
+      You can set this via HELFI_STATIC_TRIGGER_URL environment variable.'),
       '#default_value' =>
-        $this->config('helfi_static_trigger.settings')->get('url'),
+      $this->config('helfi_static_trigger.settings')->get('url'),
     ];
 
     return parent::buildForm($form, $form_state);
   }
 
   /**
-  * {@inheritdoc}
-  */
+   * {@inheritdoc}
+   */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $this->configFactory()->getEditable('helfi_static_trigger.settings')
       ->set('url', $form_state->getValue('url'))
@@ -57,4 +57,5 @@ class TriggerSettingsForm extends ConfigFormBase {
 
     parent::submitForm($form, $form_state);
   }
+
 }

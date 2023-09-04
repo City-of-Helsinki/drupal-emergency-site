@@ -1,0 +1,4 @@
+helfi_emergency_third_party_cookie:
+  version: 1.x
+  js:
+    js/cookie_compliance_third_party.js: {}
