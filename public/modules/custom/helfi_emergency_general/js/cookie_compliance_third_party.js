@@ -21,7 +21,8 @@
           for (let i = 0; i < iFrame.length; i++) {
             let iframeDocument = iFrame[i].contentDocument || iFrame[i].contentWindow.document;
             let divElement = iframeDocument.createElement("div");
-            divElement.innerHTML = "Unable to load content. <br>Please adjust your cookie settings and refresh the page to continue.";
+            divElement.innerHTML = "Unable to load the content of this external frame because of your cookie settings." +
+              " <br>Please accept or adjust your preferences for our cookie policy in order to view the content.";
             iframeDocument.body.appendChild(divElement);
           }
         }
