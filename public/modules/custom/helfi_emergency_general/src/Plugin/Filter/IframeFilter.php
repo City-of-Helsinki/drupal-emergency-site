@@ -17,23 +17,13 @@ use Drupal\filter\Plugin\FilterBase;
 class IframeFilter extends FilterBase {
 
   public function process($text, $langcode): FilterProcessResult {
-    if (str_contains($text, '[twitter-feed]')) {
-      $twitter_iframe_wrapper = '<div class="social-media-wrapper social-twitter"></div>';
-    }
-    if (str_contains($text, '[facebook-feed]')) {
-      $facebook_iframe_wrapper = '<div class="social-media-wrapper social-facebook"></div>';
-    }
-    $result_text = $twitter_iframe_wrapper ?? $facebook_iframe_wrapper;
 
-    if ($result_text) {
-      $result = new FilterProcessResult($result_text);
-      $result->setAttachments([
-        'library' => ['helfi_emergency_general/helfi_emergency_third_party_cookie'],
-      ]);
-      return $result;
-    }
+    $result = new FilterProcessResult(_filter_iframe_process($text));
+    $result->setAttachments([
+      'library' => ['helfi_emergency_general/helfi_emergency_third_party_cookie'],
+    ]);
 
-    return new FilterProcessResult($text);
+    return $result;
   }
 
 }
