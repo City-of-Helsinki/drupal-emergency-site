@@ -28,4 +28,20 @@ interface StaticTriggerInterface {
    */
   public function getLastRun(): ?int;
 
+  /**
+   * Get the timestamp of next trigger.
+   *
+   * @return int|null
+   *   The timestamp of the next scheduled trigger that will be done by cron.
+   */
+  public function getNextRun(): ?int;
+
+  /**
+   * Determine if another build is/might be in progress.
+   *
+   * @return bool
+   *   If is safe to run.
+   */
+  public function isSafeToRun(): bool;
+
 }

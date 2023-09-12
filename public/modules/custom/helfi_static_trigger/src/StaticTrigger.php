@@ -77,23 +77,43 @@ class StaticTrigger implements StaticTriggerInterface {
    * {@inheritdoc}
    */
   public function trigger($force = FALSE): bool|null {
-    if (!$force && $this->getLastRun() + 30 > $this->time->getCurrentTime()) {
+    $config = $this->configFactory
+      ->get('helfi_static_trigger.settings');
+    if (!$force && !$this->isSafeToRun()) {
+      // Set new next run only if one is not already set.
+      if (!$this->getNextRun()) {
+        $delay = $config->get('safe_delay');
+        $this->setNextRun($this->getLastRun() + $delay);
+      }
       return NULL;
     }
 
-    $url = $this->configFactory
-      ->get('helfi_static_trigger.settings')->get('url');
+    $url = $config->get('url');
     if ($_ENV['HELFI_STATIC_TRIGGER_URL']) {
       $url = $_ENV['HELFI_STATIC_TRIGGER_URL'];
     }
 
+    $method = $config->get('method');
+    $body = $config->get('body');
+    $header_lines = explode(PHP_EOL, $config->get('headers'));
+    $header_lines = array_filter($header_lines);
+    $headers = [];
+    foreach ($header_lines as $header_line) {
+      $line = explode(':', $header_line, 2);
+      if (count($line) == 2) {
+        $headers[$line[0]] = trim($line[1]);
+      }
+    }
+    $headers = array_filter($headers);
     try {
       $options = [];
       $options['verify'] = FALSE;
       if (!$force) {
         $options['timeout'] = 5;
       }
-      $this->httpClient->request('GET', $url, $options);
+      $options['body'] = $body;
+      $options['headers'] = $headers;
+      $this->httpClient->request($method, $url, $options);
     }
     catch (\Exception $e) {
       $this->logger->error($e->getMessage());
@@ -105,8 +125,8 @@ class StaticTrigger implements StaticTriggerInterface {
         '@url' => $url,
       ]));
 
-    $this->state->set('helfi_static_trigger.last_triggered',
-      $this->time->getCurrentTime());
+    $this->setLastRun($this->time->getCurrentTime());
+    $this->deleteNextRun();
 
     return TRUE;
   }
@@ -114,8 +134,53 @@ class StaticTrigger implements StaticTriggerInterface {
   /**
    * {@inheritdoc}
    */
+  public function isSafeToRun() :bool {
+    $delay = $this->configFactory
+      ->get('helfi_static_trigger.settings')
+      ->get('safe_delay');
+    $next_safe_trigger = $this->getLastRun() + $delay;
+    return $next_safe_trigger <= $this->time->getCurrentTime();
+  }
+
+  /**
+   * Sets last run state.
+   *
+   * @param int $timestamp
+   *   Unix timestamp.
+   */
+  public function setLastRun(int $timestamp) :void {
+    $this->state->set('helfi_static_trigger.last_triggered', $timestamp);
+  }
+
+  /**
+   * Sets next run state.
+   *
+   * @param int $timestamp
+   *   Unix timestamp.
+   */
+  public function setNextRun(int $timestamp) :void {
+    $this->state->set('helfi_static_trigger.next_trigger', $timestamp);
+  }
+
+  /**
+   * Deletes the next run state.
+   */
+  public function deleteNextRun() :void {
+    $this->state->delete('helfi_static_trigger.next_trigger');
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function getLastRun() : ?int {
     return $this->state->get('helfi_static_trigger.last_triggered');
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getNextRun() : ?int {
+    return $this->state->get('helfi_static_trigger.next_trigger');
   }
 
 }
