@@ -5,9 +5,23 @@
  * Contains custom functionalities for Emergency website.
  */
 
+use Drupal\Component\Utility\Html;
+
 /**
- * Library attaching for social feed cookie consent.
+ * Process callback for iframe filter.
  */
-function helfi_emergency_general_preprocess_page(&$variables) {
-  $variables['#attached']['library'][] = 'helfi_emergency_general/helfi_emergency_third_party_cookie';
+function _filter_iframe_process($text): string {
+  $html_dom = Html::load($text);
+  $iframes = $html_dom->getElementsByTagName('iframe');
+  foreach ($iframes as $iframe) {
+    $srcAttribute = $iframe->attributes->getNamedItem('src');
+    $iframe->removeAttribute('src');
+    $iframe->setAttribute('class', 'social-media-iframe');
+    $iframe->setAttribute('width', '540');
+    $iframe->setAttribute('height', '500');
+    $iframe->setAttribute('scrolling', 'yes');
+    $iframe->setAttribute('data-cookie-compliance-src', $srcAttribute->nodeValue);
+  }
+
+  return Html::serialize($html_dom);
 }
