@@ -10,7 +10,7 @@ use Drupal\filter\Plugin\FilterBase;
  * Removes iframe src so that is not loaded if cookies have not been accepted.
  *
  * @Filter(
- *   id = "filter_iframe_cookie",
+ *   id = "filter_iframe",
  *   title = @Translation("Filter Iframe Cookie"),
  *   description = @Translation("Preventing iframe for being loaded if cookies have not been accepted."),
  *   type = Drupal\filter\Plugin\FilterInterface::TYPE_MARKUP_LANGUAGE,
