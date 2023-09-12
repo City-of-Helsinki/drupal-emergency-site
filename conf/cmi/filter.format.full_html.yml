@@ -84,8 +84,8 @@ filters:
     status: true
     weight: -10
     settings: {  }
-  filter_iframe:
-    id: filter_iframe
+  filter_iframe_cookie:
+    id: filter_iframe_cookie
     provider: helfi_emergency_general
     status: true
     weight: 0

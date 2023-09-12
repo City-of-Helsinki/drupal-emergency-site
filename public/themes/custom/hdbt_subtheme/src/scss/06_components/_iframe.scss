@@ -1,11 +1,10 @@
-
- .social-media-wrapper {
+.social-media-iframe-wrapper {
   display: flex;
   max-width: 100%;
   margin-top: 0;
   margin-bottom: 0;
 
-   .social-media-iframe {
+  iframe {
      position: static;
      visibility: visible;
      width: 540px;
@@ -13,6 +12,6 @@
      display: block;
      flex-grow: 1;
      border: none;
-   }
+  }
 
 }

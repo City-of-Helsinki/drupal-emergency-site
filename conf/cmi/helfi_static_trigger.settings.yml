@@ -1,4 +1,4 @@
-url: 'https://dev.azure.com/City-of-Helsinki/_apis/public/distributedtask/webhooks/WebHook?api-version=6.0-preview&='
+url: 'https://dev.azure.com/City-of-Helsinki/_apis/public/distributedtask/webhooks/StaticGenerationWebHook?api-version=6.0-preview&='
 method: POST
 headers: "Content-Type: application/json\r\n"
 body: '{}'

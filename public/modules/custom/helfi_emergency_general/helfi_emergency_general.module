@@ -4,24 +4,3 @@
  * @file
  * Contains custom functionalities for Emergency website.
  */
-
-use Drupal\Component\Utility\Html;
-
-/**
- * Process callback for iframe filter.
- */
-function _filter_iframe_process($text): string {
-  $html_dom = Html::load($text);
-  $iframes = $html_dom->getElementsByTagName('iframe');
-  foreach ($iframes as $iframe) {
-    $srcAttribute = $iframe->attributes->getNamedItem('src');
-    $iframe->removeAttribute('src');
-    $iframe->setAttribute('class', 'social-media-iframe');
-    $iframe->setAttribute('width', '540');
-    $iframe->setAttribute('height', '500');
-    $iframe->setAttribute('scrolling', 'yes');
-    $iframe->setAttribute('data-cookie-compliance-src', $srcAttribute->nodeValue);
-  }
-
-  return Html::serialize($html_dom);
-}

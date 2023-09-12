@@ -38,7 +38,6 @@ function helfi_static_trigger_cron() {
   /** @var \Drupal\helfi_static_trigger\StaticTriggerInterface $triggerService */
   $triggerService = \Drupal::service('helfi_static_trigger.trigger');
   if ($triggerService->getNextRun()) {
-    // Trigger static regeneration (check if time has passed is done in service).
     \Drupal::service('helfi_static_trigger.trigger')->trigger();
   }
 }
