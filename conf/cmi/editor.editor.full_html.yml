@@ -53,7 +53,6 @@ settings:
             - Table
             - language_selector
             - Source
-            - CookieContentBlocker
   plugins:
     drupallink:
       linkit_enabled: true
