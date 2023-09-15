@@ -8,10 +8,36 @@
 declare(strict_types = 1);
 
 use Drupal\node\NodeInterface;
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function helfi_static_trigger_form_system_cron_settings_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $form['cron']['interval']['#options']['300'] = t('5 minutes');
+}
 
 /**
  * Implements hook_node_update().
  */
 function helfi_static_trigger_node_update(NodeInterface $node) {
   \Drupal::service('helfi_static_trigger.trigger')->trigger();
+}
+
+/**
+ * Implements hook_node_update().
+ */
+function helfi_static_trigger_node_insert(NodeInterface $node) {
+  \Drupal::service('helfi_static_trigger.trigger')->trigger();
+}
+
+/**
+ * Implements hook_cron().
+ */
+function helfi_static_trigger_cron() {
+  /** @var \Drupal\helfi_static_trigger\StaticTriggerInterface $triggerService */
+  $triggerService = \Drupal::service('helfi_static_trigger.trigger');
+  if ($triggerService->getNextRun()) {
+    \Drupal::service('helfi_static_trigger.trigger')->trigger();
+  }
 }

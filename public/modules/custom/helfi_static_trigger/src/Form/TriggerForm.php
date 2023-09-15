@@ -56,19 +56,34 @@ class TriggerForm extends FormBase {
     ];
 
     $lastTriggered = $this->staticTrigger->getLastRun();
+    if (!$this->staticTrigger->isSafeToRun()) {
+      $this->messenger()->addWarning($this->t('Another build might be in progress'));
+    }
     if ($lastTriggered) {
       $form['last_triggered'] = [
         '#type' => 'html_tag',
         '#tag' => 'p',
-        '#value' => $this->t('Was last time triggered at @date.', [
+        '#value' => $this->t('Last time triggered at @date.', [
           '@date' => date('Y-m-d H:i:s', $lastTriggered),
+        ]),
+      ];
+    }
+
+    $nextTrigger = $this->staticTrigger->getNextRun();
+    if ($nextTrigger) {
+      $form['next_run'] = [
+        '#type' => 'html_tag',
+        '#tag' => 'p',
+        '#value' => $this->t('Next trigger is planned at @date,
+        but is dependent on cron run schedule', [
+          '@date' => date('Y-m-d H:i:s', $nextTrigger),
         ]),
       ];
     }
 
     $form['submit'] = [
       '#type' => 'submit',
-      '#value' => $this->t('Trigger'),
+      '#value' => $this->t('Trigger now'),
     ];
 
     return $form;
