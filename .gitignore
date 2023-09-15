@@ -26,4 +26,5 @@ public/sites/simpletest/
 #composer.lock
 
 *.sql
-local.settings.php
+public/sites/default/local.settings.php
+public/sites/default/local.services.php
