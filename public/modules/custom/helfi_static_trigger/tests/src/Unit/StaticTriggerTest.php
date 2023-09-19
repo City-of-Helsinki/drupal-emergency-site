@@ -2,6 +2,8 @@
 
 namespace Drupal\Tests\helfi_static_trigger\Unit;
 
+use Drupal\Core\Config\ImmutableConfig;
+use Drupal\Core\Logger\LoggerChannel;
 use Drupal\helfi_static_trigger\StaticTrigger;
 use Drupal\Tests\UnitTestCase;
 use GuzzleHttp\ClientInterface;
@@ -9,6 +11,7 @@ use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\State\StateInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Component\Datetime\TimeInterface;
+use GuzzleHttp\Psr7\Response;
 
 /**
  * Tests the StaticTrigger service.
@@ -60,18 +63,37 @@ class StaticTriggerTest extends UnitTestCase {
   protected $staticTrigger;
 
   /**
+   * The immutable config service.
+   *
+   * @var \Drupal\Core\Config\ImmutableConfig|\PHPUnit\Framework\MockObject\MockObject
+   */
+  protected $immutableConfig;
+
+  /**
    * {@inheritdoc}
    */
   protected function setUp(): void {
     parent::setUp();
 
-    $this->loggerFactory = $this->createMock(LoggerChannelFactoryInterface::class);
+    $this->loggerFactory = $this->createConfiguredMock(LoggerChannelFactoryInterface::class,
+      [
+        'get' => new LoggerChannel('test'),
+      ]);
+
     $this->httpClient = $this->createMock(ClientInterface::class);
+    $this->httpClient->method('request')->willReturn(new Response(200, ['Content-Type' => 'application/json']));
     $this->state = $this->createMock(StateInterface::class);
+
     $this->configFactory = $this->createMock(ConfigFactoryInterface::class);
+    $this->immutableConfig = $this->createConfiguredMock(ImmutableConfig::class, ['get' => 300]);
+    $this->configFactory->method('get')->willReturn($this->immutableConfig);
+
     $this->time = $this->createMock(TimeInterface::class);
 
     $this->staticTrigger = new StaticTrigger($this->configFactory, $this->loggerFactory, $this->httpClient, $this->state, $this->time);
+
+    $this->staticTrigger->setStringTranslation($this->getStringTranslationStub());
+
   }
 
   /**
@@ -94,10 +116,20 @@ class StaticTriggerTest extends UnitTestCase {
    */
   public function triggerDataProvider() {
     return [
-      [FALSE, NULL, 0, TRUE],
+      // Test case 1: Force is TRUE, should always return TRUE.
       [TRUE, NULL, 0, TRUE],
+
+      // Test case 2: Force is FALSE, and it's safe to run.
+      [FALSE, time() - 301, time(), TRUE],
+
+      // Test case 3: Force is FALSE, not safe to run, and next run is not set.
+      [FALSE, NULL, 0, NULL],
+
+      // Test case 4: Force is FALSE, not safe to run, and next run is set.
       [FALSE, time() - 29, time(), NULL],
-      [FALSE, time() - 31, time(), TRUE],
+
+      // Test case 5: Force is FALSE, and it's not safe to run because of delay.
+      [FALSE, time() - 31, time(), NULL],
     ];
   }
 

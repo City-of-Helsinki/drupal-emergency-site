@@ -79,6 +79,7 @@ class StaticTrigger implements StaticTriggerInterface {
   public function trigger($force = FALSE): bool|null {
     $config = $this->configFactory
       ->get('helfi_static_trigger.settings');
+
     if (!$force && !$this->isSafeToRun()) {
       // Set new next run only if one is not already set.
       if (!$this->getNextRun()) {
@@ -89,7 +90,7 @@ class StaticTrigger implements StaticTriggerInterface {
     }
 
     $url = $config->get('url');
-    if ($_ENV['HELFI_STATIC_TRIGGER_URL']) {
+    if (array_key_exists('HELFI_STATIC_TRIGGER_URL', $_ENV) && isset($_ENV['HELFI_STATIC_TRIGGER_URL'])) {
       $url = $_ENV['HELFI_STATIC_TRIGGER_URL'];
     }
 
