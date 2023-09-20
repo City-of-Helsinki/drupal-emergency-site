@@ -89,4 +89,4 @@ filters:
     provider: helfi_emergency_general
     status: true
     weight: 0
-    settings: { }
+    settings: {  }
