@@ -2,7 +2,7 @@ _core:
   default_config_hash: l58O_yEXSo-SeJi19LXdzTU1tNJG3lmnIhCitRkM1tk
 langcode: fi
 uuid: bb415be0-68e8-4b62-a4ec-c063bfb950ee
-name: 'Drush Site-Install'
+name: 'Emergency site of City of Helsinki'
 mail: drupal@hel.fi
 slogan: ''
 page:
