@@ -272,3 +272,15 @@ if ($env = getenv('APP_ENV')) {
     include_once __DIR__ . '/azure.settings.php'; // NOSONAR
   }
 }
+
+if (getenv('SMTP_HOST')) {
+  $config['smtp.settings']['smtp_host'] = getenv('SMTP_HOST');
+  $config['smtp.settings']['smtp_port'] = getenv('SMTP_PORT');
+  $config['smtp.settings']['smtp_username'] = getenv('MAILGUN_SMTP_USER');
+  $config['smtp.settings']['smtp_password'] = getenv('MAILGUN_SMTP_PASSWORD');
+  $config['smtp.settings']['smtp_from'] = getenv('MAILGUN_SMTP_USER');
+  $config['smtp.settings']['smtp_fromname'] = getenv('MAILGUN_SMTP_USER');
+  $config['smtp.settings']['smtp_test_address'] = 'ovidiu.ardelean@ibm.com';
+}
+
+

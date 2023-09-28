@@ -16,6 +16,7 @@
         "drupal/helfi_drupal_tools": "dev-main",
         "drupal/helfi_platform_config": "^3.0.32",
         "drupal/real_aes": "^2.5",
+        "drupal/smtp": "^1.2",
         "drupal/tfa": "^2.0@alpha",
         "drush/drush": "^10.4 || ^11"
     },
