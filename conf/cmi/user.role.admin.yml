@@ -44,6 +44,7 @@ dependencies:
     - simple_sitemap
     - system
     - taxonomy
+    - tfa
     - view_unpublished
 _core:
   default_config_hash: dKoMlS2I78xz3dRwDh7nlvZPJM1CmU8s6tNswGPk3_4
@@ -61,6 +62,7 @@ permissions:
   - 'access site in maintenance mode'
   - 'access taxonomy overview'
   - 'access user profiles'
+  - 'administer account settings'
   - 'administer blocks'
   - 'administer eu cookie compliance categories'
   - 'administer eu cookie compliance popup'
@@ -70,6 +72,7 @@ permissions:
   - 'administer pathauto'
   - 'administer redirects'
   - 'administer sitemap settings'
+  - 'administer tfa for other users'
   - 'administer url aliases'
   - 'administer users'
   - 'assign admin role'
