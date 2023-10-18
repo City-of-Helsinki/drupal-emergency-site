@@ -162,10 +162,11 @@ class AnnouncementConfigForm extends ConfigFormBase {
    */
   public function prepareMessage(array &$form, FormStateInterface $form_state): mixed {
     $current_message = $form_state->get('current_message')['current_message'];
-    $new_message = $form_state->get('current_message')['current_message'];
+    $new_message = [];
     foreach ($current_message as $lang_code => $value) {
+      $new_message[$lang_code] = $value;
       if ($lang_code === $this->languageManager->getCurrentLanguage(LanguageInterface::TYPE_CONTENT)->getId()) {
-        $new_message->$lang_code = $form_state->getValue('message');
+        $new_message[$lang_code] = $form_state->getValue('message');
       }
     }
 

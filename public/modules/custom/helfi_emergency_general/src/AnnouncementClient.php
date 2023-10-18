@@ -70,13 +70,13 @@ class AnnouncementClient {
   /**
    * Method that sends a new message.
    *
-   * @param string $message
+   * @param array $message
    *   The message to be sent.
    *
    * @return \GuzzleHttp\Exception\GuzzleException|\Psr\Http\Message\ResponseInterface
    *   Returns response or exception.
    */
-  public function sendMessage(string $message): GuzzleException|ResponseInterface {
+  public function sendMessage(array $message): GuzzleException|ResponseInterface {
 
     $url = base64_decode(getenv('ENDPOINT_URL'));
 
