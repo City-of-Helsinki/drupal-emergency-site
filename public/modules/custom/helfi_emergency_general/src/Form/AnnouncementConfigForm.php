@@ -4,28 +4,45 @@ namespace Drupal\helfi_emergency_general\Form;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Form\ConfigFormBase;
+use Drupal\Core\Form\FormStateInterface;
+use GuzzleHttp\Exception\GuzzleException;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\helfi_emergency_general\EmergencyAnnouncementClient;
+use Drupal\helfi_emergency_general\AnnouncementClient;
+use Drupal\Core\Language\LanguageManager;
 
+/**
+ * Form class for emergency announcement message.
+ */
 class AnnouncementConfigForm extends ConfigFormBase {
 
   /**
    * Emergency announcement client.
    *
-   * @var \Drupal\helfi_emergency_general\EmergencyAnnouncementClient
+   * @var \Drupal\helfi_emergency_general\AnnouncementClient
    */
-  protected $announcement_client;
-
+  protected AnnouncementClient $announcementClient;
 
   /**
-   * AnnouncementForm constructor.
+   * The language manager service.
    *
-   * @param \Drupal\helfi_emergency_general\EmergencyAnnouncementClient $announcement_client
-   *   Http client.
+   * @var \Drupal\Core\Language\LanguageManager
    */
-  public function __construct(ConfigFactoryInterface $config_factory, EmergencyAnnouncementClient $announcement_client) {
+  protected LanguageManager $languageManager;
+
+  /**
+   * Announcement form constructor.
+   *
+   * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
+   *   Config factory service.
+   * @param \Drupal\helfi_emergency_general\AnnouncementClient $announcementClient
+   *   The announcement client.
+   * @param \Drupal\Core\Language\LanguageManager $languageManager
+   *   Language manager service.
+   */
+  public function __construct(ConfigFactoryInterface $config_factory, AnnouncementClient $announcementClient, LanguageManager $languageManager) {
     parent::__construct($config_factory);
-    $this->announcement_client = $announcement_client;
+    $this->announcementClient = $announcementClient;
+    $this->languageManager = $languageManager;
   }
 
   /**
@@ -35,42 +52,124 @@ class AnnouncementConfigForm extends ConfigFormBase {
     return new static(
       $container->get('config.factory'),
       $container->get('helfi_emergency_general.announcement_client'),
+      $container->get('language_manager'),
     );
   }
 
-  protected function getEditableConfigNames() {
-    return 'emergency_announcement_form.settings';
+  /**
+   * {@inheritdoc}
+   */
+  protected function getEditableConfigNames(): string {
+    return 'helfi_emergency_general.settings';
   }
 
-
-  public function getFormId() {
+  /**
+   * {@inheritdoc}
+   */
+  public function getFormId(): string {
     return 'emergency_announcement_form';
   }
 
-  public function buildForm(array $form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  /**
+   * {@inheritdoc}
+   */
+  public function buildForm(array $form, FormStateInterface $form_state): array {
 
-    $form['message'] = [
+    // We set the current message in form state to use it in validate form.
+    $message = $this->currentLangMessage();
+    $form_state->set('current_message', $message);
+
+    $form['fieldset'] = [
+      '#type' => 'fieldset',
+      '#description' => $this->t('You are currently editing the announcement for the @lang version',
+        [
+          '@lang' => $this->languageManager->getCurrentLanguage()->getName(),
+        ]),
+
+    ];
+    $form['fieldset']['current_message'] = [
       '#type' => 'textarea',
-      '#title' => 'Message',
+      '#title' => 'Current message',
+      '#disabled' => TRUE,
+      '#default_value' => $message['current_lang_message'] ?? "",
+    ];
+
+    $form['fieldset']['message'] = [
+      '#type' => 'textarea',
+      '#title' => $this->t('New message'),
     ];
 
     $form['submit'] = [
       '#type' => 'submit',
-      '#value' => 'Send message',
+      '#value' => $this->t('Send message'),
     ];
 
     return $form;
   }
 
-  public function submitForm(array &$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  /**
+   * {@inheritdoc}
+   */
+  public function validateForm(array &$form, FormStateInterface $form_state) {
 
-    // @todo take the language in consideration.
+    $message = $this->announcementClient->sendMessage(
+      $this->prepareMessage($form, $form_state)
+    );
 
-    $this->announcement_client->sendMessage($form_state->getValue('message'));
-    parent::submitForm($form, $form_state);
+    if ($message instanceof GuzzleException) {
+      $form_state->setError($form['fieldset'], 'Error while sending message.');
+    }
+    else {
+      \Drupal::messenger()->addStatus('Successfully sent message in ' .
+        $this->languageManager->getCurrentLanguage()->getName() . ' language');
+    }
+
+    parent::validateForm($form, $form_state);
   }
 
+  /**
+   * Method that extracts the message in the current language of the page.
+   *
+   * @return array
+   *   Returns the current message.
+   */
+  public function currentLangMessage(): array {
+    $current_message_response = $this->announcementClient->getCurrentMessage();
+    $is_decoded = $current_message_response ? json_decode($current_message_response) : 'Error fetching current message.';
+    if ($is_decoded) {
+      foreach ($is_decoded as $lang_code => $value) {
+        if ($lang_code === $this->languageManager->getCurrentLanguage()->getId()) {
+          return [
+            'current_lang_message' => $value,
+            'current_message' => $is_decoded,
+          ];
+        }
+      }
+    }
+    return [];
+  }
 
+  /**
+   * Method that prepares the new message to be sent.
+   *
+   * @param array $form
+   *   The form array.
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   *   The form state.
+   *
+   * @return mixed
+   *   Returns the json content to be sent.
+   */
+  public function prepareMessage(array &$form, FormStateInterface $form_state): mixed {
+    $current_message = $form_state->get('current_message')['current_message'];
+    $new_message = $form_state->get('current_message')['current_message'];
+    foreach ($current_message as $lang_code => $value) {
+      if ($lang_code === $this->languageManager->getCurrentLanguage()->getId()) {
+        $new_message->$lang_code = $form_state->getValue('message');
+      }
+    }
+
+    return $new_message;
+  }
 
 }
-
