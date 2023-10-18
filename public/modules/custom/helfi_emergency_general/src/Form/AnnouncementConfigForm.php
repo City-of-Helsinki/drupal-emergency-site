@@ -5,6 +5,7 @@ namespace Drupal\helfi_emergency_general\Form;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Language\LanguageInterface;
 use GuzzleHttp\Exception\GuzzleException;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\helfi_emergency_general\AnnouncementClient;
@@ -74,7 +75,6 @@ class AnnouncementConfigForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state): array {
-
     // We set the current message in form state to use it in validate form.
     $message = $this->currentLangMessage();
     $form_state->set('current_message', $message);
@@ -83,7 +83,7 @@ class AnnouncementConfigForm extends ConfigFormBase {
       '#type' => 'fieldset',
       '#description' => $this->t('You are currently editing the announcement for the @lang version',
         [
-          '@lang' => $this->languageManager->getCurrentLanguage()->getName(),
+          '@lang' => $this->languageManager->getCurrentLanguage(LanguageInterface::TYPE_CONTENT)->getName(),
         ]),
 
     ];
@@ -121,7 +121,7 @@ class AnnouncementConfigForm extends ConfigFormBase {
     }
     else {
       \Drupal::messenger()->addStatus('Successfully sent message in ' .
-        $this->languageManager->getCurrentLanguage()->getName() . ' language');
+        $this->languageManager->getCurrentLanguage(LanguageInterface::TYPE_CONTENT)->getName() . ' language');
     }
 
     parent::validateForm($form, $form_state);
@@ -138,7 +138,7 @@ class AnnouncementConfigForm extends ConfigFormBase {
     $is_decoded = $current_message_response ? json_decode($current_message_response) : 'Error fetching current message.';
     if ($is_decoded) {
       foreach ($is_decoded as $lang_code => $value) {
-        if ($lang_code === $this->languageManager->getCurrentLanguage()->getId()) {
+        if ($lang_code === $this->languageManager->getCurrentLanguage(LanguageInterface::TYPE_CONTENT)->getId()) {
           return [
             'current_lang_message' => $value,
             'current_message' => $is_decoded,
@@ -164,7 +164,7 @@ class AnnouncementConfigForm extends ConfigFormBase {
     $current_message = $form_state->get('current_message')['current_message'];
     $new_message = $form_state->get('current_message')['current_message'];
     foreach ($current_message as $lang_code => $value) {
-      if ($lang_code === $this->languageManager->getCurrentLanguage()->getId()) {
+      if ($lang_code === $this->languageManager->getCurrentLanguage(LanguageInterface::TYPE_CONTENT)->getId()) {
         $new_message->$lang_code = $form_state->getValue('message');
       }
     }
