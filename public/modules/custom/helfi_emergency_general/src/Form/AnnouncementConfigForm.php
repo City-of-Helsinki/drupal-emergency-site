@@ -10,6 +10,7 @@ use GuzzleHttp\Exception\GuzzleException;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\helfi_emergency_general\AnnouncementClient;
 use Drupal\Core\Language\LanguageManager;
+use Drupal\Core\Messenger\Messenger;
 
 /**
  * Form class for emergency announcement message.
@@ -31,6 +32,13 @@ class AnnouncementConfigForm extends ConfigFormBase {
   protected LanguageManager $languageManager;
 
   /**
+   * The messenger service.
+   *
+   * @var \Drupal\Core\Messenger\Messenger
+   */
+  protected $messenger;
+
+  /**
    * Announcement form constructor.
    *
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
@@ -39,11 +47,14 @@ class AnnouncementConfigForm extends ConfigFormBase {
    *   The announcement client.
    * @param \Drupal\Core\Language\LanguageManager $languageManager
    *   Language manager service.
+   * @param \Drupal\Core\Messenger\Messenger $messenger
+   *   The messenger service.
    */
-  public function __construct(ConfigFactoryInterface $config_factory, AnnouncementClient $announcementClient, LanguageManager $languageManager) {
+  public function __construct(ConfigFactoryInterface $config_factory, AnnouncementClient $announcementClient, LanguageManager $languageManager, Messenger $messenger) {
     parent::__construct($config_factory);
     $this->announcementClient = $announcementClient;
     $this->languageManager = $languageManager;
+    $this->messenger = $messenger;
   }
 
   /**
@@ -54,6 +65,7 @@ class AnnouncementConfigForm extends ConfigFormBase {
       $container->get('config.factory'),
       $container->get('helfi_emergency_general.announcement_client'),
       $container->get('language_manager'),
+      $container->get('messenger'),
     );
   }
 
@@ -120,8 +132,8 @@ class AnnouncementConfigForm extends ConfigFormBase {
       $form_state->setError($form['fieldset'], 'Error while sending message.');
     }
     else {
-      \Drupal::messenger()->addStatus('Successfully sent message in ' .
-        $this->languageManager->getCurrentLanguage(LanguageInterface::TYPE_CONTENT)->getName() . ' language');
+      $this->messenger->addStatus('Successfully sent message in ' .
+      $this->languageManager->getCurrentLanguage(LanguageInterface::TYPE_CONTENT)->getName() . ' language');
     }
 
     parent::validateForm($form, $form_state);

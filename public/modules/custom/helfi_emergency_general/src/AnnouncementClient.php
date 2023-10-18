@@ -85,7 +85,7 @@ class AnnouncementClient {
         'headers' => [
           'Content-Type' => 'application/json',
           'x-ms-blob-type' => 'BlockBlob',
-          'x-ms-blob-cache-control' => 'public, max-age-120, must-revalidate',
+          'x-ms-blob-cache-control' => 'public, max-age=120, must-revalidate',
         ],
         'body' => json_encode($message),
       ]);
@@ -113,7 +113,7 @@ class AnnouncementClient {
         'headers' => [
           'Content-Type' => 'application/json',
           'x-ms-blob-type' => 'BlockBlob',
-          'x-ms-blob-cache-control' => 'public, max-age-120, must-revalidate',
+          'x-ms-blob-cache-control' => 'public, max-age=120, must-revalidate',
         ],
       ])->getBody()->getContents();
     }
