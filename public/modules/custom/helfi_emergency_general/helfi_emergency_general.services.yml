@@ -1,0 +1,4 @@
+services:
+  helfi_emergency_general.announcement_client:
+    class: Drupal\helfi_emergency_general\AnnouncementClient
+    arguments: [ '@http_client', '@config.factory', '@logger.factory']

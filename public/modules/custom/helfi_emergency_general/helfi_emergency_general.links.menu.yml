@@ -1,0 +1,5 @@
+helfi_emergency_general.announcement_form:
+  title: Announcement message
+  description: Add a new emergency announcement
+  route_name: helfi_emergency_general.announcement_form
+  parent: system.admin_content
