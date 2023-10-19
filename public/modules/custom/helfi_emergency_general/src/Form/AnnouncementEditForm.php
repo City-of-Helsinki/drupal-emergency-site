@@ -102,7 +102,7 @@ class AnnouncementEditForm extends FormBase {
       '#type' => 'textarea',
       '#title' => $this->t('Announcement'),
       '#default_value' => $announcement,
-      '#description' => $this->t('You are currently editing the announcement for the @lang version of hel.fi static copy.',
+      '#description' => $this->t('You are currently editing the announcement for the @lang version of https://kopio.hel.fi/.',
         [
           '@lang' => $currentLanguage->getName(),
         ]),
@@ -141,6 +141,7 @@ class AnnouncementEditForm extends FormBase {
     $this->messenger->addStatus($this->t('Announcement saved for @lang language.', [
       '@lang' => $this->languageManager->getCurrentLanguage(LanguageInterface::TYPE_CONTENT)->getName(),
     ]));
+    $this->messenger->addWarning($this->t('The updates may take up to 2 minutes to become visible.'));
   }
 
 }
