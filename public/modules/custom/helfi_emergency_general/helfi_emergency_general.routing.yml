@@ -1,7 +1,7 @@
 helfi_emergency_general.announcement_form:
   path: '/admin/content/announcement-message'
   defaults:
-    _form: '\Drupal\helfi_emergency_general\Form\AnnouncementConfigForm'
-    _title: 'Announcement message for the static copy'
+    _form: '\Drupal\helfi_emergency_general\Form\AnnouncementEditForm'
+    _title: 'Announcement for the hel.fi static copy'
   requirements:
     _permission: 'modify announcement message'

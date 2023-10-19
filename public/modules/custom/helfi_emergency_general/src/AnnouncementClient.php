@@ -5,15 +5,16 @@ namespace Drupal\helfi_emergency_general;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\Logger\LoggerChannelInterface;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\GuzzleException;
-use Psr\Http\Message\ResponseInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Announcement client for dealing with requests to azure storage.
  */
 class AnnouncementClient {
+  use StringTranslationTrait;
 
   /**
    * A fully-configured Guzzle client to pass to the client.
@@ -37,6 +38,20 @@ class AnnouncementClient {
   protected LoggerChannelInterface $loggerChannel;
 
   /**
+   * SAS url.
+   *
+   * @var string|null
+   */
+  protected $sasUrl = NULL;
+
+  /**
+   * Current message json.
+   *
+   * @var array|null
+   */
+  protected array|NULL $currentAnnouncement = NULL;
+
+  /**
    * The AnnouncementClient constructor.
    *
    * @param \GuzzleHttp\ClientInterface $http_client
@@ -54,6 +69,7 @@ class AnnouncementClient {
     $this->httpClient = $http_client;
     $this->config = $config;
     $this->loggerChannel = $loggerChannelFactory->get('helfi_emergency_general');
+    $this->sasUrl = base64_decode(getenv('announcement_sas_url_base64_enc') ?? '');
   }
 
   /**
@@ -70,59 +86,66 @@ class AnnouncementClient {
   /**
    * Method that sends a new message.
    *
-   * @param array $message
+   * @param string $announcement
    *   The message to be sent.
+   * @param string $langCode
+   *   Lang code.
    *
-   * @return \GuzzleHttp\Exception\GuzzleException|\Psr\Http\Message\ResponseInterface
-   *   Returns response or exception.
+   * @return bool
+   *   If success or not.
    */
-  public function sendMessage(array $message): GuzzleException|ResponseInterface {
-
-    $url = base64_decode(getenv('ENDPOINT_URL'));
-
+  public function setAnnouncement(string $announcement, string $langCode): bool {
+    $currentAnnouncement = $this->currentAnnouncement ?? [];
+    $currentAnnouncement[$langCode] = $announcement;
     try {
-      $response = $this->httpClient->request('PUT', $url, [
+      $this->httpClient->request('PUT', $this->sasUrl, [
         'headers' => [
           'Content-Type' => 'application/json',
           'x-ms-blob-type' => 'BlockBlob',
           'x-ms-blob-cache-control' => 'public, max-age=120, must-revalidate',
         ],
-        'body' => json_encode($message),
+        'body' => json_encode($currentAnnouncement),
       ]);
+      $this->currentAnnouncement = $currentAnnouncement;
     }
     catch (GuzzleException $e) {
       $this->loggerChannel->error($e->getMessage());
-      $response = $e;
+      return FALSE;
     }
 
-    return $response;
+    return TRUE;
   }
 
   /**
    * Method that returns the current message.
    *
+   * @param string $langCode
+   *   Lang code.
+   *
    * @return string|null
    *   Returns the current message or null if error.
    */
-  public function getCurrentMessage() {
-
-    $url = base64_decode(getenv('ENDPOINT_URL'));
-
+  public function getAnnouncement(string $langCode): string|null {
+    if ($this->currentAnnouncement) {
+      return $this->currentAnnouncement[$langCode] ?? '';
+    }
     try {
-      $message = $this->httpClient->request('GET', $url, [
+      $response_content = $this->httpClient->request('GET', $this->sasUrl, [
         'headers' => [
           'Content-Type' => 'application/json',
           'x-ms-blob-type' => 'BlockBlob',
           'x-ms-blob-cache-control' => 'public, max-age=120, must-revalidate',
         ],
       ])->getBody()->getContents();
+      $this->currentAnnouncement = json_decode($response_content, TRUE) ?? NULL;
+
+      return $this->currentAnnouncement[$langCode] ?? '';
     }
     catch (GuzzleException $e) {
       $this->loggerChannel->error($e->getMessage());
-      $message = NULL;
     }
 
-    return $message;
+    return NULL;
   }
 
 }
