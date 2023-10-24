@@ -12,6 +12,8 @@
           "en": "/en",
           "ru": "/ru"
         },
+        "address": "",
+        "internal_address": "",
         "protocol": "http",
         "domain": "emergency-site.docker.so:8080",
         "meta": {}
