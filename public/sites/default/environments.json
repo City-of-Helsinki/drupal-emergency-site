@@ -12,8 +12,15 @@
           "en": "/en",
           "ru": "/ru"
         },
-        "address": "",
-        "internal_address": "",
+        "address": {
+          "protocol": "https",
+          "domain": "emergency-site.docker.so"
+        },
+        "internal_address": {
+          "protocol": "http",
+          "domain": "emergency-site.docker.so",
+          "port": 8080
+        },
         "protocol": "http",
         "domain": "emergency-site.docker.so:8080",
         "meta": {}
