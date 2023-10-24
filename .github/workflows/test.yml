@@ -2,7 +2,7 @@ on:
   pull_request:
   push:
     branches: ['main', 'dev']
-name: CI
+name: Test
 env:
   SYMFONY_DEPRECATIONS_HELPER: disabled
   SIMPLETEST_BASE_URL: http://app:8888
