@@ -4175,16 +4175,41 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/City-of-Helsinki/drupal-tools.git",
-                "reference": "c765d56ad201307a2085978e5d6158622f44cdc8"
+                "reference": "fda268cba3561721c42b88c50dddb45f60aefc74"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/City-of-Helsinki/drupal-tools/zipball/c765d56ad201307a2085978e5d6158622f44cdc8",
-                "reference": "c765d56ad201307a2085978e5d6158622f44cdc8",
+                "url": "https://api.github.com/repos/City-of-Helsinki/drupal-tools/zipball/fda268cba3561721c42b88c50dddb45f60aefc74",
+                "reference": "fda268cba3561721c42b88c50dddb45f60aefc74",
                 "shasum": ""
+            },
+            "require": {
+                "drush/drush": "^10 || ^11 || ^12"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
+                "drupal/coder": "^8.3",
+                "phpspec/prophecy-phpunit": "^2",
+                "phpunit/phpunit": "^9.6"
             },
             "default-branch": true,
             "type": "drupal-drush",
+            "autoload": {
+                "psr-4": {
+                    "DrupalTools\\": "src"
+                },
+                "files": [
+                    "src/Update/migrations.php"
+                ]
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "DrupalToolsTest\\": "tests/fixtures"
+                },
+                "files": [
+                    "tests/fixtures/migration_fixture.php"
+                ]
+            },
             "license": [
                 "GPL-2.0-or-later"
             ],
@@ -4193,7 +4218,7 @@
                 "source": "https://github.com/City-of-Helsinki/drupal-tools/tree/main",
                 "issues": "https://github.com/City-of-Helsinki/drupal-tools/issues"
             },
-            "time": "2023-02-03T07:01:52+00:00"
+            "time": "2023-10-24T07:02:27+00:00"
         },
         {
             "name": "drupal/helfi_platform_config",
