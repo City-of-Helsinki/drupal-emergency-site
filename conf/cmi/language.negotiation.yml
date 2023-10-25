@@ -1,6 +1,6 @@
 _core:
   default_config_hash: uEePITI9tV6WqzmsTb7MfPCi5yPWXSxAN1xeLcYFQbM
-langcode: fi
+langcode: en
 session:
   parameter: language
 url:
@@ -10,6 +10,7 @@ url:
     fi: fi
     sv: sv
     ru: ru
+    '': null
   domains:
     en: ''
     fi: ''

@@ -1,6 +1,6 @@
 _core:
   default_config_hash: ls2wXvXf4vms4y6c-xMUgSp8ZmVmwFy5NgL0DIPgU_0
-langcode: fi
+langcode: en
 enabled: true
 required_roles:
   authenticated: authenticated

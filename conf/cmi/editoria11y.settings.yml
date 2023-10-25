@@ -1,6 +1,6 @@
 _core:
   default_config_hash: 1reSE9XKD6Hu5mLg0A3WHgvh_z0e3LMq6SDGafyVLDc
-langcode: fi
+langcode: en
 content_root: ''
 assertiveness: smart
 no_load: ''

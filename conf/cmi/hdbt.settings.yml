@@ -1,6 +1,6 @@
 _core:
   default_config_hash: 1oYqGyOsIZHGnNlHydDMMxwW3GyI96gK8lvrYPHwphM
-langcode: fi
+langcode: en
 favicon:
   path: ''
   use_default: false

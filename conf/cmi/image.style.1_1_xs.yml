@@ -1,5 +1,5 @@
 uuid: db321b6c-1c7d-49e5-9f40-7a39f6a02f30
-langcode: fi
+langcode: en
 status: true
 dependencies:
   module:

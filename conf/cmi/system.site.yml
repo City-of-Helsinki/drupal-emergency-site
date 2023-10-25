@@ -1,6 +1,6 @@
 _core:
   default_config_hash: l58O_yEXSo-SeJi19LXdzTU1tNJG3lmnIhCitRkM1tk
-langcode: fi
+langcode: en
 uuid: bb415be0-68e8-4b62-a4ec-c063bfb950ee
 name: 'Emergency site of City of Helsinki'
 mail: drupal@hel.fi
@@ -11,4 +11,4 @@ page:
   front: /node/54
 admin_compact_mode: false
 weight_select_max: 100
-default_langcode: fi
+default_langcode: en

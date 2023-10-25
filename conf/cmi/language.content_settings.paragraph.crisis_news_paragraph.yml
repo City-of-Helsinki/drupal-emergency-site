@@ -1,0 +1,11 @@
+uuid: 4711c71a-3a8b-4397-86da-1a0eb41a0683
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.crisis_news_paragraph
+id: paragraph.crisis_news_paragraph
+target_entity_type_id: paragraph
+target_bundle: crisis_news_paragraph
+default_langcode: site_default
+language_alterable: false
