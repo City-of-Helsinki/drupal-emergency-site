@@ -1,6 +1,6 @@
 # Ignore project files that should not be in version control
 drush/sites/
-#drush/Commands/*
+drush/Commands/*
 node_modules
 public/core
 public/libraries
@@ -13,8 +13,10 @@ public/sites/simpletest/
 
 # Ignore the folder created by PhpStorm
 .idea/*
+public/sites/default/local.settings.php
 
-.env.local
+*.sql
+*.env.local
 
 # Ignore OSX generated files
 ._*
@@ -22,9 +24,4 @@ public/sites/simpletest/
 
 !*.gitkeep
 !*.keepme
-# As this is project skeleton, we do not want to store composer.lock to version control
-#composer.lock
-
-*.sql
-public/sites/default/local.settings.php
-public/sites/default/local.services.php
+.phpunit.*
