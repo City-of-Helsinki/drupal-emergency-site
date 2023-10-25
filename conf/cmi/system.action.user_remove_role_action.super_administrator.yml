@@ -1,0 +1,14 @@
+uuid: d6ca2775-d460-4c9b-bde7-b6a8482c19da
+langcode: fi
+status: true
+dependencies:
+  config:
+    - user.role.super_administrator
+  module:
+    - user
+id: user_remove_role_action.super_administrator
+label: 'Poista rooli Super administrator valituilta käyttäjiltä'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: super_administrator

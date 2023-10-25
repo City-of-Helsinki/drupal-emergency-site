@@ -1,3 +1,4 @@
+langcode: fi
 entity_type_groups:
   node:
     page:
