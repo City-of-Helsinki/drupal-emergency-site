@@ -2,7 +2,7 @@ on:
   pull_request:
   push:
     branches: ['main', 'dev']
-name: Test
+name: CI
 env:
   SYMFONY_DEPRECATIONS_HELPER: disabled
   SIMPLETEST_BASE_URL: http://app:8888
@@ -64,3 +64,4 @@ jobs:
         run: |
           composer test-php public/modules/custom
           if [ -d "tests/" ]; then composer test-php tests/; else echo "No DTT tests found. Ignoring..."; fi
+

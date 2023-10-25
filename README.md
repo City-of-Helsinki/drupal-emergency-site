@@ -31,11 +31,16 @@ See [CHANGELOG.md](/CHANGELOG.md)
 Now you need to have Stonehenge up & running. See [Docker and Stonehenge](https://github.com/druidfi/guidelines/blob/master/docs/local_dev_env.md).
 
 
-#### Setup
+#### Short presentation about the project
 
-There is a database dump containing the first page and the secondary page. Installation steps:
-1. Clone this repo and run `make new`.
-2. Import the database dump: `drush sqlc` and run `source ./database-backup.sql`
+Project is developed based on the Drupal Helfi platform base. It contains the following custom functionalities:
+
+1. Helfi static trigger module - module that provides a way of triggering the httrack static files generations
+It offers the possibility to trigger it manually via a form and also a cron is set to handle the generation.
+2. Helfi emergency general - module that contains small functionalities - check module's readme.
+3. A custom view is used for displaying the news items created with the existing helfi_node_news_item functionalities
+Please check HDBT subtheme preprocesses.
+
 
 ### Next steps
 

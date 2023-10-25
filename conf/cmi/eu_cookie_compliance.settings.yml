@@ -6,8 +6,8 @@ popup_enabled: true
 popup_clicking_confirmation: false
 popup_scrolling_confirmation: false
 eu_countries: {  }
-eu_only: null
-eu_only_js: null
+eu_only: false
+eu_only_js: false
 popup_position: false
 fixed_top_position: true
 popup_info:
@@ -81,3 +81,6 @@ close_button_action: close_banner
 reject_button_label: ''
 reject_button_enabled: false
 close_button_enabled: false
+dependencies:
+  config:
+    - filter.format.full_html

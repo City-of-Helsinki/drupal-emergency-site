@@ -27,7 +27,7 @@ id: node.page.field_lower_content
 field_name: field_lower_content
 entity_type: node
 bundle: page
-label: 'Alempi sisältöalue'
+label: 'Lower content region'
 description: ''
 required: false
 translatable: true
@@ -51,7 +51,6 @@ settings:
       phasing: phasing
       remote_video: remote_video
       map: map
-      news_list: news_list
     negate: 0
     target_bundles_drag_drop:
       accordion:
@@ -85,9 +84,6 @@ settings:
         weight: 0
         enabled: true
       map:
-        weight: 0
-        enabled: true
-      news_list:
         weight: 0
         enabled: true
       phasing:
