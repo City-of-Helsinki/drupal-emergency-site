@@ -19,3 +19,6 @@ application to be displayed there.
 where you can see the current message and update it.
  - The message is stored in the azure storage account in the blob container
 that is set using env vars.
+
+3. Alters the cookie details page `cookie-information-and-settings` to prevent
+form submission and make to cookie selection from JS.

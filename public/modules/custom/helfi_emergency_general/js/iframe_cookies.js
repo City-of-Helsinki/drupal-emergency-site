@@ -1,5 +1,5 @@
 (function ($) {
-  Drupal.behaviors.cookieConsent = {
+  Drupal.behaviors.cookieIframeConsent = {
     attach: function (context, settings) {
       const prePreferencesLoadHandler = function (response) {
 
