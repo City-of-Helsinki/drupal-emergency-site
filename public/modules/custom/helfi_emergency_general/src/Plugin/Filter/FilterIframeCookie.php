@@ -33,7 +33,7 @@ class FilterIframeCookie extends FilterBase {
 
     $result = new FilterProcessResult(Html::serialize($html_dom));
     $result->setAttachments([
-      'library' => ['helfi_emergency_general/helfi_emergency_third_party_cookie'],
+      'library' => ['helfi_emergency_general/iframe_cookies'],
     ]);
 
     return $result;
