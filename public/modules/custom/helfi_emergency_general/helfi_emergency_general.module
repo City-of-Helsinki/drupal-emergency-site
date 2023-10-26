@@ -5,10 +5,12 @@
  * Contains custom functionalities for Emergency website.
  */
 
+use Drupal\Core\Form\FormStateInterface;
+
 /**
  * Implements hook_form_FORM_ID_alter().
  */
-function helfi_emergency_general_form_eu_cookie_compliance_block_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+function helfi_emergency_general_form_eu_cookie_compliance_block_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   // Because this will be a static site, handle the form via JS.
   $form['#attached']['library'][] = 'helfi_emergency_general/cookies_form';
 }
