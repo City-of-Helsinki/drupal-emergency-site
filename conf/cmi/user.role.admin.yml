@@ -28,6 +28,7 @@ dependencies:
     - file
     - filter
     - helfi_api_base
+    - helfi_emergency_general
     - locale
     - media
     - menu_link_attributes
@@ -153,6 +154,7 @@ permissions:
   - 'edit terms in news_group'
   - 'edit terms in news_neighbourhoods'
   - 'edit terms in news_tags'
+  - 'modify announcement message'
   - 'revert all revisions'
   - 'revert announcement revisions'
   - 'revert landing_page revisions'
