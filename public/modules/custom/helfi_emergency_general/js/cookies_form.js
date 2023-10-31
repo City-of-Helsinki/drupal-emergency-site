@@ -14,19 +14,18 @@
                 selectedCategories.push(categ.value);
               });
             }
-            console.log(selectedCategories);
             Drupal.eu_cookie_compliance.setAcceptedCategories(selectedCategories);
+            Drupal.eu_cookie_compliance.setStatus("2");
             Drupal.eu_cookie_compliance.setVersion(drupalSettings.eu_cookie_compliance.cookie_policy_version);
-            Drupal.eu_cookie_compliance.setStatus(2);
             window.location.reload();
           });
 
           acceptAllButton.addEventListener("click", function (e) {
             e.preventDefault();
             let allCategories = drupalSettings.eu_cookie_compliance.cookie_categories;
-            Drupal.eu_cookie_compliance.setVersion(drupalSettings.eu_cookie_compliance.cookie_policy_version);
             Drupal.eu_cookie_compliance.setAcceptedCategories(allCategories);
-            Drupal.eu_cookie_compliance.setStatus(2);
+            Drupal.eu_cookie_compliance.setStatus("2");
+            Drupal.eu_cookie_compliance.setVersion(drupalSettings.eu_cookie_compliance.cookie_policy_version);
             window.location.reload();
           });
         }
