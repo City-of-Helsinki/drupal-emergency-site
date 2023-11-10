@@ -9,6 +9,7 @@ dependencies:
     - paragraphs.paragraphs_type.chart
     - paragraphs.paragraphs_type.columns
     - paragraphs.paragraphs_type.content_cards
+    - paragraphs.paragraphs_type.crisis_news_paragraph
     - paragraphs.paragraphs_type.event_list
     - paragraphs.paragraphs_type.from_library
     - paragraphs.paragraphs_type.hearings
@@ -37,22 +38,29 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
-      columns: columns
-      list_of_links: list_of_links
-      content_cards: content_cards
       banner: banner
-      liftup_with_image: liftup_with_image
-      from_library: from_library
       chart: chart
-      remote_video: remote_video
-      map: map
+      columns: columns
+      content_cards: content_cards
       event_list: event_list
+      from_library: from_library
+      hearings: hearings
+      liftup_with_image: liftup_with_image
+      list_of_links: list_of_links
+      map: map
       phasing: phasing
       popular_services: popular_services
+      remote_video: remote_video
       target_group_links: target_group_links
-      hearings: hearings
+      crisis_news_paragraph: crisis_news_paragraph
     negate: 0
     target_bundles_drag_drop:
+      accordion:
+        weight: 29
+        enabled: false
+      accordion_item:
+        weight: 30
+        enabled: false
       banner:
         weight: 0
         enabled: true
@@ -62,8 +70,17 @@ settings:
       columns:
         weight: 0
         enabled: true
+      contact_card:
+        weight: 34
+        enabled: false
+      contact_card_listing:
+        weight: 35
+        enabled: false
       content_cards:
         weight: 0
+        enabled: true
+      crisis_news_paragraph:
+        weight: 37
         enabled: true
       event_list:
         weight: 0
@@ -74,25 +91,52 @@ settings:
       hearings:
         weight: 0
         enabled: true
+      hero:
+        weight: 41
+        enabled: false
+      image:
+        weight: 42
+        enabled: false
       liftup_with_image:
         weight: 0
         enabled: true
       list_of_links:
         weight: 0
         enabled: true
+      list_of_links_item:
+        weight: 45
+        enabled: false
       map:
         weight: 0
         enabled: true
       phasing:
         weight: 0
         enabled: true
+      phasing_item:
+        weight: 48
+        enabled: false
+      popular_service_item:
+        weight: 50
+        enabled: false
       popular_services:
         weight: 0
         enabled: true
       remote_video:
         weight: 0
         enabled: true
+      sidebar_text:
+        weight: 52
+        enabled: false
+      social_media_link:
+        weight: 53
+        enabled: false
+      target_group_link_item:
+        weight: 55
+        enabled: false
       target_group_links:
         weight: 0
         enabled: true
+      text:
+        weight: 56
+        enabled: false
 field_type: entity_reference_revisions
