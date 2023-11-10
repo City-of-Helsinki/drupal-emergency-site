@@ -18,7 +18,9 @@ function hdbt_subtheme_preprocess_block(&$variables) {
   }
   // Overwrite etusivu url.
   if ($variables['elements']['#plugin_id'] == 'system_branding_block') {
-    $variables['frontpage_instance_url'] = \Drupal::request()->getSchemeAndHttpHost();
+    $lang = \Drupal::languageManager()->getCurrentLanguage()->getId();
+    $variables['frontpage_instance_url'] =
+      \Drupal::request()->getSchemeAndHttpHost() . '/' . $lang;
   }
 }
 
@@ -128,6 +130,8 @@ function hdbt_subtheme_theme_suggestions_node_alter(&$suggestions, $variables) {
  */
 function hdbt_subtheme_preprocess_region(&$variables) {
   if (isset($variables['elements']['hdbt_subtheme_footerbottomnavigation'])) {
-    $variables['frontpage_instance_url'] = \Drupal::request()->getSchemeAndHttpHost();
+    $lang = \Drupal::languageManager()->getCurrentLanguage()->getId();
+    $variables['frontpage_instance_url'] =
+      \Drupal::request()->getSchemeAndHttpHost() . '/' . $lang;
   }
 }

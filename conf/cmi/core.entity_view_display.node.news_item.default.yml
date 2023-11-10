@@ -16,7 +16,6 @@ dependencies:
   module:
     - entity_reference_revisions
     - helfi_platform_config
-    - link
     - user
 _core:
   default_config_hash: _31gTd8Z7ZT8KGS8tHPve5Vb_OAnn7JbybIcOXUGiyA
@@ -42,7 +41,7 @@ content:
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    weight: 9
+    weight: 8
     region: content
   field_lead_in:
     type: text_span
@@ -64,18 +63,6 @@ content:
     type: text_span
     label: inline
     settings: {  }
-    third_party_settings: {  }
-    weight: 8
-    region: content
-  field_news_item_links_link:
-    type: link
-    label: hidden
-    settings:
-      trim_length: 255
-      url_only: false
-      url_plain: false
-      rel: '0'
-      target: '0'
     third_party_settings: {  }
     weight: 7
     region: content
@@ -111,6 +98,7 @@ content:
     weight: 3
     region: content
 hidden:
+  field_news_item_links_link: true
   field_news_item_tags: true
   langcode: true
   toc_enabled: true

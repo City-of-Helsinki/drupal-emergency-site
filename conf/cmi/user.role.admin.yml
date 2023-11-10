@@ -28,6 +28,7 @@ dependencies:
     - file
     - filter
     - helfi_api_base
+    - helfi_emergency_general
     - locale
     - media
     - menu_link_attributes
@@ -44,7 +45,6 @@ dependencies:
     - simple_sitemap
     - system
     - taxonomy
-    - tfa
     - view_unpublished
 _core:
   default_config_hash: dKoMlS2I78xz3dRwDh7nlvZPJM1CmU8s6tNswGPk3_4
@@ -72,7 +72,6 @@ permissions:
   - 'administer pathauto'
   - 'administer redirects'
   - 'administer sitemap settings'
-  - 'administer tfa for other users'
   - 'administer url aliases'
   - 'administer users'
   - 'assign admin role'
@@ -153,6 +152,7 @@ permissions:
   - 'edit terms in news_group'
   - 'edit terms in news_neighbourhoods'
   - 'edit terms in news_tags'
+  - 'modify announcement message'
   - 'revert all revisions'
   - 'revert announcement revisions'
   - 'revert landing_page revisions'
