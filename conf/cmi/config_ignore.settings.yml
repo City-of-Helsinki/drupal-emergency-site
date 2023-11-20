@@ -1,8 +1,9 @@
 _core:
   default_config_hash: UVH1aJ4b44UM-VdPVN7hNNuuVqfReJxwfVeDQH1Hvsk
 langcode: en
+mode: simple
 ignored_config_entities:
-  - hdbt_admin_tools.site_settings
-  - 'system.site:page.front'
-  - 'hdbt_admin_tools.site_settings:site_settings'
   - 'easy_breadcrumb.settings:home_segment_title'
+  - hdbt_admin_tools.site_settings
+  - 'hdbt_admin_tools.site_settings:site_settings'
+  - 'system.site:page.front'
