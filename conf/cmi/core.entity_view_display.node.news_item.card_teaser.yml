@@ -19,7 +19,7 @@ dependencies:
     - media
     - user
 _core:
-  default_config_hash: zIVC1uLWwVPYq_7wZYMvFN3QSHhRappBoaU6uxj8O1Q
+  default_config_hash: rw0HQtg75-HvNXykEGQqCuDsOe_-6GcUpKGnrZVOnSs
 id: node.news_item.card_teaser
 targetEntityType: node
 bundle: news_item
@@ -62,6 +62,15 @@ content:
       date_format: long
       custom_date_format: ''
       timezone: ''
+      tooltip:
+        date_format: ''
+        custom_date_format: ''
+      time_diff:
+        enabled: false
+        future_format: '@interval hence'
+        past_format: '@interval ago'
+        granularity: 2
+        refresh: 60
     third_party_settings: {  }
     weight: 4
     region: content

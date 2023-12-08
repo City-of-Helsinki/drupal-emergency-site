@@ -19,6 +19,7 @@ dependencies:
     - taxonomy.vocabulary.news_tags
   module:
     - block
+    - block_content
     - config_translation
     - content_lock
     - content_translation
@@ -54,6 +55,7 @@ weight: 5
 is_admin: null
 permissions:
   - 'access administration pages'
+  - 'access block library'
   - 'access content overview'
   - 'access entity usage statistics'
   - 'access files overview'
@@ -63,6 +65,8 @@ permissions:
   - 'access taxonomy overview'
   - 'access user profiles'
   - 'administer account settings'
+  - 'administer block content'
+  - 'administer block types'
   - 'administer blocks'
   - 'administer eu cookie compliance categories'
   - 'administer eu cookie compliance popup'
@@ -116,6 +120,7 @@ permissions:
   - 'delete news_item revisions'
   - 'delete own announcement content'
   - 'delete own file media'
+  - 'delete own files'
   - 'delete own hel_map media'
   - 'delete own helfi_chart media'
   - 'delete own image media'
