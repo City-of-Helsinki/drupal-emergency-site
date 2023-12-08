@@ -4,8 +4,8 @@ This is the repository for the new drupal emergency website.
 
 ## Includes
 
-- Drupal 9.x
-- Drush 11.x
+- Drupal 10.x
+- Drush 12.x
 - Docker setup for development using [Stonehenge](https://github.com/druidfi/stonehenge)
 - [druidfi/tools](https://github.com/druidfi/tools)
 - Web root is `/public`
