@@ -2,15 +2,15 @@
 
 namespace Drupal\Tests\helfi_static_trigger\Unit;
 
+use Drupal\Component\Datetime\TimeInterface;
+use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Config\ImmutableConfig;
 use Drupal\Core\Logger\LoggerChannel;
+use Drupal\Core\Logger\LoggerChannelFactoryInterface;
+use Drupal\Core\State\StateInterface;
 use Drupal\helfi_static_trigger\StaticTrigger;
 use Drupal\Tests\UnitTestCase;
 use GuzzleHttp\ClientInterface;
-use Drupal\Core\Logger\LoggerChannelFactoryInterface;
-use Drupal\Core\State\StateInterface;
-use Drupal\Core\Config\ConfigFactoryInterface;
-use Drupal\Component\Datetime\TimeInterface;
 use GuzzleHttp\Psr7\Response;
 
 /**
