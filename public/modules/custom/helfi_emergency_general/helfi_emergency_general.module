@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\helfi_platform_config\DTO\ParagraphTypeCollection;
 
 /**
  * Implements hook_form_FORM_ID_alter().
@@ -13,4 +14,31 @@ use Drupal\Core\Form\FormStateInterface;
 function helfi_emergency_general_form_eu_cookie_compliance_block_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   // Because this will be a static site, handle the form via JS.
   $form['#attached']['library'][] = 'helfi_emergency_general/cookies_form';
+}
+
+/**
+ * Implements hook_helfi_paragraph_types().
+ */
+function helfi_emergency_general_helfi_paragraph_types() : array {
+  $entities = [
+    'node' => [
+      'landing_page' => [
+        'field_content' => [
+          'crisis_news_paragraph',
+        ],
+      ],
+    ],
+  ];
+
+  $enabled = [];
+  foreach ($entities as $entityTypeId => $bundles) {
+    foreach ($bundles as $bundle => $fields) {
+      foreach ($fields as $field => $paragraphTypes) {
+        foreach ($paragraphTypes as $paragraphType) {
+          $enabled[] = new ParagraphTypeCollection($entityTypeId, $bundle, $field, $paragraphType);
+        }
+      }
+    }
+  }
+  return $enabled;
 }
