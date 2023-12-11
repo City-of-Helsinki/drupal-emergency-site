@@ -5,11 +5,11 @@ namespace Drupal\helfi_emergency_general\Form;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Language\LanguageInterface;
-use Drupal\Core\StringTranslation\StringTranslationTrait;
-use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\helfi_emergency_general\AnnouncementClient;
 use Drupal\Core\Language\LanguageManager;
 use Drupal\Core\Messenger\Messenger;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\helfi_emergency_general\AnnouncementClient;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Form class for emergency announcement message.

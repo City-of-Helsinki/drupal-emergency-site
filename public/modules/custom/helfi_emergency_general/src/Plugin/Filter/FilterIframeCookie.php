@@ -13,7 +13,7 @@ use Drupal\filter\Plugin\FilterBase;
  *   id = "filter_iframe_cookie",
  *   title = @Translation("Filter Iframe Cookie"),
  *   description = @Translation("Preventing iframe for being loaded if cookies have not been accepted."),
- *   type = Drupal\filter\Plugin\FilterInterface::TYPE_MARKUP_LANGUAGE,
+ *   type = Drupal\filter\Plugin\FilterInterface::TYPE_TRANSFORM_IRREVERSIBLE,
  * )
  */
 class FilterIframeCookie extends FilterBase {
