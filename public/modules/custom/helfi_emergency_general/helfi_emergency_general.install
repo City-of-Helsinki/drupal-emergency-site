@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * @file
+ * Contains install hooks for emergency website.
+ */
+
+/**
+ * Remove broken config.
+ */
+function helfi_emergency_general_update_9001() {
+  // Equivalent to calling
+  // `drush cdel core.entity_view_display.helfi_news.helfi_news.default`.
+  // `helfi_news` entity type is provided by `helfi_paragraphs_news_list`
+  // module which is not currently installed.
+  \Drupal::configFactory()
+    ->getEditable("core.entity_view_display.helfi_news.helfi_news.default")
+    ->delete();
+
+  // Remove fakeobjects entry from system.schema key/value storage. The
+  // fakeobjects module currently is not installed.
+  // https://www.drupal.org/node/3137656.
+  \Drupal::keyValue('system.schema')
+    ->delete('fakeobjects');
+}
