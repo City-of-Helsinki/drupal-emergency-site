@@ -2,8 +2,14 @@ uuid: 961a4860-9c00-45e3-b026-ad1941c9dae8
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.announcement
+    - node.type.landing_page
+    - node.type.news_item
+    - node.type.page
   module:
     - eu_cookie_compliance
+    - file
     - node
     - paragraphs
     - view_unpublished
@@ -14,6 +20,7 @@ label: 'Read only'
 weight: 2
 is_admin: null
 permissions:
+  - 'delete own files'
   - 'display eu cookie compliance popup'
   - 'view any unpublished announcement content'
   - 'view any unpublished landing_page content'
