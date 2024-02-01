@@ -14,7 +14,7 @@ bundle: chart
 label: 'Assistive technology title'
 description: 'Users of assistive technology need a descriptive title to know what is in the embedded content.'
 required: true
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }
