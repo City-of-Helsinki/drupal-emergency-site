@@ -12,7 +12,7 @@ negotiation:
   language_content:
     enabled:
       language-url: -20
-      language-interface: -15
+      language-interface: 0
       language-selected: -14
     method_weights:
       language-url: -20
