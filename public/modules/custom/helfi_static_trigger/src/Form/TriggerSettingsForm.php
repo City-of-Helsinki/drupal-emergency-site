@@ -49,8 +49,10 @@ class TriggerSettingsForm extends ConfigFormBase {
       '#type' => 'select',
       '#title' => $this->t('Method'),
       '#options' => [
+        // phpcs:disable DrupalPractice.General.OptionsT.TforValue
         'GET' => 'GET',
         'POST' => 'POST',
+        // phpcs:enable
       ],
       '#description' => $this
         ->t('The method to trigger static site re-generation.'),
