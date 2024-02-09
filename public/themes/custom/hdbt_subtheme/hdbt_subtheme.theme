@@ -64,7 +64,7 @@ function hdbt_subtheme_preprocess_paragraph(&$variables) {
   /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
   $paragraph = $variables['paragraph'];
   // Get the referenced entities.
-  /** @var \Drupal\paragraphs\Entity\ParagraphsType $referencedEntities */
+  /** @var \Drupal\paragraphs\Entity\ParagraphsType[] $referencedEntities */
   $referencedEntities = $paragraph->referencedEntities();
   foreach ($referencedEntities as $paragraph_type) {
     // Add local (crisis) news to the helfi_news template.

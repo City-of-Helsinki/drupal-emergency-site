@@ -13,13 +13,13 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * Announcement client for dealing with requests to azure storage.
  */
-class AnnouncementClient {
+final class AnnouncementClient {
   use StringTranslationTrait;
 
   /**
    * A fully-configured Guzzle client to pass to the client.
    *
-   * @var \GuzzleHttp\Client
+   * @var \GuzzleHttp\ClientInterface
    */
   protected ClientInterface $httpClient;
 
