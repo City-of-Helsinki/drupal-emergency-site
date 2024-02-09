@@ -10,7 +10,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * Provides a form for triggering static site re-generation.
  */
-class TriggerForm extends FormBase {
+final class TriggerForm extends FormBase {
 
   /**
    * The Static Trigger service.
