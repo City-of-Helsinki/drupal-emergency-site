@@ -15,6 +15,7 @@
         "drupal/helfi_azure_fs": "^2.0",
         "drupal/helfi_drupal_tools": "dev-main",
         "drupal/helfi_platform_config": "^4.0.0",
+        "drupal/raven": "^5.0",
         "drupal/real_aes": "^2.5",
         "drupal/smtp": "^1.2",
         "drupal/tfa": "^1.3",
@@ -44,7 +45,8 @@
             "composer/installers": true,
             "cweagans/composer-patches": true,
             "drupal/core-composer-scaffold": true,
-            "phpstan/extension-installer": true
+            "phpstan/extension-installer": true,
+            "php-http/discovery": false
         },
         "audit": {
             "abandoned": "report"
@@ -89,6 +91,9 @@
             "drush/Commands/{$name}": [
                 "type:drupal-drush"
             ]
+        },
+        "patchLevel": {
+            "drupal/core": "-p2"
         }
     },
     "autoload-dev": {

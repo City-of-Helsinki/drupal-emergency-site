@@ -14,7 +14,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 /**
  * Form class for emergency announcement message.
  */
-class AnnouncementEditForm extends FormBase {
+final class AnnouncementEditForm extends FormBase {
 
   use StringTranslationTrait;
 
