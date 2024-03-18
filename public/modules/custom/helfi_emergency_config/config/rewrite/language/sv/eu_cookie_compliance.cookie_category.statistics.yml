@@ -1,0 +1,4 @@
+config_rewrite:
+  replace: ['description.value']
+description:
+  value: "<p>De uppgifter statistikkakorna samlar in används för att utveckla webbplatsen.</p>\r\n\r\n<table>\r\n\t<thead>\r\n\t\t<tr>\r\n\t\t\t<th>Namn</th>\r\n\t\t\t<th>Tjänsteleverantör</th>\r\n\t\t\t<th>Cookie syfte</th>\r\n\t\t\t<th>Giltighet</th>\r\n\t\t\t<th>Typ</th>\r\n\t\t</tr>\r\n\t</thead>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td>_pk_id.*</td>\r\n\t\t\t<td>hel.fi</td>\r\n\t\t\t<td>\r\n\t\t\t<p>Matomo-statistiksystemets kaka samlar information om hur webbplatsen används.</p>\r\n\t\t\t</td>\r\n\t\t\t<td>393 dagar</td>\r\n\t\t\t<td></td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>_pk_ses.*</td>\r\n\t\t\t<td>hel.fi</td>\r\n\t\t\t<td>\r\n\t\t\t<p>Matomo-statistiksystemets kaka samlar information om hur webbplatsen används.</p>\r\n\t\t\t</td>\r\n\t\t\t<td>1 timme</td>\r\n\t\t\t<td></td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n\r\n<p></p>\r\n"
