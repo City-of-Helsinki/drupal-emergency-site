@@ -65,6 +65,14 @@ content:
     third_party_settings: {  }
     weight: 3
     region: content
+  field_filter_keywords:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
   field_free_events:
     type: boolean
     label: above
@@ -87,4 +95,4 @@ content:
     region: content
 hidden:
   field_api_url: true
-  field_filter_keywords: true
+  search_api_excerpt: true

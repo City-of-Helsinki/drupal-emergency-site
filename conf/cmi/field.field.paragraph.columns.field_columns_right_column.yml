@@ -26,18 +26,15 @@ settings:
   handler: 'default:paragraph'
   handler_settings:
     target_bundles:
-      image: image
-      text: text
       crisis_news_paragraph: crisis_news_paragraph
+      text: text
+      image: image
     negate: 0
     target_bundles_drag_drop:
       crisis_news_paragraph:
         weight: 0
         enabled: true
       image:
-        weight: 0
-        enabled: true
-      news_list:
         weight: 0
         enabled: true
       text:
