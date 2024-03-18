@@ -9,6 +9,7 @@ dependencies:
     - field.field.paragraph.event_list.field_event_list_title
     - field.field.paragraph.event_list.field_event_location
     - field.field.paragraph.event_list.field_event_time
+    - field.field.paragraph.event_list.field_filter_keywords
     - field.field.paragraph.event_list.field_free_events
     - field.field.paragraph.event_list.field_remote_events
     - paragraphs.paragraphs_type.event_list
@@ -86,3 +87,4 @@ content:
     region: content
 hidden:
   field_api_url: true
+  field_filter_keywords: true

@@ -53,6 +53,7 @@ display:
         status:
           expose:
             label: Tosi
+            description: ''
           group_info:
             label: Julkaisutila
             group_items:
@@ -63,3 +64,6 @@ display:
         langcode:
           expose:
             label: Kieli
+  media_page_list:
+    display_options:
+      menu: {  }

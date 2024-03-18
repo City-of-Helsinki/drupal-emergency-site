@@ -53,6 +53,7 @@ display:
         status:
           expose:
             label: Sant
+            description: ''
           group_info:
             label: 'Status för publicering'
             group_items:
@@ -63,3 +64,6 @@ display:
         langcode:
           expose:
             label: Språk
+  media_page_list:
+    display_options:
+      menu: {  }

@@ -1,19 +1,19 @@
-uuid: 8b370afc-f441-426b-b43e-a1e189ca29f8
+uuid: 8c76f060-07d3-4c16-b305-cc4ade3105a9
 langcode: en
 status: true
 dependencies:
   module:
-    - node
+    - taxonomy
 _core:
-  default_config_hash: B1dCDwiX6Z1jIHzpc5SVaKnMhdot6nA1x-vcQtn9mZw
-id: node.field_news_item_links_title
-field_name: field_news_item_links_title
-entity_type: node
+  default_config_hash: 7xItqwaMwhMih7aOv7ihiQx1wvkRGKrWiRJLJnM3RYA
+id: taxonomy_term.field_keyword_id
+field_name: field_keyword_id
+entity_type: taxonomy_term
 type: string
 settings:
   max_length: 255
-  is_ascii: false
   case_sensitive: false
+  is_ascii: false
 module: core
 locked: false
 cardinality: 1
