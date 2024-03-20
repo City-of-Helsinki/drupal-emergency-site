@@ -9,3 +9,5 @@ social_media:
     text: E-post
   print:
     text: Utskrift
+  linkedin:
+    api_url: 'https://www.linkedin.com/sharing/share-offsite/?url=[current-page:url]'

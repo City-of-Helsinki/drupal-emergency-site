@@ -3,3 +3,5 @@ social_media:
     text: Sähköposti
   print:
     text: Print
+  linkedin:
+    api_url: 'https://www.linkedin.com/sharing/share-offsite/?url=[current-page:url]'
