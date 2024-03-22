@@ -18,7 +18,7 @@ dependencies:
     - select2
     - text
 _core:
-  default_config_hash: bGb0ZQ38-NxHtZ1rrdqclYHeStlwA5q3ucy5Wpnb0ng
+  default_config_hash: dZwlyUF3NrPYw3C78NA0FM0m7EBnAdTWaLWhAs-jtXo
 id: paragraph.event_list.default
 targetEntityType: paragraph
 bundle: event_list

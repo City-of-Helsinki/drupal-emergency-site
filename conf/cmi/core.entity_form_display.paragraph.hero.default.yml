@@ -15,7 +15,7 @@ dependencies:
     - hdbt_admin_tools
     - media_library
 _core:
-  default_config_hash: j-UlMO6TXmxaAcdnfjmPmzKf4SQydcqdiNV0hwGKNfw
+  default_config_hash: 1GjBs_T3tKYlTF4jxU6lUtwC7YSCChaZ4Tmsrialewk
 id: paragraph.hero.default
 targetEntityType: paragraph
 bundle: hero
