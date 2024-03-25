@@ -1,4 +1,0 @@
-config_rewrite:
-  replace: ['description.value']
-description:
-  value: "<p>The information collected by statistics cookies is used for developing the website.</p>\r\n\r\n<table>\r\n\t<thead>\r\n\t\t<tr>\r\n\t\t\t<th>Name</th>\r\n\t\t\t<th>Provider</th>\r\n\t\t\t<th>Purpose of the cookie</th>\r\n\t\t\t<th>Validity</th>\r\n\t\t\t<th>Type</th>\r\n\t\t</tr>\r\n\t</thead>\r\n\t<tbody>\r\n\t\t<tr>\r\n\t\t\t<td>_pk_id.*</td>\r\n\t\t\t<td>hel.fi</td>\r\n\t\t\t<td>\r\n\t\t\t<p>Matomo Analytics - used to store a few details about the user such as the unique visitor ID</p>\r\n\t\t\t</td>\r\n\t\t\t<td>393 days</td>\r\n\t\t\t<td></td>\r\n\t\t</tr>\r\n\t\t<tr>\r\n\t\t\t<td>_pk_ses.*</td>\r\n\t\t\t<td>hel.fi</td>\r\n\t\t\t<td>Matomo Analytics - short lived cookies used to temporarily store data for the visit</td>\r\n\t\t\t<td>1 hour</td>\r\n\t\t\t<td></td>\r\n\t\t</tr>\r\n\t</tbody>\r\n</table>\r\n"
