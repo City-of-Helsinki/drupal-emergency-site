@@ -70,7 +70,7 @@ social_media:
       data-action|share/whatsapp/share
   email:
     enable: 1
-    text: Email
+    text: 'Send as an email'
     api_url: 'mailto:?subject=[current-page:title]&body=Check out this site [current-page:url]'
     api_event: href
     default_img: 1

@@ -1,3 +1,4 @@
 settings:
   on_label: Ja
   off_label: Nej
+label: 'Remote events'
