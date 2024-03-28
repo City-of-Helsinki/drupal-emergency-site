@@ -1,5 +1,13 @@
 social_media:
+  facebook_share:
+    text: 'Jaa Facebook-palvelussa'
+    api_url: 'http://www.facebook.com/share.php?u=[current-page:url]&title=[current-page:title]'
+  linkedin:
+    text: 'Jaa LinkedIn-palvelussa'
+    api_url: 'https://www.linkedin.com/sharing/share-offsite/?url=[current-page:url]'
+  twitter:
+    text: 'Jaa X-palvelussa'
   email:
-    text: Sähköposti
+    text: 'Lähetä sivu sähköpostitse'
   print:
     text: Print
