@@ -9,13 +9,13 @@ dependencies:
   module:
     - entity_reference_revisions
 _core:
-  default_config_hash: k2ZJ6zQm3A5XskuBHImjifLfb1QSFaalHK_nm5Lvz8g
+  default_config_hash: f2no6eQi8UlV_nnSTKJCQLbfhTKqUWMGBlYwOSI9hS8
 id: paragraph.list_of_links.field_list_of_links_links
 field_name: field_list_of_links_links
 entity_type: paragraph
 bundle: list_of_links
-label: Linkit
-description: 'Linkkilistan linkit.'
+label: Links
+description: 'The links that you want the paragraph to display.'
 required: true
 translatable: false
 default_value: {  }
