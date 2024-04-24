@@ -1,4 +1,4 @@
-(function ($) {
+(function ($, drupalSettings) {
   Drupal.behaviors.cookieResetButton = {
     attach: function (context, settings) {
       once('cookieSubmitButtons', '.eu-cookie-compliance-block-form', context).forEach(
