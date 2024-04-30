@@ -7,7 +7,6 @@ const fs = require('fs');
 // Get document, or throw exception on error
 try {
   const doc = yaml.load(fs.readFileSync('../../contrib/hdbt/.stylelintrc.yaml', 'utf8'));
-  // console.log(doc);
   module.exports = doc;
 } catch (e) {
   console.log(e);
