@@ -1,6 +1,5 @@
 _core:
   default_config_hash: UVH1aJ4b44UM-VdPVN7hNNuuVqfReJxwfVeDQH1Hvsk
-langcode: en
 mode: simple
 ignored_config_entities:
   - 'easy_breadcrumb.settings:home_segment_title'
