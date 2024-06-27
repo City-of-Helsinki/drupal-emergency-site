@@ -1,6 +1,5 @@
 _core:
   default_config_hash: 1reSE9XKD6Hu5mLg0A3WHgvh_z0e3LMq6SDGafyVLDc
-langcode: en
 content_root: ''
 assertiveness: smart
 no_load: ''
@@ -9,9 +8,9 @@ ignore_elements: ''
 embedded_content_warning: ''
 download_links: ''
 ignore_link_strings: ''
+link_ignore_selector: 'svg.ext, svg.mailto, .link-purpose-text'
 hidden_handlers: ''
 ed11y_theme: sleekTheme
 shadow_components: ''
 disable_sync: false
 preserve_params: 'search,keys,page,language,language_content_entity'
-link_ignore_selector: 'svg.ext, svg.mailto, .link-purpose-text'
