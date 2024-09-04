@@ -4,6 +4,7 @@ status: true
 dependencies:
   module:
     - eu_cookie_compliance
+    - external_entities
     - helfi_api_base
     - media
     - system
@@ -16,5 +17,7 @@ is_admin: false
 permissions:
   - 'access content'
   - 'display eu cookie compliance popup'
+  - 'view helfi_announcements external entity'
+  - 'view helfi_surveys external entity'
   - 'view media'
   - 'view remote entities'
