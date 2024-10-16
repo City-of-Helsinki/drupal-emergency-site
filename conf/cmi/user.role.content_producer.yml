@@ -32,6 +32,7 @@ dependencies:
     - scheduler
     - system
     - taxonomy
+    - tfa
     - view_unpublished
 _core:
   default_config_hash: Et-md8KGvaWbSe-eFo52cwzavPsHfOxAALCFUM6WrHo
@@ -74,6 +75,7 @@ permissions:
   - 'delete own news_item content'
   - 'delete own page content'
   - 'delete own remote_video media'
+  - 'disable own tfa'
   - 'display eu cookie compliance popup'
   - 'edit any announcement content'
   - 'edit any file media'
@@ -103,6 +105,7 @@ permissions:
   - 'set landing_page published on date'
   - 'set news_item published on date'
   - 'set page published on date'
+  - 'setup own tfa'
   - 'translate editable entities'
   - 'translate file media'
   - 'translate image media'
