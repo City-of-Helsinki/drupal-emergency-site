@@ -7,6 +7,7 @@ dependencies:
     - external_entities
     - helfi_api_base
     - media
+    - raven
     - system
 _core:
   default_config_hash: j5zLMOdJBqC0bMvSdth5UebkprJB8g_2FXHqhfpJzow
@@ -17,6 +18,7 @@ is_admin: false
 permissions:
   - 'access content'
   - 'display eu cookie compliance popup'
+  - 'send javascript errors to sentry'
   - 'view helfi_announcements external entity'
   - 'view helfi_surveys external entity'
   - 'view media'
