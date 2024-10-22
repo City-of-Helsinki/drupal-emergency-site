@@ -10,6 +10,7 @@ dependencies:
     - paragraphs.paragraphs_type.columns
     - paragraphs.paragraphs_type.content_cards
     - paragraphs.paragraphs_type.crisis_news_paragraph
+    - paragraphs.paragraphs_type.curated_event_list
     - paragraphs.paragraphs_type.event_list
     - paragraphs.paragraphs_type.from_library
     - paragraphs.paragraphs_type.hearings
@@ -53,6 +54,7 @@ settings:
       target_group_links: target_group_links
       event_list: event_list
       hearings: hearings
+      curated_event_list: curated_event_list
     negate: 0
     target_bundles_drag_drop:
       banner:
@@ -69,6 +71,9 @@ settings:
         enabled: true
       crisis_news_paragraph:
         weight: 0
+        enabled: true
+      curated_event_list:
+        weight: 15
         enabled: true
       event_list:
         weight: 13
