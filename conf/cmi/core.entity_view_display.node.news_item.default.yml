@@ -34,16 +34,6 @@ content:
     third_party_settings: {  }
     weight: 5
     region: content
-  field_is_crisis_news:
-    type: boolean
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    weight: 2
-    region: content
   field_lead_in:
     type: text_span
     label: hidden
@@ -118,6 +108,16 @@ content:
         refresh: 60
     third_party_settings: {  }
     weight: 3
+    region: content
+  field_is_crisis_news:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 2
     region: content
 hidden:
   field_news_item_tags: true
