@@ -11,10 +11,10 @@ display:
       pager:
         options:
           tags:
-            previous: '‹ edellinen'
-            next: 'seuraava ›'
-            first: '« ensimmäinen'
-            last: 'viimeinen »'
+            previous: '‹ previous'
+            next: 'next ›'
+            first: '« first'
+            last: 'last »'
       fields:
         node_bulk_form:
           action_title: Toiminto
@@ -61,7 +61,7 @@ display:
         langcode:
           expose:
             label: Kieli
-    display_title: Isäntä
+    display_title: Oletus
   overview:
     display_options:
       menu:

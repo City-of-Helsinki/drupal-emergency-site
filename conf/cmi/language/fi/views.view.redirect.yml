@@ -1,7 +1,7 @@
-label: Redirect
+label: Uudelleenohjaukset
 display:
   default:
-    display_title: Isäntä
+    display_title: Oletus
     display_options:
       exposed_form:
         options:
@@ -13,10 +13,10 @@ display:
       pager:
         options:
           tags:
-            previous: '‹ edellinen'
-            next: 'seuraava ›'
-            first: '« ensimmäinen'
-            last: 'viimeinen »'
+            previous: '‹ previous'
+            next: 'next ›'
+            first: '« first'
+            last: 'last »'
           expose:
             items_per_page_label: 'Merkintöjä sivua kohti'
             items_per_page_options_all_label: '- Kaikki -'
@@ -40,22 +40,29 @@ display:
           group_info:
             group_items:
               1:
-                title: '300 Useita valintoja'
+                title: '300 Multiple Choices'
               2:
-                title: '301 Pysyvästi siirretty'
+                title: '301 Moved Permanently'
               3:
-                title: '302 Löydetty'
+                title: '302 Found'
               4:
-                title: '303 Kts. toinen'
+                title: '303 See Other'
               5:
-                title: '304 Muuttamaton'
+                title: '304 Not Modified'
               6:
-                title: '305 Käytä proxyä'
+                title: '305 Use Proxy'
               7:
-                title: '307 Tilapäinen uudelleenohjaus'
+                title: '300 Multiple Choices'
+            label: Tilakoodi
+          expose:
+            label: Tilakoodi
         language:
           expose:
             label: 'Alkuperäinen kieli'
-      title: Redirect
+      title: Uudelleenohjaukset
+      empty:
+        area_text_custom:
+          content: 'Ei ole vielä uudelleenohjaksia.'
   page_1:
     display_title: Sivu
+description: Uudelleenohjaukset

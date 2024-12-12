@@ -5,17 +5,16 @@ on:
 name: CI
 env:
   SYMFONY_DEPRECATIONS_HELPER: disabled
-  SIMPLETEST_BASE_URL: http://app:8888
 jobs:
   tests:
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/city-of-helsinki/drupal-php-docker:8.2-alpine
-      options: --hostname app
+      image: ghcr.io/city-of-helsinki/drupal-web:8.3
+      options: --hostname app --user 1001
 
     services:
       db:
-        image: mariadb
+        image: mysql:8
         env:
           MYSQL_USER: drupal
           MYSQL_PASSWORD: drupal
@@ -23,11 +22,29 @@ jobs:
           MYSQL_ROOT_PASSWORD: drupal
         ports:
           - 3306:3306
-
     steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 1
+      - uses: actions/checkout@v4
+
+        # Actions worker overrides the default entrypoint with "tail -f /dev/null", so
+        # we have to start services manually.
+      - name: Start services
+        env:
+          WEBROOT: ${{ github.workspace }}/public
+        run: entrypoint &
+
+      - name: Set browsertest output folder
+        run: |
+          echo "BROWSERTEST_OUTPUT_DIRECTORY=$GITHUB_WORKSPACE/public/sites/simpletest" >> $GITHUB_ENV
+
+      - name: Make sure configuration was exported in correct language (en or und)
+        run: |
+          OUTPUT=$(grep -oP '^langcode: \b(?!(?:en|und)\b)\w+' conf -R || true)
+
+          if [ ! -z "$OUTPUT" ]; then
+            echo "Found configuration that does not match the pattern 'langcode: (en|und)':" >> $GITHUB_STEP_SUMMARY
+            echo "$OUTPUT" >> $GITHUB_STEP_SUMMARY
+            exit 1
+          fi
 
       - name: Build project
         run: composer install --no-interaction
@@ -40,8 +57,8 @@ jobs:
 
       - name: Run PHPCS
         run: |
-          vendor/bin/phpcs public/modules/custom/ --ignore="*.js,*.css" --extensions=php,module,install --standard=Drupal,DrupalPractice
-          vendor/bin/phpcs public/themes/custom/ --ignore="*.js,*.css" --extensions=php,theme --standard=Drupal,DrupalPractice
+          vendor/bin/phpcs public/modules/custom/
+          vendor/bin/phpcs public/themes/custom/
 
       - name: Run phpstan
         run: vendor/bin/phpstan analyze
@@ -58,13 +75,17 @@ jobs:
 
       - name: Start services
         run: |
-          drush runserver $SIMPLETEST_BASE_URL --dns > /dev/null 2>&1 &
-
-          # Wait for drush server to start.
-          for i in {1..5}; do RESPONSE_CODE=$(curl -s -o /dev/null -w "%{http_code}" "$SIMPLETEST_BASE_URL" || true); if [ "$RESPONSE_CODE" -gt "301" ] || [ "$RESPONSE_CODE" -lt "200" ]; then sleep 2; fi; done
+          for i in {1..5}; do RESPONSE_CODE=$(curl -k -s -o /dev/null -w "%{http_code}" "$SIMPLETEST_BASE_URL" || true); if [ "$RESPONSE_CODE" -gt "301" ] || [ "$RESPONSE_CODE" -lt "200" ]; then sleep 2; fi; done
 
       - name: Run PHPUnit tests
         run: |
           composer test-php public/modules/custom
           if [ -d "tests/" ]; then composer test-php tests/; else echo "No DTT tests found. Ignoring..."; fi
 
+      - name: Create an artifact from test report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: results
+          path: ${{ env.BROWSERTEST_OUTPUT_DIRECTORY }}
+          retention-days: 1
