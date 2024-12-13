@@ -1,7 +1,7 @@
-label: Redirect
+label: Uudelleenohjaukset
 display:
   default:
-    display_title: Isäntä
+    display_title: Oletus
     display_options:
       exposed_form:
         options:
@@ -53,9 +53,16 @@ display:
                 title: '305 Käytä proxyä'
               7:
                 title: '307 Tilapäinen uudelleenohjaus'
+            label: Tilakoodi
+          expose:
+            label: Tilakoodi
         language:
           expose:
             label: 'Alkuperäinen kieli'
-      title: Redirect
+      title: Uudelleenohjaukset
+      empty:
+        area_text_custom:
+          content: 'Ei ole vielä uudelleenohjaksia.'
   page_1:
     display_title: Sivu
+description: Uudelleenohjaukset
