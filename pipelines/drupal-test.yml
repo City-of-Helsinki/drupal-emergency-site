@@ -30,6 +30,7 @@ resources:
     # Azure DevOps repository
     - repository: emergency-site-pipelines
       type: git
+      ref: refs/heads/ansible_automation_update
       # Azure DevOps project/repository
       name: emergency-site/emergency-site-pipelines
 
