@@ -46,6 +46,8 @@ display:
             group_items:
               1:
                 title: Опубликовано
+              2:
+                title: Unpublished
         name:
           expose:
             label: Название
