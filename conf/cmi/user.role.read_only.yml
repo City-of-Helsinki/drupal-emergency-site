@@ -8,7 +8,6 @@ dependencies:
     - node.type.news_item
     - node.type.page
   module:
-    - eu_cookie_compliance
     - file
     - node
     - paragraphs
@@ -21,7 +20,6 @@ weight: 2
 is_admin: null
 permissions:
   - 'delete own files'
-  - 'display eu cookie compliance popup'
   - 'view any unpublished announcement content'
   - 'view any unpublished landing_page content'
   - 'view any unpublished news_item content'
