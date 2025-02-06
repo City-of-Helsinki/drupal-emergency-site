@@ -12,7 +12,7 @@ third_party_settings:
     bundle_settings:
       untranslatable_fields_hide: '0'
 _core:
-  default_config_hash: 2BVN4f7oVA6fKcWq9zF90vKpBQ122PgyhnrbvoSn_gk
+  default_config_hash: Ohvg1161oVX8a2EjOkWgQumATkIUd0YaZeQfqCSZ-d8
 id: media.helfi_chart
 target_entity_type_id: media
 target_bundle: helfi_chart
