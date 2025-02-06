@@ -9,7 +9,7 @@ display:
           label: 'Block description'
           separator: ', '
         type:
-          label: 'Block type'
+          label: 'Lohkon tyyppi'
           separator: ', '
         changed:
           label: Päivitetty
@@ -37,7 +37,7 @@ display:
             label: 'Block description'
         type:
           expose:
-            label: 'Block type'
+            label: 'Lohkon tyyppi'
       empty:
         area_text_custom:
           content: 'There are no custom blocks available.'
