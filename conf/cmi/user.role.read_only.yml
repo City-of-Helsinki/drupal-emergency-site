@@ -11,6 +11,8 @@ dependencies:
     - file
     - node
     - paragraphs
+    - tfa
+    - toolbar
     - view_unpublished
 _core:
   default_config_hash: z8aH8wuW8ZP68Aj6LO5ctNdfjlC137wZBJNVLPAZxS4
@@ -19,7 +21,10 @@ label: 'Read only'
 weight: 2
 is_admin: null
 permissions:
+  - 'access toolbar'
   - 'delete own files'
+  - 'disable own tfa'
+  - 'setup own tfa'
   - 'view any unpublished announcement content'
   - 'view any unpublished landing_page content'
   - 'view any unpublished news_item content'
