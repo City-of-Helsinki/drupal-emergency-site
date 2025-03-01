@@ -53,8 +53,8 @@ settings:
       chart: chart
       target_group_links: target_group_links
       event_list: event_list
-      hearings: hearings
       curated_event_list: curated_event_list
+      hearings: hearings
     negate: 0
     target_bundles_drag_drop:
       banner:

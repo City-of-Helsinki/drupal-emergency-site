@@ -10,7 +10,7 @@ dependencies:
     - allowed_formats
     - text
 _core:
-  default_config_hash: Giv1K2mzbD4E-5z3TKumA6q-KVF_gfXkj5E3KnhmTwk
+  default_config_hash: FzZd7zVbakTCCXMCrwciO6_E3Dsy8ABVX3xkaczl3KE
 id: paragraph.sidebar_text.default
 targetEntityType: paragraph
 bundle: sidebar_text

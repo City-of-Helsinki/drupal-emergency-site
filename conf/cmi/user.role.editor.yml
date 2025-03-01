@@ -38,6 +38,7 @@ dependencies:
     - system
     - taxonomy
     - tfa
+    - toolbar
     - view_unpublished
 _core:
   default_config_hash: TrjtO2wskj94-mS9Sjjcao6G0hxATLPV3mK_2iCtX6k
@@ -53,6 +54,7 @@ permissions:
   - 'access media overview'
   - 'access remote entities overview'
   - 'access taxonomy overview'
+  - 'access toolbar'
   - 'access user profiles'
   - 'administer menu'
   - 'administer nodes'
