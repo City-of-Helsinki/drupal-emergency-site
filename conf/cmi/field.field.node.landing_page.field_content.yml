@@ -17,6 +17,7 @@ dependencies:
     - paragraphs.paragraphs_type.liftup_with_image
     - paragraphs.paragraphs_type.list_of_links
     - paragraphs.paragraphs_type.map
+    - paragraphs.paragraphs_type.number_highlights
     - paragraphs.paragraphs_type.phasing
     - paragraphs.paragraphs_type.popular_services
     - paragraphs.paragraphs_type.remote_video
@@ -53,6 +54,7 @@ settings:
       chart: chart
       target_group_links: target_group_links
       event_list: event_list
+      number_highlights: number_highlights
       curated_event_list: curated_event_list
       hearings: hearings
     negate: 0
@@ -92,6 +94,9 @@ settings:
         enabled: true
       map:
         weight: 8
+        enabled: true
+      number_highlights:
+        weight: 16
         enabled: true
       phasing:
         weight: 7
