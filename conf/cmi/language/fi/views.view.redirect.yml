@@ -1,4 +1,5 @@
 label: Uudelleenohjaukset
+description: Uudelleenohjaukset
 display:
   default:
     display_title: Oletus
@@ -65,4 +66,3 @@ display:
           content: 'Ei ole vielä uudelleenohjaksia.'
   page_1:
     display_title: Sivu
-description: Uudelleenohjaukset
