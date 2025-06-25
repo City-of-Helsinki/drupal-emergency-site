@@ -2,12 +2,12 @@ social_media:
   facebook_share:
     text: 'Dela på Facebook'
   linkedin:
-    text: 'Dela på Linkedin'
+    text: 'Dela på LinkedIn'
     api_url: 'https://www.linkedin.com/sharing/share-offsite/?url=[current-page:url]'
   twitter:
     text: 'Dela på X'
   email:
-    text: 'Skicka via e-post'
+    text: 'Skicka sidan via e‑post'
   pinterest:
     text: Pinterest
   print:
