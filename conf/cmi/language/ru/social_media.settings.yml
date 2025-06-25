@@ -1,15 +1,9 @@
 social_media:
   facebook_share:
-    text: Facebook
-    api_url: 'http://www.facebook.com/share.php?u=[current-page:url]&title=[current-page:title]'
+    text: 'Поделиться на Facebook'
   linkedin:
-    text: Linkedin
-    api_url: 'https://www.linkedin.com/sharing/share-offsite/?url=[current-page:url]'
+    text: 'Поделиться на LinkedIn'
   twitter:
-    text: Twitter
-  pinterest:
-    text: Pinterest
+    text: 'Поделиться в X'
   email:
-    text: Email
-  print:
-    text: Печать
+    text: 'Отправить страницу по электронной почте'

@@ -39,8 +39,8 @@ social_media:
       rel|noopener noreferrer
   twitter:
     enable: 1
-    text: Twitter
-    api_url: 'https://twitter.com/intent/tweet?url=[current-page:url]&url=[current-page:url]&hashtags=Hashtag'
+    text: 'Share on X'
+    api_url: 'https://x.com/intent/post?url=[current-page:url]&status=[current-page:title]+[current-page:url]'
     api_event: href
     default_img: 1
     weight: 4
@@ -48,6 +48,7 @@ social_media:
       target|_blank
       class|twitter
       rel|noopener noreferrer
+    img: x
   pinterest:
     enable: 1
     text: Pinterest
