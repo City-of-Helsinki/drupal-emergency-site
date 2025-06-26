@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e7bb71a51854da552cf5801d552dbe9f",
+    "content-hash": "fcd372c67392ec9e1c50ec1911797e34",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -4381,16 +4381,16 @@
         },
         {
             "name": "drupal/helfi_platform_config",
-            "version": "4.14.39",
+            "version": "dev-UHF-9855",
             "source": {
                 "type": "git",
                 "url": "https://github.com/City-of-Helsinki/drupal-helfi-platform-config.git",
-                "reference": "e20a156ed5dfd227993b510933b3f1b1d99ffba1"
+                "reference": "c9268b0d82db6c115f1f6e6897dc12a430c41a2c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/City-of-Helsinki/drupal-helfi-platform-config/zipball/e20a156ed5dfd227993b510933b3f1b1d99ffba1",
-                "reference": "e20a156ed5dfd227993b510933b3f1b1d99ffba1",
+                "url": "https://api.github.com/repos/City-of-Helsinki/drupal-helfi-platform-config/zipball/c9268b0d82db6c115f1f6e6897dc12a430c41a2c",
+                "reference": "c9268b0d82db6c115f1f6e6897dc12a430c41a2c",
                 "shasum": ""
             },
             "require": {
@@ -4400,8 +4400,8 @@
                 "drupal/config_ignore": "^3.0",
                 "drupal/config_rewrite": "^1.4",
                 "drupal/content_lock": "^2.2",
-                "drupal/core": "^10",
-                "drupal/core-composer-scaffold": "^10",
+                "drupal/core": "10.4.8",
+                "drupal/core-composer-scaffold": "10.4.8",
                 "drupal/crop": "^2.1",
                 "drupal/default_content": "^2.0.0-alpha2",
                 "drupal/diff": "^1.0",
@@ -4459,8 +4459,8 @@
                 "symfony/property-access": "^7.3"
             },
             "conflict": {
-                "drupal/core": "<10.4 || >=10.5",
-                "drupal/core-composer-scaffold": "<10.4 || >=10.5",
+                "drupal/core": "<10.4",
+                "drupal/core-composer-scaffold": "<10.4",
                 "drupal/ctools": "<3.11 || ^4.0.1",
                 "drupal/default_content": ">2.0.0-alpha2",
                 "drupal/helfi_media_map": "*",
@@ -4512,10 +4512,10 @@
             ],
             "description": "HELfi platform config",
             "support": {
-                "source": "https://github.com/City-of-Helsinki/drupal-helfi-platform-config/tree/4.14.39",
+                "source": "https://github.com/City-of-Helsinki/drupal-helfi-platform-config/tree/UHF-9855",
                 "issues": "https://github.com/City-of-Helsinki/drupal-helfi-platform-config/issues"
             },
-            "time": "2025-06-25T09:09:59+00:00"
+            "time": "2025-06-26T08:38:49+00:00"
         },
         {
             "name": "drupal/helfi_tpr",
@@ -20039,7 +20039,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "drupal/helfi_drupal_tools": 20
+        "drupal/helfi_drupal_tools": 20,
+        "drupal/helfi_platform_config": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
