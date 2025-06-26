@@ -6,6 +6,7 @@ social_media:
     api_url: 'https://www.linkedin.com/sharing/share-offsite/?url=[current-page:url]'
   twitter:
     text: 'Jaa X-palvelussa'
+    api_url: 'https://x.com/intent/post?url=[current-page:url]&status=[current-page:title]+[current-page:url]'
   email:
     text: 'Lähetä sivu sähköpostitse'
   print:
