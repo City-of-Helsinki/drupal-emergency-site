@@ -1,0 +1,19 @@
+helfi_static_trigger.settings:
+  type: config_object
+  mapping:
+    url:
+      type: string
+    method:
+      type: string
+    headers:
+      type: sequence
+      label: 'Headers'
+      sequence:
+        label: 'Header value'
+        type: string
+    body:
+      label: 'Request body'
+      type: string
+    safe_delay:
+      label: 'Delay enforced between runs'
+      type: number
