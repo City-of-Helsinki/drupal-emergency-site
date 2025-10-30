@@ -17,4 +17,5 @@ settings:
   label: Announcements
   label_display: ''
   provider: helfi_node_announcement
+  use_remote_entities: false
 visibility: {  }
