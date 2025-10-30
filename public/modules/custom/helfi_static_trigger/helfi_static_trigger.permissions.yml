@@ -1,6 +1,2 @@
-administer helfi static trigger settings:
-  title: 'Administer helfi static trigger settings'
-  restrict access: true
-
 helfi static trigger generate:
   title: 'Access to trigger static generation'

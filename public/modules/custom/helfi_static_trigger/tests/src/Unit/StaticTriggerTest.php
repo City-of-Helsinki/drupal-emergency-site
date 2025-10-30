@@ -1,17 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Drupal\Tests\helfi_static_trigger\Unit;
 
 use Drupal\Component\Datetime\TimeInterface;
-use Drupal\Core\Config\ConfigFactoryInterface;
-use Drupal\Core\Config\ImmutableConfig;
-use Drupal\Core\Logger\LoggerChannel;
-use Drupal\Core\Logger\LoggerChannelFactoryInterface;
 use Drupal\Core\State\StateInterface;
 use Drupal\helfi_static_trigger\StaticTrigger;
 use Drupal\Tests\UnitTestCase;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Psr7\Response;
+use PHPUnit\Framework\MockObject\MockObject;
 
 /**
  * Tests the StaticTrigger service.
@@ -21,53 +20,24 @@ use GuzzleHttp\Psr7\Response;
 class StaticTriggerTest extends UnitTestCase {
 
   /**
-   * The logger factory.
-   *
-   * @var \Drupal\Core\Logger\LoggerChannelFactoryInterface|\PHPUnit\Framework\MockObject\MockObject
-   */
-  protected $loggerFactory;
-
-  /**
    * The HTTP client.
-   *
-   * @var \GuzzleHttp\ClientInterface|\PHPUnit\Framework\MockObject\MockObject
    */
-  protected $httpClient;
+  protected MockObject $httpClient;
 
   /**
    * The state.
-   *
-   * @var \Drupal\Core\State\StateInterface|\PHPUnit\Framework\MockObject\MockObject
    */
-  protected $state;
-
-  /**
-   * The config factory.
-   *
-   * @var \Drupal\Core\Config\ConfigFactoryInterface|\PHPUnit\Framework\MockObject\MockObject
-   */
-  protected $configFactory;
+  protected MockObject $state;
 
   /**
    * The time service.
-   *
-   * @var \Drupal\Component\Datetime\TimeInterface|\PHPUnit\Framework\MockObject\MockObject
    */
-  protected $time;
+  protected MockObject $time;
 
   /**
    * The StaticTrigger service.
-   *
-   * @var \Drupal\helfi_static_trigger\StaticTrigger
    */
-  protected $staticTrigger;
-
-  /**
-   * The immutable config service.
-   *
-   * @var \Drupal\Core\Config\ImmutableConfig|\PHPUnit\Framework\MockObject\MockObject
-   */
-  protected $immutableConfig;
+  protected StaticTrigger $staticTrigger;
 
   /**
    * {@inheritdoc}
@@ -75,25 +45,25 @@ class StaticTriggerTest extends UnitTestCase {
   protected function setUp(): void {
     parent::setUp();
 
-    $this->loggerFactory = $this->createConfiguredMock(LoggerChannelFactoryInterface::class,
-      [
-        'get' => new LoggerChannel('test'),
-      ]);
-
     $this->httpClient = $this->createMock(ClientInterface::class);
     $this->httpClient->method('request')->willReturn(new Response(200, ['Content-Type' => 'application/json']));
     $this->state = $this->createMock(StateInterface::class);
 
-    $this->configFactory = $this->createMock(ConfigFactoryInterface::class);
-    $this->immutableConfig = $this->createConfiguredMock(ImmutableConfig::class, ['get' => 300]);
-    $this->configFactory->method('get')->willReturn($this->immutableConfig);
+    $configFactory = $this->getConfigFactoryStub([
+      'helfi_static_trigger.settings' => [
+        'url' => 'https://example.com',
+        'body' => '{}',
+        'headers' => ['Content-Type' => 'application/json'],
+        'method' => 'POST',
+        'safe_delay' => 300,
+      ],
+    ]);
 
     $this->time = $this->createMock(TimeInterface::class);
 
-    $this->staticTrigger = new StaticTrigger($this->configFactory, $this->loggerFactory, $this->httpClient, $this->state, $this->time);
+    $this->staticTrigger = new StaticTrigger($configFactory, $this->httpClient, $this->state, $this->time);
 
     $this->staticTrigger->setStringTranslation($this->getStringTranslationStub());
-
   }
 
   /**
@@ -101,7 +71,7 @@ class StaticTriggerTest extends UnitTestCase {
    *
    * @dataProvider triggerDataProvider
    */
-  public function testTrigger($force, $getLastRun, $time, $expectedResult) {
+  public function testTrigger($force, $getLastRun, $time, $expectedResult): void {
     $this->time->method('getCurrentTime')->willReturn($time);
 
     $this->state->method('get')->willReturn($getLastRun);
@@ -114,7 +84,7 @@ class StaticTriggerTest extends UnitTestCase {
   /**
    * Data provider for testTrigger.
    */
-  public function triggerDataProvider() {
+  public function triggerDataProvider(): array {
     return [
       // Test case 1: Force is TRUE, should always return TRUE.
       [TRUE, NULL, 0, TRUE],
