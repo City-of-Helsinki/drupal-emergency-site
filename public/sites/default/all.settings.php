@@ -17,3 +17,11 @@ if (getenv('SMTP_HOST')) {
   $config['smtp.settings']['smtp_autotls'] = true;
   $config['smtp.settings']['smtp_allowhtml'] = 1;
 }
+
+if ($static_trigger_url = getenv('HELFI_STATIC_TRIGGER_URL')) {
+  $config['helfi_static_trigger.settings']['url'] = $static_trigger_url;
+}
+
+$config['helfi_static_trigger.settings']['body'] = json_encode([
+  'environment' => getenv('APP_ENV'),
+]);

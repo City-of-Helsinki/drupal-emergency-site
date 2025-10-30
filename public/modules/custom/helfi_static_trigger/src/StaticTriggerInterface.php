@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Drupal\helfi_static_trigger;
 
 /**
@@ -18,7 +20,7 @@ interface StaticTriggerInterface {
    *   TRUE if trigger was successful, FALSE if an error occurred, or NULL if
    *   the trigger was skipped due to time constraints.
    */
-  public function trigger($force = FALSE): ?bool;
+  public function trigger(bool $force = FALSE): ?bool;
 
   /**
    * Get the timestamp of the last trigger run.

@@ -1,0 +1,26 @@
+<?php
+
+/**
+ * @file
+ * Contains install hooks.
+ */
+
+declare(strict_types=1);
+
+/**
+ * Migrate headers config to new format.
+ */
+function helfi_static_trigger_update_9000(): void {
+  $config = \Drupal::configFactory()->getEditable('helfi_static_trigger.settings');
+
+  $header_lines = explode(PHP_EOL, $config->get('headers'));
+  $header_lines = array_filter($header_lines);
+  $headers = [];
+  foreach ($header_lines as $header_line) {
+    $line = explode(':', $header_line, 2);
+    if (count($line) == 2) {
+      $headers[$line[0]] = trim($line[1]);
+    }
+  }
+  $config->set('headers', array_filter($headers))->save();
+}

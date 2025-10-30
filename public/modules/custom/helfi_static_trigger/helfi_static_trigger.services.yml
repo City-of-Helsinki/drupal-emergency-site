@@ -1,4 +1,13 @@
 services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  logger.channel.helfi_static_trigger:
+    parent: logger.channel_base
+    arguments: [ 'helfi_static_trigger' ]
+
   helfi_static_trigger.trigger:
     class: Drupal\helfi_static_trigger\StaticTrigger
-    arguments: ['@config.factory', '@logger.factory', '@http_client', '@state', '@datetime.time' ]
+
+  Drupal\helfi_static_trigger\StaticTriggerInterface: '@helfi_static_trigger.trigger'
