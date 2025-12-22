@@ -1,22 +1,22 @@
-label: Redirect
+label: Переадресация
 display:
   default:
     display_title: Основной
     display_options:
-      title: Redirect
+      title: Переадресация
       fields:
         redirect_bulk_form:
           action_title: 'With selection'
         redirect_source__path:
-          label: From
+          label: От
           separator: ', '
         is_custom:
-          label: Custom
+          label: Собственная
           separator: ', '
         created:
-          label: Created
+          label: Создано
         enabled:
-          label: Enabled
+          label: Включено
           separator: ', '
       pager:
         options:
@@ -42,41 +42,41 @@ display:
       filters:
         redirect_source__path:
           expose:
-            label: From
+            label: От
         redirect_redirect__uri:
           expose:
-            label: To
+            label: Кому
         status_code:
           expose:
-            label: 'Status code'
+            label: 'Код состояния'
           group_info:
-            label: 'Status code'
+            label: 'Код состояния'
             group_items:
               1:
-                title: '300 Multiple Choices'
+                title: '300 Множество Выборов'
               2:
-                title: '301 Moved Permanently'
+                title: '301 Перемещёно Окончательно'
               3:
-                title: '302 Found'
+                title: '302 Найдено'
               4:
-                title: '303 See Other'
+                title: '303 Смотреть Другое'
               5:
-                title: '304 Not Modified'
+                title: '304 Не Изменялось'
               6:
-                title: '305 Use Proxy'
+                title: '305 Использовать Прокси'
               7:
-                title: '307 Temporary Redirect'
+                title: '307 Временно перемещено'
         language:
           expose:
-            label: 'Original language'
+            label: 'Язык оригинала'
         is_custom:
           expose:
-            label: Custom
+            label: Собственная
         enabled:
           expose:
-            label: Enabled
+            label: Включено
   page_1:
     display_title: Страница
     display_options:
       menu:
-        title: Redirect
+        title: Переадресация
