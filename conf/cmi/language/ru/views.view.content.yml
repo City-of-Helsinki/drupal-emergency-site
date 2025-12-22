@@ -16,7 +16,7 @@ display:
         status:
           label: Статус
           settings:
-            format_custom_false: Unpublished
+            format_custom_false: 'Снято с публикации'
             format_custom_true: Опубликовано
         changed:
           label: Обновлено
@@ -58,7 +58,7 @@ display:
               1:
                 title: Опубликовано
               2:
-                title: Unpublished
+                title: 'Снято с публикации'
         langcode:
           expose:
             label: Язык
