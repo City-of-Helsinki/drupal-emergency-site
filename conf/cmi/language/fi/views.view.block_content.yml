@@ -1,10 +1,7 @@
-label: 'Custom block library'
-description: 'Find and manage custom blocks.'
 display:
   default:
     display_title: Oletus
     display_options:
-      title: 'Custom block library'
       fields:
         info:
           label: 'Lohkon kuvaus'
@@ -24,7 +21,6 @@ display:
           expose:
             items_per_page_label: 'Merkintöjä sivua kohti'
             items_per_page_options_all_label: '- Kaikki -'
-            offset_label: Offset
       exposed_form:
         options:
           submit_button: Käytä
@@ -39,12 +35,5 @@ display:
         type:
           expose:
             label: 'Lohkon tyyppi'
-      empty:
-        area_text_custom:
-          content: 'There are no custom blocks available.'
   page_1:
     display_title: Sivu
-    display_options:
-      menu:
-        title: 'Custom block library'
-        description: 'Create and edit block content.'
