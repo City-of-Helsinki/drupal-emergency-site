@@ -34,8 +34,6 @@ display:
         id:
           label: ID
           separator: ', '
-        count:
-          format_plural_string: !!binary MSBwbGFjZQNAY291bnQgcGxhY2Vz
         changed:
           label: Ändrad
           separator: ', '

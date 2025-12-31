@@ -1,4 +1,4 @@
-label: 'Schemalagt innehåll'
+label: Schemalagd
 description: 'Hitta och hantera schemalagt innehåll.'
 display:
   default:
@@ -63,7 +63,7 @@ display:
         langcode:
           expose:
             label: Språk
-      title: 'Schemalagt innehåll'
+      title: Schemalagd
       empty:
         area_text_custom:
           content: 'Inget schemalagt innehåll.'
@@ -71,7 +71,8 @@ display:
   overview:
     display_options:
       menu:
-        title: 'Schemalagt innehåll'
+        title: Schemalagd
+        description: 'Content scheduled for publishing and unpublishing'
       tab_options:
         title: Innehåll
     display_title: Innehållsöversikt
