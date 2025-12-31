@@ -1,4 +1,4 @@
-label: Ajastettu
+label: 'Ajastettu sisältö'
 description: 'Etsi ja ylläpidä ajastettua sisältöä.'
 display:
   default:
@@ -63,7 +63,7 @@ display:
         langcode:
           expose:
             label: Kieli
-      title: Ajastettu
+      title: 'Ajastettu sisältö'
       empty:
         area_text_custom:
           content: 'Ei vielä ajastettua sisältöä.'
@@ -71,7 +71,7 @@ display:
   overview:
     display_options:
       menu:
-        title: Ajastettu
+        title: 'Ajastettu sisältö'
       tab_options:
         title: Sisältö
       display_description: 'Yleiskatsaus koko ajoitetusta sisällöstä.'
