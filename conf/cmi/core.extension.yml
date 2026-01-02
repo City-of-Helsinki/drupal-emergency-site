@@ -128,7 +128,6 @@ module:
   select2: 0
   serialization: 0
   simple_sitemap: 0
-  smtp: 0
   social_media: 0
   sophron: 0
   stomp: 0

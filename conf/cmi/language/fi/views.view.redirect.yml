@@ -38,7 +38,10 @@ display:
           expose:
             label: Osoitteeseen
         status_code:
+          expose:
+            label: Tilakoodi
           group_info:
+            label: Tilakoodi
             group_items:
               1:
                 title: '300 Useita valintoja'
@@ -54,9 +57,6 @@ display:
                 title: '305 Käytä proxyä'
               7:
                 title: '307 Tilapäinen uudelleenohjaus'
-            label: Tilakoodi
-          expose:
-            label: Tilakoodi
         language:
           expose:
             label: 'Alkuperäinen kieli'
