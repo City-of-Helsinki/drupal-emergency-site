@@ -2,13 +2,6 @@ display:
   default:
     display_title: 'По умолчанию'
     display_options:
-      exposed_form:
-        options:
-          submit_button: Применить
-          reset_button_label: Сбросить
-          exposed_sorts_label: 'Сортировать по'
-          sort_asc_label: 'По возрастанию'
-          sort_desc_label: 'По убыванию'
       fields:
         published_at:
           separator: ', '
@@ -16,6 +9,13 @@ display:
           separator: ', '
         view_node:
           text: представление
+      exposed_form:
+        options:
+          submit_button: Применить
+          reset_button_label: Сбросить
+          exposed_sorts_label: 'Сортировать по'
+          sort_asc_label: 'По возрастанию'
+          sort_desc_label: 'По убыванию'
       arguments:
         nid:
           exception:
