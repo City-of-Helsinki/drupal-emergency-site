@@ -73,6 +73,7 @@ content:
     weight: 4
     region: content
 hidden:
+  changed_at: true
   field_content: true
   field_is_crisis_news: true
   field_lead_in: true
