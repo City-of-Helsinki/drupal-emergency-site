@@ -84,7 +84,7 @@ class StaticTriggerTest extends UnitTestCase {
   /**
    * Data provider for testTrigger.
    */
-  public function triggerDataProvider(): array {
+  public static function triggerDataProvider(): array {
     return [
       // Test case 1: Force is TRUE, should always return TRUE.
       [TRUE, NULL, 0, TRUE],
