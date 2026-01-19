@@ -71,15 +71,14 @@ class StaticTriggerTest extends UnitTestCase {
    *
    * @dataProvider triggerDataProvider
    */
-  public static function testTrigger($force, $getLastRun, $time, $expectedResult): void {
-    $test = new static('test');
-    $test->setUp();
+  public function testTrigger($force, $getLastRun, $time, $expectedResult): void {
+    $this->time->method('getCurrentTime')->willReturn($time);
 
-    $test->time->method('getCurrentTime')->willReturn($time);
-    $test->state->method('get')->willReturn($getLastRun);
+    $this->state->method('get')->willReturn($getLastRun);
 
-    $result = $test->staticTrigger->trigger($force);
-    $test->assertEquals($expectedResult, $result);
+    $result = $this->staticTrigger->trigger($force);
+
+    $this->assertEquals($expectedResult, $result);
   }
 
   /**
