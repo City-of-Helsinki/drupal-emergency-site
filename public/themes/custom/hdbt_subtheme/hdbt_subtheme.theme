@@ -103,6 +103,10 @@ function hdbt_subtheme_preprocess_paragraph(&$variables) {
           ->getViewBuilder('node')
           ->view($result->_entity, 'medium_teaser');
       }
+
+      // Make sure any news item insert, update or delete invalidates the
+      // cache for this section.
+      $variables['#cache']['tags'][] = 'node_list:news_item';
     }
   }
 }
