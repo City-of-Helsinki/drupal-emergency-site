@@ -96,6 +96,7 @@ permissions:
   - 'edit own page content'
   - 'edit own remote_video media'
   - 'edit paragraph library item'
+  - 'rebuild node access permissions'
   - 'revert announcement revisions'
   - 'revert landing_page revisions'
   - 'revert news_item revisions'
