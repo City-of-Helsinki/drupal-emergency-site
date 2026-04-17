@@ -68,6 +68,7 @@ display:
     display_options:
       menu:
         title: 'Запланированные материалы'
+        description: 'Content scheduled for publishing and unpublishing'
       tab_options:
         title: Содержимое
   user_page:
