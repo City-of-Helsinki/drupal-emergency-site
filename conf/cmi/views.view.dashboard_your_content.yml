@@ -6,6 +6,7 @@ dependencies:
     - helfi_users
     - node
     - user
+    - views_bulk_operations
 _core:
   default_config_hash: wATS6QyZ4c_AJqR0KELIsvvBuT5XLe1DeUXfJUhuqZ8
 id: dashboard_your_content
