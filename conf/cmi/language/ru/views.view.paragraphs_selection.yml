@@ -1,9 +1,12 @@
-label: 'Термин таксономии'
-description: 'Материалы, относящиеся к определённому термину таксономии.'
 display:
   default:
     display_title: 'По умолчанию'
     display_options:
+      fields:
+        id:
+          separator: ', '
+        label:
+          separator: ', '
       pager:
         options:
           tags:
@@ -20,12 +23,9 @@ display:
           exposed_sorts_label: 'Сортировать по'
           sort_asc_label: 'По возрастанию'
           sort_desc_label: 'По убыванию'
-      arguments:
-        tid:
-          exception:
-            title: Все
-          title: '{{ arguments.tid }}'
-  feed_1:
-    display_title: 'Поток данных'
-  page_1:
-    display_title: Страница
+      filters:
+        label:
+          expose:
+            label: Заголовок
+  entity_reference:
+    display_title: 'Entity reference'
