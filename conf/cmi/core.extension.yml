@@ -141,6 +141,8 @@ module:
   view_unpublished: 0
   views_bulk_operations: 0
   views_ui: 0
+  webp: 0
+  wpf: 0
   pathauto: 1
   content_translation: 10
   views: 10
