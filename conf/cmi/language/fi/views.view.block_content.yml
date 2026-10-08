@@ -13,7 +13,7 @@ display:
           label: 'Lohkon tyyppi'
           separator: ', '
         changed:
-          label: Päivitetty
+          label: Updated
         operations:
           label: Toimenpiteet
       pager:
