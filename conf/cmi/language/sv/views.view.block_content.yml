@@ -13,7 +13,7 @@ display:
           label: 'Typ av block'
           separator: ', '
         changed:
-          label: Updated
+          label: Uppdaterad
         operations:
           label: Funktioner
       pager:
