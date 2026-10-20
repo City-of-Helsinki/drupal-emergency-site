@@ -30,8 +30,7 @@ display:
             format_custom_false: Unpublished
             format_custom_true: Опубликовано
           separator: ', '
-        changed:
-          label: Обновлено
+        changed_at:
           separator: ', '
         operations:
           label: Операции
