@@ -7,30 +7,6 @@ parameters:
 			path: public/modules/custom/helfi_emergency_general/helfi_emergency_general.install
 
 		-
-			message: '#^Function helfi_emergency_general_helfi_paragraph_types\(\) return type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: public/modules/custom/helfi_emergency_general/helfi_emergency_general.module
-
-		-
-			message: '#^Expression on left side of \?\? is not nullable\.$#'
-			identifier: nullCoalesce.expr
-			count: 1
-			path: public/modules/custom/helfi_emergency_general/src/AnnouncementClient.php
-
-		-
-			message: '#^Parameter \#1 \$string of function base64_decode expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: public/modules/custom/helfi_emergency_general/src/AnnouncementClient.php
-
-		-
-			message: '#^Property Drupal\\helfi_emergency_general\\AnnouncementClient\:\:\$currentAnnouncement type has no value type specified in iterable type array\.$#'
-			identifier: missingType.iterableValue
-			count: 1
-			path: public/modules/custom/helfi_emergency_general/src/AnnouncementClient.php
-
-		-
 			message: '#^Method Drupal\\helfi_emergency_general\\Form\\AnnouncementEditForm\:\:buildForm\(\) has parameter \$form with no value type specified in iterable type array\.$#'
 			identifier: missingType.iterableValue
 			count: 1

@@ -7,9 +7,10 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Language\LanguageInterface;
 use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\helfi_emergency_general\AnnouncementClient;
+use Drupal\helfi_emergency_general\AnnouncementException;
 
 /**
- * Form class for emergency announcement message.
+ * Form for the emergency announcement message.
  */
 final class AnnouncementEditForm extends FormBase {
 
@@ -39,8 +40,11 @@ final class AnnouncementEditForm extends FormBase {
   public function buildForm(array $form, FormStateInterface $form_state): array {
     // We set the current message in form state to use it in validate form.
     $currentLanguage = $this->languageManager->getCurrentLanguage(LanguageInterface::TYPE_CONTENT);
-    $announcement = $this->announcementClient->getAnnouncement($currentLanguage->getId());
-    if (is_null($announcement)) {
+
+    try {
+      $announcement = $this->announcementClient->getAnnouncement($currentLanguage->getId());
+    }
+    catch (AnnouncementException) {
       $this->messenger()->addError($this->t('Unable to fetch existing message. Please check logs for more information'));
 
       return [];
@@ -73,12 +77,13 @@ final class AnnouncementEditForm extends FormBase {
    * {@inheritdoc}
    */
   public function validateForm(array &$form, FormStateInterface $form_state): void {
-    $message = $this->announcementClient->setAnnouncement(
-      $form_state->getValue('announcement'),
-      $this->languageManager->getCurrentLanguage(LanguageInterface::TYPE_CONTENT)->getId()
-    );
-
-    if (!$message) {
+    try {
+      $this->announcementClient->setAnnouncement(
+        $form_state->getValue('announcement'),
+        $this->languageManager->getCurrentLanguage(LanguageInterface::TYPE_CONTENT)->getId()
+      );
+    }
+    catch (AnnouncementException) {
       $form_state->setError($form['announcement'],
         $this->t('Error while saving announcement. Please check logs for more information.')
       );
@@ -91,10 +96,11 @@ final class AnnouncementEditForm extends FormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state): void {
-    $this->messenger()->addStatus($this->t('Announcement saved for @lang language.', [
-      '@lang' => $this->languageManager->getCurrentLanguage(LanguageInterface::TYPE_CONTENT)->getName(),
-    ]));
-    $this->messenger()->addWarning($this->t('The updates may take up to 2 minutes to become visible.'));
+    $this->messenger()
+      ->addStatus($this->t('Announcement saved for @lang language.', [
+        '@lang' => $this->languageManager->getCurrentLanguage(LanguageInterface::TYPE_CONTENT)->getName(),
+      ]))
+      ->addWarning($this->t('The updates may take up to 2 minutes to become visible.'));
   }
 
 }
