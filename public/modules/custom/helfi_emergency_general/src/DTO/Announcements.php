@@ -21,12 +21,14 @@ final readonly class Announcements implements \JsonSerializable {
    * @param array<string, string> $messages
    *   The announcement messages, keyed by language code.
    * @param int|null $updated
-   *   Unix timestamp of the last update, read from the blob's Last-Modified
-   *   header. NULL if unknown or not yet saved.
+   *   Unix timestamp of the last update.
+   * @param string|null $etag
+   *   The blob's ETag.
    */
   public function __construct(
     public array $messages = [],
     public ?int $updated = NULL,
+    public ?string $etag = NULL,
   ) {
   }
 
@@ -36,42 +38,32 @@ final readonly class Announcements implements \JsonSerializable {
    * @throws \JsonException
    */
   public static function fromResponse(ResponseInterface $response): self {
-    $updated = self::getLastModified($response);
     $data = json_decode((string) $response->getBody(), flags: JSON_THROW_ON_ERROR);
 
-    if (!$data instanceof \stdClass) {
-      return new self(updated: $updated);
-    }
-
-    $messages = array_filter(
+    $messages = $data instanceof \stdClass ? array_filter(
       get_object_vars($data),
       static fn ($message, $langcode) => is_string($langcode) && is_string($message),
       ARRAY_FILTER_USE_BOTH,
-    );
+    ) : [];
 
-    return new self($messages, $updated);
+    return (new self($messages))->withResponseMetadata($response);
   }
 
   /**
-   * Gets the Last-Modified header of a blob storage response.
-   *
-   * @return int|null
-   *   Unix timestamp, or NULL if the header is missing or invalid.
-   */
-  private static function getLastModified(ResponseInterface $response): ?int {
-    $timestamp = strtotime($response->getHeaderLine('Last-Modified'));
-
-    return $timestamp === FALSE ? NULL : $timestamp;
-  }
-
-  /**
-   * Returns a copy with the update time read from a blob storage response.
+   * Returns a copy with the blob metadata read from a blob storage response.
    *
    * @return self
    *   The new instance.
    */
-  public function withLastModified(ResponseInterface $response): self {
-    return new self($this->messages, self::getLastModified($response));
+  public function withResponseMetadata(ResponseInterface $response): self {
+    $updated = strtotime($response->getHeaderLine('Last-Modified'));
+    $etag = $response->getHeaderLine('ETag');
+
+    return new self(
+      $this->messages,
+      $updated === FALSE ? NULL : $updated,
+      $etag === '' ? NULL : $etag,
+    );
   }
 
   /**
@@ -86,7 +78,7 @@ final readonly class Announcements implements \JsonSerializable {
    *   The new instance.
    */
   public function with(string $langcode, string $message): self {
-    return new self([$langcode => $message] + $this->messages);
+    return new self([$langcode => $message] + $this->messages, $this->updated, $this->etag);
   }
 
   /**

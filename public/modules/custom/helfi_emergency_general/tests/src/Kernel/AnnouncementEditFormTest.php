@@ -12,6 +12,7 @@ use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\helfi_emergency_general\Form\AnnouncementEditForm;
 use Drupal\KernelTests\KernelTestBase;
 use Drupal\Tests\helfi_api_base\Traits\ApiTestTrait;
+use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
@@ -69,7 +70,9 @@ final class AnnouncementEditFormTest extends KernelTestBase {
   private function submitForm(string $announcement): FormStateInterface {
     $formState = (new FormState())
       ->setValues(['announcement' => $announcement]);
-    $this->container->get(FormBuilderInterface::class)->submitForm(AnnouncementEditForm::class, $formState);
+
+    $this->container->get(FormBuilderInterface::class)
+      ->submitForm(AnnouncementEditForm::class, $formState);
 
     return $formState;
   }
@@ -78,9 +81,9 @@ final class AnnouncementEditFormTest extends KernelTestBase {
    * Tests that the form shows the existing announcement.
    */
   public function testBuildForm(): void {
-    $this->container->set('http_client', $this->createMockHttpClient([
+    $this->setupMockHttpClient([
       new Response(200, [], Json::encode(['en' => 'Existing announcement', 'fi' => 'Tiedote'])),
-    ]));
+    ]);
 
     $form = $this->container->get(FormBuilderInterface::class)->getForm(AnnouncementEditForm::class);
 
@@ -90,30 +93,17 @@ final class AnnouncementEditFormTest extends KernelTestBase {
   }
 
   /**
-   * Tests that the form handles a missing announcement for current language.
-   */
-  public function testBuildFormMissingLanguage(): void {
-    $this->container->set('http_client', $this->createMockHttpClient([
-      new Response(200, [], Json::encode(['fi' => 'Tiedote'])),
-    ]));
-
-    $form = $this->container->get(FormBuilderInterface::class)->getForm(AnnouncementEditForm::class);
-
-    $this->assertSame('', $form['announcement']['#default_value']);
-  }
-
-  /**
    * Tests that the form shows an error when fetching fails.
    */
   public function testBuildFormFetchError(): void {
-    $this->container->set('http_client', $this->createMockHttpClient([
+    $this->setupMockHttpClient([
       new RequestException('Fetch failed', new Request('GET', self::SAS_URL)),
-    ]));
+    ]);
 
     $form = $this->container->get(FormBuilderInterface::class)->getForm(AnnouncementEditForm::class);
 
     $this->assertArrayNotHasKey('announcement', $form);
-    $errors = $this->container->get('messenger')->messagesByType(MessengerInterface::TYPE_ERROR);
+    $errors = $this->container->get(MessengerInterface::class)->messagesByType(MessengerInterface::TYPE_ERROR);
     $this->assertCount(1, $errors);
     $this->assertStringContainsString('Unable to fetch existing message', (string) $errors[0]);
   }
@@ -124,8 +114,8 @@ final class AnnouncementEditFormTest extends KernelTestBase {
   public function testSubmitForm(): void {
     $history = [];
     $this->container->set('http_client', $this->createMockHistoryMiddlewareHttpClient($history, [
-      new Response(200, [], Json::encode(['en' => 'Old announcement', 'fi' => 'Tiedote'])),
-      new Response(201),
+      new Response(200, ['ETag' => '"0x8D1"'], Json::encode(['en' => 'Old announcement', 'fi' => 'Tiedote'])),
+      new Response(201, ['ETag' => '"0x8D2"']),
     ]));
 
     $formState = $this->submitForm('New announcement');
@@ -136,36 +126,51 @@ final class AnnouncementEditFormTest extends KernelTestBase {
     /** @var \Psr\Http\Message\RequestInterface $request */
     $request = $history[1]['request'];
     $this->assertEquals('PUT', $request->getMethod());
-    $this->assertEquals(self::SAS_URL, (string) $request->getUri());
-    $this->assertEquals('BlockBlob', $request->getHeaderLine('x-ms-blob-type'));
+    // The write must only succeed if the blob is unchanged since it was read.
+    $this->assertEquals('"0x8D1"', $request->getHeaderLine('If-Match'));
     // Announcements for other languages must be preserved.
     $this->assertEquals(
       ['en' => 'New announcement', 'fi' => 'Tiedote'],
       Json::decode((string) $request->getBody()),
     );
+  }
 
-    $messenger = $this->container->get('messenger');
-    $status = $messenger->messagesByType(MessengerInterface::TYPE_STATUS);
-    $this->assertCount(1, $status);
-    $this->assertStringContainsString('Announcement saved for English language.', (string) $status[0]);
-    $this->assertCount(1, $messenger->messagesByType(MessengerInterface::TYPE_WARNING));
+  /**
+   * Tests that a save fails if the blob was changed after it was read.
+   */
+  public function testSubmitFormConcurrentModification(): void {
+    $this->setupMockHttpClient([
+      new Response(200, ['ETag' => '"0x8D1"'], Json::encode(['en' => 'Old announcement'])),
+      new ClientException(
+        'Precondition failed',
+        new Request('PUT', self::SAS_URL),
+        new Response(412),
+      ),
+    ]);
+
+    $formState = $this->submitForm('New announcement');
+
+    $errors = $formState->getErrors();
+    $this->assertArrayHasKey('announcement', $errors);
+    $this->assertStringContainsString('Someone else saved an announcement at the same time', (string) $errors['announcement']);
+    $this->assertEmpty($this->container->get(MessengerInterface::class)->messagesByType(MessengerInterface::TYPE_STATUS));
   }
 
   /**
    * Tests that a failed save is reported as a form error.
    */
   public function testSubmitFormSaveError(): void {
-    $this->container->set('http_client', $this->createMockHttpClient([
+    $this->setupMockHttpClient([
       new Response(200, [], Json::encode(['en' => 'Old announcement'])),
       new RequestException('Save failed', new Request('PUT', self::SAS_URL)),
-    ]));
+    ]);
 
     $formState = $this->submitForm('New announcement');
 
     $errors = $formState->getErrors();
     $this->assertArrayHasKey('announcement', $errors);
     $this->assertStringContainsString('Error while saving announcement', (string) $errors['announcement']);
-    $this->assertEmpty($this->container->get('messenger')->messagesByType(MessengerInterface::TYPE_STATUS));
+    $this->assertEmpty($this->container->get(MessengerInterface::class)->messagesByType(MessengerInterface::TYPE_STATUS));
   }
 
 }

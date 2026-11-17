@@ -76,10 +76,14 @@ final class AnnouncementEditForm extends FormBase {
         $this->languageManager->getCurrentLanguage(LanguageInterface::TYPE_CONTENT)->getId()
       );
     }
-    catch (AnnouncementException) {
-      $form_state->setError($form['announcement'],
-        $this->t('Error while saving announcement. Please check logs for more information.')
-      );
+    catch (AnnouncementException $e) {
+      // The blob was changed or created by someone else after it was read:
+      // 412 if If-Match failed, 409 if If-None-Match failed.
+      $message = in_array($e->getCode(), [409, 412], TRUE)
+        ? $this->t('Someone else saved an announcement at the same time, so your announcement was not saved. Please save it again.')
+        : $this->t('Error while saving announcement. Please check logs for more information.');
+
+      $form_state->setError($form['announcement'], $message);
     }
 
     parent::validateForm($form, $form_state);

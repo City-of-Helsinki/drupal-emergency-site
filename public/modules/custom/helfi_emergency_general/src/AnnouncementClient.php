@@ -70,19 +70,25 @@ final class AnnouncementClient {
     $currentAnnouncement = $this->loadAnnouncements()
       ->with($langCode, $announcement);
 
+    // Only write if the blob is unchanged since it was read.
+    // Concurrent writes fail instead of silently overwriting data.
+    $condition = $currentAnnouncement->etag !== NULL
+      ? ['If-Match' => $currentAnnouncement->etag]
+      : ['If-None-Match' => '*'];
+
     try {
       $response = $this->httpClient->request('PUT', $this->getSasUrl(), [
         RequestOptions::HEADERS => [
           'Content-Type' => 'application/json',
           'x-ms-blob-type' => 'BlockBlob',
           'x-ms-blob-cache-control' => 'public, max-age=120, must-revalidate',
-        ],
+        ] + $condition,
         RequestOptions::BODY => json_encode($currentAnnouncement),
         RequestOptions::TIMEOUT => 15,
       ]);
 
       $this->currentAnnouncement = $currentAnnouncement
-        ->withLastModified($response);
+        ->withResponseMetadata($response);
     }
     catch (GuzzleException $e) {
       $this->loggerChannel->error($e->getMessage());
