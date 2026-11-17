@@ -5,65 +5,18 @@ namespace Drupal\helfi_emergency_general\Form;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Language\LanguageInterface;
-use Drupal\Core\Language\LanguageManager;
-use Drupal\Core\Messenger\Messenger;
-use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\Core\Language\LanguageManagerInterface;
 use Drupal\helfi_emergency_general\AnnouncementClient;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Form class for emergency announcement message.
  */
 final class AnnouncementEditForm extends FormBase {
 
-  use StringTranslationTrait;
-
-  /**
-   * Emergency announcement client.
-   *
-   * @var \Drupal\helfi_emergency_general\AnnouncementClient
-   */
-  protected AnnouncementClient $announcementClient;
-
-  /**
-   * The language manager service.
-   *
-   * @var \Drupal\Core\Language\LanguageManager
-   */
-  protected LanguageManager $languageManager;
-
-  /**
-   * The messenger service.
-   *
-   * @var \Drupal\Core\Messenger\Messenger
-   */
-  protected $messenger;
-
-  /**
-   * Announcement form constructor.
-   *
-   * @param \Drupal\helfi_emergency_general\AnnouncementClient $announcementClient
-   *   The announcement client.
-   * @param \Drupal\Core\Language\LanguageManager $languageManager
-   *   Language manager service.
-   * @param \Drupal\Core\Messenger\Messenger $messenger
-   *   The messenger service.
-   */
-  public function __construct(AnnouncementClient $announcementClient, LanguageManager $languageManager, Messenger $messenger) {
-    $this->announcementClient = $announcementClient;
-    $this->languageManager = $languageManager;
-    $this->messenger = $messenger;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public static function create(ContainerInterface $container) {
-    return new static(
-      $container->get('helfi_emergency_general.announcement_client'),
-      $container->get('language_manager'),
-      $container->get('messenger'),
-    );
+  public function __construct(
+    protected readonly AnnouncementClient $announcementClient,
+    protected readonly LanguageManagerInterface $languageManager,
+  ) {
   }
 
   /**
@@ -88,7 +41,7 @@ final class AnnouncementEditForm extends FormBase {
     $currentLanguage = $this->languageManager->getCurrentLanguage(LanguageInterface::TYPE_CONTENT);
     $announcement = $this->announcementClient->getAnnouncement($currentLanguage->getId());
     if (is_null($announcement)) {
-      $this->messenger->addError($this->t('Unable to fetch existing message. Please check logs for more information'));
+      $this->messenger()->addError($this->t('Unable to fetch existing message. Please check logs for more information'));
 
       return [];
     }
@@ -119,7 +72,7 @@ final class AnnouncementEditForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function validateForm(array &$form, FormStateInterface $form_state) {
+  public function validateForm(array &$form, FormStateInterface $form_state): void {
     $message = $this->announcementClient->setAnnouncement(
       $form_state->getValue('announcement'),
       $this->languageManager->getCurrentLanguage(LanguageInterface::TYPE_CONTENT)->getId()
@@ -137,11 +90,11 @@ final class AnnouncementEditForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function submitForm(array &$form, FormStateInterface $form_state) {
-    $this->messenger->addStatus($this->t('Announcement saved for @lang language.', [
+  public function submitForm(array &$form, FormStateInterface $form_state): void {
+    $this->messenger()->addStatus($this->t('Announcement saved for @lang language.', [
       '@lang' => $this->languageManager->getCurrentLanguage(LanguageInterface::TYPE_CONTENT)->getName(),
     ]));
-    $this->messenger->addWarning($this->t('The updates may take up to 2 minutes to become visible.'));
+    $this->messenger()->addWarning($this->t('The updates may take up to 2 minutes to become visible.'));
   }
 
 }

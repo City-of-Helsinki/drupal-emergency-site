@@ -3,39 +3,15 @@
 namespace Drupal\helfi_emergency_general;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
-use Drupal\Core\Logger\LoggerChannelFactoryInterface;
-use Drupal\Core\Logger\LoggerChannelInterface;
-use Drupal\Core\StringTranslation\StringTranslationTrait;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\GuzzleException;
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use Psr\Log\LoggerInterface;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
 /**
  * Announcement client for dealing with requests to azure storage.
  */
 final class AnnouncementClient {
-  use StringTranslationTrait;
-
-  /**
-   * A fully-configured Guzzle client to pass to the client.
-   *
-   * @var \GuzzleHttp\ClientInterface
-   */
-  protected ClientInterface $httpClient;
-
-  /**
-   * Config Factory var.
-   *
-   * @var \Drupal\Core\Config\ConfigFactoryInterface
-   */
-  protected ConfigFactoryInterface $config;
-
-  /**
-   * Announcement logger channel.
-   *
-   * @var \Drupal\Core\Logger\LoggerChannelInterface
-   */
-  protected LoggerChannelInterface $loggerChannel;
 
   /**
    * SAS url.
@@ -54,33 +30,20 @@ final class AnnouncementClient {
   /**
    * The AnnouncementClient constructor.
    *
-   * @param \GuzzleHttp\ClientInterface $http_client
+   * @param \GuzzleHttp\ClientInterface $httpClient
    *   GuzzleHttp service.
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config
    *   Config service.
-   * @param \Drupal\Core\Logger\LoggerChannelFactoryInterface $loggerChannelFactory
-   *   Logger channel service.
+   * @param \Psr\Log\LoggerInterface $loggerChannel
+   *   Announcement logger channel.
    */
   public function __construct(
-    ClientInterface $http_client,
-    ConfigFactoryInterface $config,
-    LoggerChannelFactoryInterface $loggerChannelFactory,
+    private readonly ClientInterface $httpClient,
+    private readonly ConfigFactoryInterface $config,
+    #[Autowire(service: 'logger.channel.helfi_emergency_general')]
+    private readonly LoggerInterface $loggerChannel,
   ) {
-    $this->httpClient = $http_client;
-    $this->config = $config;
-    $this->loggerChannel = $loggerChannelFactory->get('helfi_emergency_general');
     $this->sasUrl = base64_decode(getenv('announcement_sas_url_base64_enc') ?? '');
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public static function create(ContainerInterface $container) {
-    return new static(
-      $container->get('http_client'),
-      $container->get('config.factory'),
-      $container->get('logger.factory'),
-    );
   }
 
   /**
