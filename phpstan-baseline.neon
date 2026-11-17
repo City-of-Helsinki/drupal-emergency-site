@@ -1,0 +1,241 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Function helfi_emergency_general_update_9001\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: public/modules/custom/helfi_emergency_general/helfi_emergency_general.install
+
+		-
+			message: '#^Function helfi_emergency_general_helfi_paragraph_types\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: public/modules/custom/helfi_emergency_general/helfi_emergency_general.module
+
+		-
+			message: '#^Expression on left side of \?\? is not nullable\.$#'
+			identifier: nullCoalesce.expr
+			count: 1
+			path: public/modules/custom/helfi_emergency_general/src/AnnouncementClient.php
+
+		-
+			message: '#^Method Drupal\\helfi_emergency_general\\AnnouncementClient\:\:create\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: public/modules/custom/helfi_emergency_general/src/AnnouncementClient.php
+
+		-
+			message: '#^Parameter \#1 \$string of function base64_decode expects string, string\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: public/modules/custom/helfi_emergency_general/src/AnnouncementClient.php
+
+		-
+			message: '#^Property Drupal\\helfi_emergency_general\\AnnouncementClient\:\:\$currentAnnouncement type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: public/modules/custom/helfi_emergency_general/src/AnnouncementClient.php
+
+		-
+			message: '#^Method Drupal\\helfi_emergency_general\\Form\\AnnouncementEditForm\:\:buildForm\(\) has parameter \$form with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: public/modules/custom/helfi_emergency_general/src/Form/AnnouncementEditForm.php
+
+		-
+			message: '#^Method Drupal\\helfi_emergency_general\\Form\\AnnouncementEditForm\:\:buildForm\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: public/modules/custom/helfi_emergency_general/src/Form/AnnouncementEditForm.php
+
+		-
+			message: '#^Method Drupal\\helfi_emergency_general\\Form\\AnnouncementEditForm\:\:submitForm\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: public/modules/custom/helfi_emergency_general/src/Form/AnnouncementEditForm.php
+
+		-
+			message: '#^Method Drupal\\helfi_emergency_general\\Form\\AnnouncementEditForm\:\:submitForm\(\) has parameter \$form with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: public/modules/custom/helfi_emergency_general/src/Form/AnnouncementEditForm.php
+
+		-
+			message: '#^Method Drupal\\helfi_emergency_general\\Form\\AnnouncementEditForm\:\:validateForm\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: public/modules/custom/helfi_emergency_general/src/Form/AnnouncementEditForm.php
+
+		-
+			message: '#^Method Drupal\\helfi_emergency_general\\Form\\AnnouncementEditForm\:\:validateForm\(\) has parameter \$form with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: public/modules/custom/helfi_emergency_general/src/Form/AnnouncementEditForm.php
+
+		-
+			message: '#^Function helfi_static_trigger_cron\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: public/modules/custom/helfi_static_trigger/helfi_static_trigger.module
+
+		-
+			message: '#^Function helfi_static_trigger_form_system_cron_settings_alter\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: public/modules/custom/helfi_static_trigger/helfi_static_trigger.module
+
+		-
+			message: '#^Function helfi_static_trigger_form_system_cron_settings_alter\(\) has parameter \$form with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: public/modules/custom/helfi_static_trigger/helfi_static_trigger.module
+
+		-
+			message: '#^Function helfi_static_trigger_form_system_cron_settings_alter\(\) has parameter \$form_id with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: public/modules/custom/helfi_static_trigger/helfi_static_trigger.module
+
+		-
+			message: '#^Function helfi_static_trigger_node_insert\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: public/modules/custom/helfi_static_trigger/helfi_static_trigger.module
+
+		-
+			message: '#^Function helfi_static_trigger_node_update\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: public/modules/custom/helfi_static_trigger/helfi_static_trigger.module
+
+		-
+			message: '#^Method Drupal\\helfi_static_trigger\\Form\\TriggerForm\:\:buildForm\(\) has parameter \$form with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: public/modules/custom/helfi_static_trigger/src/Form/TriggerForm.php
+
+		-
+			message: '#^Method Drupal\\helfi_static_trigger\\Form\\TriggerForm\:\:buildForm\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: public/modules/custom/helfi_static_trigger/src/Form/TriggerForm.php
+
+		-
+			message: '#^Method Drupal\\helfi_static_trigger\\Form\\TriggerForm\:\:submitForm\(\) has parameter \$form with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: public/modules/custom/helfi_static_trigger/src/Form/TriggerForm.php
+
+		-
+			message: '#^Method Drupal\\Tests\\helfi_static_trigger\\Unit\\StaticTriggerTest\:\:testTrigger\(\) has parameter \$expectedResult with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: public/modules/custom/helfi_static_trigger/tests/src/Unit/StaticTriggerTest.php
+
+		-
+			message: '#^Method Drupal\\Tests\\helfi_static_trigger\\Unit\\StaticTriggerTest\:\:testTrigger\(\) has parameter \$force with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: public/modules/custom/helfi_static_trigger/tests/src/Unit/StaticTriggerTest.php
+
+		-
+			message: '#^Method Drupal\\Tests\\helfi_static_trigger\\Unit\\StaticTriggerTest\:\:testTrigger\(\) has parameter \$getLastRun with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: public/modules/custom/helfi_static_trigger/tests/src/Unit/StaticTriggerTest.php
+
+		-
+			message: '#^Method Drupal\\Tests\\helfi_static_trigger\\Unit\\StaticTriggerTest\:\:testTrigger\(\) has parameter \$time with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: public/modules/custom/helfi_static_trigger/tests/src/Unit/StaticTriggerTest.php
+
+		-
+			message: '#^Method Drupal\\Tests\\helfi_static_trigger\\Unit\\StaticTriggerTest\:\:triggerDataProvider\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: public/modules/custom/helfi_static_trigger/tests/src/Unit/StaticTriggerTest.php
+
+		-
+			message: '#^Function hdbt_subtheme_preprocess_block\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: public/themes/custom/hdbt_subtheme/hdbt_subtheme.theme
+
+		-
+			message: '#^Function hdbt_subtheme_preprocess_block\(\) has parameter \$variables with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: public/themes/custom/hdbt_subtheme/hdbt_subtheme.theme
+
+		-
+			message: '#^Function hdbt_subtheme_preprocess_paragraph\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: public/themes/custom/hdbt_subtheme/hdbt_subtheme.theme
+
+		-
+			message: '#^Function hdbt_subtheme_preprocess_paragraph\(\) has parameter \$variables with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: public/themes/custom/hdbt_subtheme/hdbt_subtheme.theme
+
+		-
+			message: '#^Function hdbt_subtheme_preprocess_region\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: public/themes/custom/hdbt_subtheme/hdbt_subtheme.theme
+
+		-
+			message: '#^Function hdbt_subtheme_preprocess_region\(\) has parameter \$variables with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: public/themes/custom/hdbt_subtheme/hdbt_subtheme.theme
+
+		-
+			message: '#^Function hdbt_subtheme_theme_suggestions_block_alter\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: public/themes/custom/hdbt_subtheme/hdbt_subtheme.theme
+
+		-
+			message: '#^Function hdbt_subtheme_theme_suggestions_block_alter\(\) has parameter \$suggestions with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: public/themes/custom/hdbt_subtheme/hdbt_subtheme.theme
+
+		-
+			message: '#^Function hdbt_subtheme_theme_suggestions_menu_alter\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: public/themes/custom/hdbt_subtheme/hdbt_subtheme.theme
+
+		-
+			message: '#^Function hdbt_subtheme_theme_suggestions_menu_alter\(\) has parameter \$suggestions with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: public/themes/custom/hdbt_subtheme/hdbt_subtheme.theme
+
+		-
+			message: '#^Function hdbt_subtheme_theme_suggestions_menu_alter\(\) has parameter \$variables with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: public/themes/custom/hdbt_subtheme/hdbt_subtheme.theme
+
+		-
+			message: '#^Function hdbt_subtheme_theme_suggestions_node_alter\(\) has no return type specified\.$#'
+			identifier: missingType.return
+			count: 1
+			path: public/themes/custom/hdbt_subtheme/hdbt_subtheme.theme
+
+		-
+			message: '#^Function hdbt_subtheme_theme_suggestions_node_alter\(\) has parameter \$suggestions with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: public/themes/custom/hdbt_subtheme/hdbt_subtheme.theme
+
+		-
+			message: '#^Function hdbt_subtheme_theme_suggestions_node_alter\(\) has parameter \$variables with no type specified\.$#'
+			identifier: missingType.parameter
+			count: 1
+			path: public/themes/custom/hdbt_subtheme/hdbt_subtheme.theme
