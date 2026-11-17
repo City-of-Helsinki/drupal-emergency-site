@@ -71,7 +71,7 @@ final class AnnouncementClient {
       ->with($langCode, $announcement);
 
     try {
-      $this->httpClient->request('PUT', $this->getSasUrl(), [
+      $response = $this->httpClient->request('PUT', $this->getSasUrl(), [
         RequestOptions::HEADERS => [
           'Content-Type' => 'application/json',
           'x-ms-blob-type' => 'BlockBlob',
@@ -81,7 +81,8 @@ final class AnnouncementClient {
         RequestOptions::TIMEOUT => 15,
       ]);
 
-      $this->currentAnnouncement = $currentAnnouncement;
+      $this->currentAnnouncement = $currentAnnouncement
+        ->withLastModified($response);
     }
     catch (GuzzleException $e) {
       $this->loggerChannel->error($e->getMessage());
@@ -125,7 +126,7 @@ final class AnnouncementClient {
         RequestOptions::TIMEOUT => 15,
       ]);
 
-      return $this->currentAnnouncement = Announcements::fromJson($response->getBody()->getContents());
+      return $this->currentAnnouncement = Announcements::fromResponse($response);
     }
     catch (GuzzleException | \JsonException $e) {
       $this->loggerChannel->error($e->getMessage());
