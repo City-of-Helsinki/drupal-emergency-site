@@ -47,6 +47,16 @@ final class AnnouncementClient {
   }
 
   /**
+   * Gets the expiration of the blob storage SAS token.
+   *
+   * @return string
+   *   The expiration, or an empty string if it is not set.
+   */
+  public function getSasExpiration(): string {
+    return (string) getenv('announcement_sas_expiration');
+  }
+
+  /**
    * Method that sends a new message.
    *
    * @param string $announcement

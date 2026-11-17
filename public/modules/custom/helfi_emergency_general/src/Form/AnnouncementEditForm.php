@@ -48,7 +48,7 @@ final class AnnouncementEditForm extends FormBase {
 
     $form['expiry'] = [
       '#type' => 'markup',
-      '#markup' => $this->t('The blob storage token will expire in @expiration', ['@expiration' => getenv('announcement_sas_expiration')]),
+      '#markup' => $this->t('The blob storage token will expire in @expiration', ['@expiration' => $this->announcementClient->getSasExpiration()]),
     ];
 
     $form['announcement'] = [
