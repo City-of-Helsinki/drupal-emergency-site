@@ -15,11 +15,6 @@ use Symfony\Component\DependencyInjection\Attribute\Autowire;
 final class AnnouncementClient {
 
   /**
-   * Request timeout in seconds.
-   */
-  private const int TIMEOUT = 15;
-
-  /**
    * Current announcements.
    *
    * @var \Drupal\helfi_emergency_general\DTO\Announcements|null
@@ -72,8 +67,9 @@ final class AnnouncementClient {
    * @throws \Drupal\helfi_emergency_general\AnnouncementException
    */
   public function setAnnouncement(string $announcement, string $langCode): void {
-    $currentAnnouncement = ($this->currentAnnouncement ?? new Announcements())
+    $currentAnnouncement = $this->loadAnnouncements()
       ->with($langCode, $announcement);
+
     try {
       $this->httpClient->request('PUT', $this->getSasUrl(), [
         RequestOptions::HEADERS => [
@@ -82,8 +78,9 @@ final class AnnouncementClient {
           'x-ms-blob-cache-control' => 'public, max-age=120, must-revalidate',
         ],
         RequestOptions::BODY => json_encode($currentAnnouncement),
-        RequestOptions::TIMEOUT => self::TIMEOUT,
+        RequestOptions::TIMEOUT => 15,
       ]);
+
       $this->currentAnnouncement = $currentAnnouncement;
     }
     catch (GuzzleException $e) {
@@ -100,29 +97,37 @@ final class AnnouncementClient {
    *   Lang code.
    *
    * @return string
-   *   Returns the current message or null if error.
+   *   Returns the current message, or an empty string if none is set.
    *
    * @throws \Drupal\helfi_emergency_general\AnnouncementException
    */
   public function getAnnouncement(string $langCode): string {
+    return $this->loadAnnouncements()->messages[$langCode] ?? '';
+  }
+
+  /**
+   * Loads the announcements from blob storage.
+   *
+   * @throws \Drupal\helfi_emergency_general\AnnouncementException
+   */
+  private function loadAnnouncements(): Announcements {
     if ($this->currentAnnouncement) {
-      return $this->currentAnnouncement->messages[$langCode] ?? '';
+      return $this->currentAnnouncement;
     }
 
     try {
-      $response_content = $this->httpClient->request('GET', $this->getSasUrl(), [
+      $response = $this->httpClient->request('GET', $this->getSasUrl(), [
         RequestOptions::HEADERS => [
           'Content-Type' => 'application/json',
           'x-ms-blob-type' => 'BlockBlob',
           'x-ms-blob-cache-control' => 'public, max-age=120, must-revalidate',
         ],
-        RequestOptions::TIMEOUT => self::TIMEOUT,
-      ])->getBody()->getContents();
-      $this->currentAnnouncement = Announcements::fromJson($response_content);
+        RequestOptions::TIMEOUT => 15,
+      ]);
 
-      return $this->currentAnnouncement->messages[$langCode] ?? '';
+      return $this->currentAnnouncement = Announcements::fromJson($response->getBody()->getContents());
     }
-    catch (GuzzleException $e) {
+    catch (GuzzleException | \JsonException $e) {
       $this->loggerChannel->error($e->getMessage());
 
       throw new AnnouncementException($e->getMessage(), $e->getCode(), previous: $e);

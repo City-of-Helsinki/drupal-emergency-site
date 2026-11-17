@@ -7,7 +7,4 @@ services:
     parent: logger.channel_base
     arguments: [ 'helfi_emergency_general' ]
 
-  helfi_emergency_general.announcement_client:
-    class: Drupal\helfi_emergency_general\AnnouncementClient
-
-  Drupal\helfi_emergency_general\AnnouncementClient: '@helfi_emergency_general.announcement_client'
+  Drupal\helfi_emergency_general\AnnouncementClient: ~

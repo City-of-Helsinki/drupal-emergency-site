@@ -23,13 +23,6 @@ final class AnnouncementEditForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  protected function getEditableConfigNames(): string {
-    return 'helfi_emergency_general.settings';
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   public function getFormId(): string {
     return 'emergency_announcement_form';
   }

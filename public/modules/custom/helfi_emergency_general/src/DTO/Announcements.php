@@ -32,9 +32,11 @@ final readonly class Announcements implements \JsonSerializable {
    *
    * @return self
    *   The announcements.
+   *
+   * @throws \JsonException
    */
   public static function fromJson(string $json): self {
-    $data = json_decode($json);
+    $data = json_decode($json, flags: JSON_THROW_ON_ERROR);
 
     if (!$data instanceof \stdClass) {
       return new self();
