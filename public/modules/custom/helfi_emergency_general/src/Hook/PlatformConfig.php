@@ -9,6 +9,8 @@ use Drupal\helfi_platform_config\DTO\ParagraphTypeCollection;
 
 /**
  * Platform config hooks.
+ *
+ * @codeCoverageIgnore
  */
 final readonly class PlatformConfig {
 
