@@ -28,7 +28,7 @@ final class AnnouncementEditFormTest extends KernelTestBase {
 
   use ApiTestTrait;
 
-  private const string SAS_URL = 'https://example.blob.core.windows.net/container/announcement.json?sig=123';
+  private const string SAS_URL = 'https://helfibackupsdc.blob.core.windows.net/$web/emergency_announcement.json?sig=123';
 
   /**
    * {@inheritdoc}
@@ -44,7 +44,7 @@ final class AnnouncementEditFormTest extends KernelTestBase {
   protected function setUp(): void {
     parent::setUp();
 
-    putenv('announcement_sas_url_base64_enc=' . base64_encode(self::SAS_URL));
+    putenv('announcement_sas_url_base64_enc=' . base64_encode('sig=123'));
     putenv('announcement_sas_expiration=2030-01-01');
   }
 

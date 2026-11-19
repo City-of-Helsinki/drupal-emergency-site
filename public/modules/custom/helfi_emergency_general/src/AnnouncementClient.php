@@ -15,6 +15,11 @@ use Symfony\Component\DependencyInjection\Attribute\Autowire;
 final class AnnouncementClient {
 
   /**
+   * Announcement blob URL without the SAS token.
+   */
+  private const string BLOB_URL = 'https://helfibackupsdc.blob.core.windows.net/$web/emergency_announcement.json';
+
+  /**
    * Current announcements.
    *
    * @var \Drupal\helfi_emergency_general\DTO\Announcements|null
@@ -43,7 +48,9 @@ final class AnnouncementClient {
    *   The SAS url.
    */
   private function getSasUrl(): string {
-    return base64_decode((string) getenv('announcement_sas_url_base64_enc'));
+    $token = base64_decode((string) getenv('announcement_sas_url_base64_enc'));
+
+    return self::BLOB_URL . '?' . ltrim(trim($token), '?');
   }
 
   /**
