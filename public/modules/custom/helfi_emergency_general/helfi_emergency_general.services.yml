@@ -1,4 +1,10 @@
 services:
-  helfi_emergency_general.announcement_client:
-    class: Drupal\helfi_emergency_general\AnnouncementClient
-    arguments: [ '@http_client', '@config.factory', '@logger.factory']
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  logger.channel.helfi_emergency_general:
+    parent: logger.channel_base
+    arguments: [ 'helfi_emergency_general' ]
+
+  Drupal\helfi_emergency_general\AnnouncementClient: ~
