@@ -63,13 +63,15 @@ final class AnnouncementEditFormTest extends KernelTestBase {
    *
    * @param string $announcement
    *   The announcement.
+   * @param string $title
+   *   The announcement title.
    *
    * @return \Drupal\Core\Form\FormStateInterface
    *   The form state.
    */
-  private function submitForm(string $announcement): FormStateInterface {
+  private function submitForm(string $announcement, string $title = 'Title'): FormStateInterface {
     $formState = (new FormState())
-      ->setValues(['announcement' => $announcement]);
+      ->setValues(['title' => $title, 'announcement' => $announcement]);
 
     $this->container->get(FormBuilderInterface::class)
       ->submitForm(AnnouncementEditForm::class, $formState);
@@ -82,11 +84,15 @@ final class AnnouncementEditFormTest extends KernelTestBase {
    */
   public function testBuildForm(): void {
     $this->setupMockHttpClient([
-      new Response(200, [], Json::encode(['en' => 'Existing announcement', 'fi' => 'Tiedote'])),
+      new Response(200, [], Json::encode([
+        'en' => ['title' => 'Existing title', 'body' => 'Existing announcement'],
+        'fi' => ['title' => 'Otsikko', 'body' => 'Tiedote'],
+      ])),
     ]);
 
     $form = $this->container->get(FormBuilderInterface::class)->getForm(AnnouncementEditForm::class);
 
+    $this->assertEquals('Existing title', $form['title']['#default_value']);
     $this->assertEquals('Existing announcement', $form['announcement']['#default_value']);
     $this->assertStringContainsString('2030-01-01', (string) $form['expiry']['#markup']);
     $this->assertStringContainsString('English', (string) $form['announcement']['#description']);
@@ -114,11 +120,14 @@ final class AnnouncementEditFormTest extends KernelTestBase {
   public function testSubmitForm(): void {
     $history = [];
     $this->container->set('http_client', $this->createMockHistoryMiddlewareHttpClient($history, [
-      new Response(200, ['ETag' => '"0x8D1"'], Json::encode(['en' => 'Old announcement', 'fi' => 'Tiedote'])),
+      new Response(200, ['ETag' => '"0x8D1"'], Json::encode([
+        'en' => ['title' => 'Old title', 'body' => 'Old announcement'],
+        'fi' => ['title' => 'Otsikko', 'body' => 'Tiedote'],
+      ])),
       new Response(201, ['ETag' => '"0x8D2"']),
     ]));
 
-    $formState = $this->submitForm('New announcement');
+    $formState = $this->submitForm('New announcement', 'New title');
 
     $this->assertEmpty($formState->getErrors());
     $this->assertCount(2, $history);
@@ -130,8 +139,33 @@ final class AnnouncementEditFormTest extends KernelTestBase {
     $this->assertEquals('"0x8D1"', $request->getHeaderLine('If-Match'));
     // Announcements for other languages must be preserved.
     $this->assertEquals(
-      ['en' => 'New announcement', 'fi' => 'Tiedote'],
+      [
+        'en' => ['title' => 'New title', 'body' => 'New announcement'],
+        'fi' => ['title' => 'Otsikko', 'body' => 'Tiedote'],
+      ],
       Json::decode((string) $request->getBody()),
+    );
+  }
+
+  /**
+   * Tests that the announcement can be removed by emptying the fields.
+   */
+  public function testSubmitFormEmpty(): void {
+    $history = [];
+    $this->container->set('http_client', $this->createMockHistoryMiddlewareHttpClient($history, [
+      new Response(200, ['ETag' => '"0x8D1"'], Json::encode([
+        'en' => ['title' => 'Old title', 'body' => 'Old announcement'],
+      ])),
+      new Response(201, ['ETag' => '"0x8D2"']),
+    ]));
+
+    $formState = $this->submitForm('', '');
+
+    $this->assertEmpty($formState->getErrors());
+    $this->assertCount(2, $history);
+    $this->assertEquals(
+      ['en' => ['title' => '', 'body' => '']],
+      Json::decode((string) $history[1]['request']->getBody()),
     );
   }
 
@@ -140,7 +174,9 @@ final class AnnouncementEditFormTest extends KernelTestBase {
    */
   public function testSubmitFormConcurrentModification(): void {
     $this->setupMockHttpClient([
-      new Response(200, ['ETag' => '"0x8D1"'], Json::encode(['en' => 'Old announcement'])),
+      new Response(200, ['ETag' => '"0x8D1"'], Json::encode([
+        'en' => ['title' => 'Old title', 'body' => 'Old announcement'],
+      ])),
       new ClientException(
         'Precondition failed',
         new Request('PUT', self::SAS_URL),
@@ -161,7 +197,7 @@ final class AnnouncementEditFormTest extends KernelTestBase {
    */
   public function testSubmitFormSaveError(): void {
     $this->setupMockHttpClient([
-      new Response(200, [], Json::encode(['en' => 'Old announcement'])),
+      new Response(200, [], Json::encode(['en' => ['title' => 'Old title', 'body' => 'Old announcement']])),
       new RequestException('Save failed', new Request('PUT', self::SAS_URL)),
     ]);
 

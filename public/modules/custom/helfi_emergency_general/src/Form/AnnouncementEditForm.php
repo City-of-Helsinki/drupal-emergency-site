@@ -48,10 +48,18 @@ final class AnnouncementEditForm extends FormBase {
       '#markup' => $this->t('The blob storage token will expire in @expiration', ['@expiration' => $this->announcementClient->getSasExpiration()]),
     ];
 
+    $form['title'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Title'),
+      '#default_value' => $announcement['title'],
+      '#maxlength' => 255,
+      '#description' => $this->t('Required when the announcement is not empty.'),
+    ];
+
     $form['announcement'] = [
       '#type' => 'textarea',
       '#title' => $this->t('Announcement'),
-      '#default_value' => $announcement,
+      '#default_value' => $announcement['body'],
       '#description' => $this->t('You are currently editing the announcement for the @lang version of https://kopio.hel.fi/.',
         [
           '@lang' => $currentLanguage->getName(),
@@ -70,9 +78,24 @@ final class AnnouncementEditForm extends FormBase {
    * {@inheritdoc}
    */
   public function validateForm(array &$form, FormStateInterface $form_state): void {
+    $title = trim((string) $form_state->getValue('title'));
+    $body = trim((string) $form_state->getValue('announcement'));
+
+    // The title is required, unless the announcement is being removed.
+    if ($body !== '' && $title === '') {
+      $form_state->setError($form['title'], $this->t('Title is required when the announcement is not empty.'));
+      return;
+    }
+
+    if ($body === '' && $title !== '') {
+      $form_state->setError($form['announcement'], $this->t('Announcement is required when the title is not empty.'));
+      return;
+    }
+
     try {
       $this->announcementClient->setAnnouncement(
-        $form_state->getValue('announcement'),
+        $title,
+        $body,
         $this->languageManager->getCurrentLanguage(LanguageInterface::TYPE_CONTENT)->getId()
       );
     }

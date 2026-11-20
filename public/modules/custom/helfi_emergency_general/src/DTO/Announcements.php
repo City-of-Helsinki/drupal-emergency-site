@@ -10,7 +10,10 @@ use Psr\Http\Message\ResponseInterface;
  * DTO for the announcements stored in the Azure blob storage.
  *
  * @code
- * {"fi": "Finnish announcement", "sv": "Swedish announcement"}
+ * {
+ *   "fi": {"title": "Otsikko", "body": "Finnish announcement"},
+ *   "sv": {"title": "Rubrik", "body": "Swedish announcement"}
+ * }
  * @endcode
  */
 final readonly class Announcements implements \JsonSerializable {
@@ -18,7 +21,7 @@ final readonly class Announcements implements \JsonSerializable {
   /**
    * Constructs a new instance.
    *
-   * @param array<string, string> $messages
+   * @param array<string, array{title: string, body: string}> $messages
    *   The announcement messages, keyed by language code.
    * @param int|null $updated
    *   Unix timestamp of the last update.
@@ -40,11 +43,20 @@ final readonly class Announcements implements \JsonSerializable {
   public static function fromResponse(ResponseInterface $response): self {
     $data = json_decode((string) $response->getBody(), flags: JSON_THROW_ON_ERROR);
 
-    $messages = $data instanceof \stdClass ? array_filter(
-      get_object_vars($data),
-      static fn ($message, $langcode) => is_string($langcode) && is_string($message),
-      ARRAY_FILTER_USE_BOTH,
-    ) : [];
+    $messages = [];
+
+    if ($data instanceof \stdClass) {
+      foreach (get_object_vars($data) as $langcode => $message) {
+        if (!is_string($langcode) || !$message instanceof \stdClass) {
+          continue;
+        }
+
+        $messages[$langcode] = [
+          'title' => is_string($message->title ?? NULL) ? $message->title : '',
+          'body' => is_string($message->body ?? NULL) ? $message->body : '',
+        ];
+      }
+    }
 
     return (new self($messages))->withResponseMetadata($response);
   }
@@ -71,20 +83,26 @@ final readonly class Announcements implements \JsonSerializable {
    *
    * @param string $langcode
    *   The language code.
-   * @param string $message
-   *   The announcement.
+   * @param string $title
+   *   The announcement title.
+   * @param string $body
+   *   The announcement body.
    *
    * @return self
    *   The new instance.
    */
-  public function with(string $langcode, string $message): self {
-    return new self([$langcode => $message] + $this->messages, $this->updated, $this->etag);
+  public function with(string $langcode, string $title, string $body): self {
+    return new self(
+      [$langcode => ['title' => $title, 'body' => $body]] + $this->messages,
+      $this->updated,
+      $this->etag,
+    );
   }
 
   /**
    * {@inheritdoc}
    *
-   * @return array<string, string>
+   * @return array<string, array{title: string, body: string}>
    *   The announcement messages, keyed by language code.
    */
   public function jsonSerialize(): array {

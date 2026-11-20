@@ -66,16 +66,18 @@ final class AnnouncementClient {
   /**
    * Method that sends a new message.
    *
-   * @param string $announcement
-   *   The message to be sent.
+   * @param string $title
+   *   The announcement title.
+   * @param string $body
+   *   The announcement body.
    * @param string $langCode
    *   Lang code.
    *
    * @throws \Drupal\helfi_emergency_general\AnnouncementException
    */
-  public function setAnnouncement(string $announcement, string $langCode): void {
+  public function setAnnouncement(string $title, string $body, string $langCode): void {
     $currentAnnouncement = $this->loadAnnouncements()
-      ->with($langCode, $announcement);
+      ->with($langCode, $title, $body);
 
     // Only write if the blob is unchanged since it was read.
     // Concurrent writes fail instead of silently overwriting data.
@@ -110,13 +112,13 @@ final class AnnouncementClient {
    * @param string $langCode
    *   Lang code.
    *
-   * @return string
-   *   Returns the current message, or an empty string if none is set.
+   * @return array{title: string, body: string}
+   *   Returns the current message. Values are empty strings if none is set.
    *
    * @throws \Drupal\helfi_emergency_general\AnnouncementException
    */
-  public function getAnnouncement(string $langCode): string {
-    return $this->loadAnnouncements()->messages[$langCode] ?? '';
+  public function getAnnouncement(string $langCode): array {
+    return $this->loadAnnouncements()->messages[$langCode] ?? ['title' => '', 'body' => ''];
   }
 
   /**
