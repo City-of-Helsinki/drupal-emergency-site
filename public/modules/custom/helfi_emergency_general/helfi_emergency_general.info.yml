@@ -2,6 +2,5 @@ name: HELfi emergency general
 type: module
 package: Custom
 core_version_requirement: ^11
-configure: helfi_emergency_general.settings
 dependencies:
   - entity:entity
