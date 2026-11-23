@@ -4467,16 +4467,16 @@
         },
         {
             "name": "drupal/hdbt",
-            "version": "6.23.0",
+            "version": "6.23.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/City-of-Helsinki/drupal-hdbt.git",
-                "reference": "5ef4a8b1565c52d06d53aa1071d72076626a50d2"
+                "reference": "9fdc44b3d52b6075c099790795c7ca6df533e7aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/City-of-Helsinki/drupal-hdbt/zipball/5ef4a8b1565c52d06d53aa1071d72076626a50d2",
-                "reference": "5ef4a8b1565c52d06d53aa1071d72076626a50d2",
+                "url": "https://api.github.com/repos/City-of-Helsinki/drupal-hdbt/zipball/9fdc44b3d52b6075c099790795c7ca6df533e7aa",
+                "reference": "9fdc44b3d52b6075c099790795c7ca6df533e7aa",
                 "shasum": ""
             },
             "require": {
@@ -4495,24 +4495,24 @@
                 "Drupal"
             ],
             "support": {
-                "source": "https://github.com/City-of-Helsinki/drupal-hdbt/tree/6.23.0",
+                "source": "https://github.com/City-of-Helsinki/drupal-hdbt/tree/6.23.1",
                 "issues": "https://github.com/City-of-Helsinki/drupal-hdbt/issues"
             },
-            "time": "2026-11-23T10:08:16+00:00",
-            "published-time": "2026-11-23T10:21:07+00:00"
+            "time": "2026-11-23T14:23:42+00:00",
+            "published-time": "2026-11-23T14:38:17+00:00"
         },
         {
             "name": "drupal/hdbt_admin",
-            "version": "3.7.1",
+            "version": "3.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/City-of-Helsinki/drupal-hdbt-admin.git",
-                "reference": "c8a68bb21b2636da9122256ed4496ec6ea7ec6ae"
+                "reference": "3ee482682351de4ff6e5eb98b13cc71c90640843"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/City-of-Helsinki/drupal-hdbt-admin/zipball/c8a68bb21b2636da9122256ed4496ec6ea7ec6ae",
-                "reference": "c8a68bb21b2636da9122256ed4496ec6ea7ec6ae",
+                "url": "https://api.github.com/repos/City-of-Helsinki/drupal-hdbt-admin/zipball/3ee482682351de4ff6e5eb98b13cc71c90640843",
+                "reference": "3ee482682351de4ff6e5eb98b13cc71c90640843",
                 "shasum": ""
             },
             "require": {
@@ -4532,11 +4532,11 @@
                 "Drupal"
             ],
             "support": {
-                "source": "https://github.com/City-of-Helsinki/drupal-hdbt-admin/tree/3.7.1",
+                "source": "https://github.com/City-of-Helsinki/drupal-hdbt-admin/tree/3.7.2",
                 "issues": "https://github.com/City-of-Helsinki/drupal-hdbt-admin/issues"
             },
-            "time": "2026-11-19T15:48:09+00:00",
-            "published-time": "2026-11-19T15:48:59+00:00"
+            "time": "2026-11-23T14:40:17+00:00",
+            "published-time": "2026-11-23T14:41:26+00:00"
         },
         {
             "name": "drupal/health_check",
@@ -4701,12 +4701,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/City-of-Helsinki/drupal-tools.git",
-                "reference": "e42331cce513dcf63d2d363bd440bd148b51474b"
+                "reference": "9d9b1a09b83fb595e4d3c7c62e0ef290971939e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/City-of-Helsinki/drupal-tools/zipball/e42331cce513dcf63d2d363bd440bd148b51474b",
-                "reference": "e42331cce513dcf63d2d363bd440bd148b51474b",
+                "url": "https://api.github.com/repos/City-of-Helsinki/drupal-tools/zipball/9d9b1a09b83fb595e4d3c7c62e0ef290971939e9",
+                "reference": "9d9b1a09b83fb595e4d3c7c62e0ef290971939e9",
                 "shasum": ""
             },
             "require": {
@@ -4774,8 +4774,8 @@
                 "source": "https://github.com/City-of-Helsinki/drupal-tools/tree/main",
                 "issues": "https://github.com/City-of-Helsinki/drupal-tools/issues"
             },
-            "time": "2026-11-12T06:11:00+00:00",
-            "published-time": "2026-11-13T09:20:17+00:00"
+            "time": "2026-11-23T14:39:10+00:00",
+            "published-time": "2026-11-23T14:39:17+00:00"
         },
         {
             "name": "drupal/helfi_platform_config",
@@ -17562,28 +17562,29 @@
         },
         {
             "name": "composer/pcre",
-            "version": "3.3.2",
+            "version": "3.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/pcre.git",
-                "reference": "b2bed4734f0cc156ee1fe9c0da2550420d99a21e"
+                "reference": "d5a341b3fb61f3001970940afb1d332968a183ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/pcre/zipball/b2bed4734f0cc156ee1fe9c0da2550420d99a21e",
-                "reference": "b2bed4734f0cc156ee1fe9c0da2550420d99a21e",
+                "url": "https://api.github.com/repos/composer/pcre/zipball/d5a341b3fb61f3001970940afb1d332968a183ed",
+                "reference": "d5a341b3fb61f3001970940afb1d332968a183ed",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.4 || ^8.0"
             },
             "conflict": {
-                "phpstan/phpstan": "<1.11.10"
+                "phpstan/phpstan": "<2.2.2"
             },
             "require-dev": {
-                "phpstan/phpstan": "^1.12 || ^2",
-                "phpstan/phpstan-strict-rules": "^1 || ^2",
-                "phpunit/phpunit": "^8 || ^9"
+                "phpstan/phpstan": "^2",
+                "phpstan/phpstan-deprecation-rules": "^2",
+                "phpstan/phpstan-strict-rules": "^2",
+                "phpunit/phpunit": "^9"
             },
             "type": "library",
             "extra": {
@@ -17621,7 +17622,7 @@
             ],
             "support": {
                 "issues": "https://github.com/composer/pcre/issues",
-                "source": "https://github.com/composer/pcre/tree/3.3.2"
+                "source": "https://github.com/composer/pcre/tree/3.4.0"
             },
             "funding": [
                 {
@@ -17631,14 +17632,10 @@
                 {
                     "url": "https://github.com/composer",
                     "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/composer/composer",
-                    "type": "tidelift"
                 }
             ],
-            "time": "2024-11-12T16:29:46+00:00",
-            "published-time": "2024-11-12T16:38:47+00:00"
+            "time": "2026-06-07T11:47:49+00:00",
+            "published-time": "2026-06-11T12:12:37+00:00"
         },
         {
             "name": "composer/spdx-licenses",
@@ -19598,11 +19595,11 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "2.3.6",
+            "version": "2.3.7",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/00cedebb76cc82c1592414fa4f616cefdccda16f",
-                "reference": "00cedebb76cc82c1592414fa4f616cefdccda16f",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/90c91c2498849ab8cc4e873864bbf1cb2bf6ea12",
+                "reference": "90c91c2498849ab8cc4e873864bbf1cb2bf6ea12",
                 "shasum": ""
             },
             "require": {
@@ -19658,8 +19655,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-11-15T19:58:26+00:00",
-            "published-time": "2026-11-15T19:58:39+00:00"
+            "time": "2026-11-19T10:31:11+00:00",
+            "published-time": "2026-11-19T10:31:27+00:00"
         },
         {
             "name": "phpstan/phpstan-deprecation-rules",
