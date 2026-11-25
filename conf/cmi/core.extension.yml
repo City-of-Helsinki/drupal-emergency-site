@@ -140,6 +140,7 @@ module:
   user: 0
   view_unpublished: 0
   views_bulk_operations: 0
+  views_bulk_edit: 0
   views_ui: 0
   webp: 0
   pathauto: 1
