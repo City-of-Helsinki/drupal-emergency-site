@@ -5,6 +5,7 @@ namespace Drupal\helfi_emergency_general;
 use Drupal\helfi_emergency_general\DTO\Announcements;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Psr7\Exception\MalformedUriException;
 use GuzzleHttp\RequestOptions;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
@@ -99,7 +100,7 @@ final class AnnouncementClient {
       $this->currentAnnouncement = $currentAnnouncement
         ->withResponseMetadata($response);
     }
-    catch (GuzzleException $e) {
+    catch (GuzzleException | MalformedUriException $e) {
       $this->loggerChannel->error($e->getMessage());
 
       throw new AnnouncementException($e->getMessage(), $e->getCode(), previous: $e);
@@ -143,7 +144,7 @@ final class AnnouncementClient {
 
       return $this->currentAnnouncement = Announcements::fromResponse($response);
     }
-    catch (GuzzleException | \JsonException $e) {
+    catch (GuzzleException | MalformedUriException | \JsonException $e) {
       $this->loggerChannel->error($e->getMessage());
 
       throw new AnnouncementException($e->getMessage(), $e->getCode(), previous: $e);
